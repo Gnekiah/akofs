@@ -82,6 +82,7 @@
   <ItemGroup>
     <ClInclude Include="..\src\include\Config.h" />
     <ClInclude Include="..\src\include\Logger.h" />
+    <ClInclude Include="..\src\include\macros.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
