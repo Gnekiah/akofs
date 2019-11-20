@@ -1,12 +1,12 @@
-#ifndef SPARKLE_COMMON_CONFIG_
-#define SPARKLE_COMMON_CONFIG_
+#ifndef SPARKLE_CONFIG_CONFIG_H_
+#define SPARKLE_CONFIG_CONFIG_H_
 
 #include <string>
 #include <map>
 #include <iostream>
-#include <macros.h>
+#include <spk_macros.h>
 
-namespace sparkle {
+namespace spk {
 
     class Config {
     public:
@@ -56,4 +56,4 @@ namespace sparkle {
     };
 }
 
-#endif  // SPARKLE_COMMON_CONFIG_
+#endif  // SPARKLE_CONFIG_CONFIG_H_

@@ -1,11 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="common">
-      <UniqueIdentifier>{cf962b92-8a0e-4974-beae-31c7f392efe9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include">
       <UniqueIdentifier>{d510271a-1fc6-4b02-a222-0cc753a34f30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="log">
+      <UniqueIdentifier>{6c5ffd07-c495-49ee-92b1-a53fb02dd609}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{587f8be8-b648-4025-b7a8-683492bdeabb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="extlib">
+      <UniqueIdentifier>{a48bbe6c-9d94-4fd8-a465-6370e0faefb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="erasure-code">
+      <UniqueIdentifier>{49dbc34a-9263-4e4e-8820-1342c689cb95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="eventd">
+      <UniqueIdentifier>{697c4cba-db1f-493f-ae9a-d2b2c25e633c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="arch">
+      <UniqueIdentifier>{9ddbcc89-080f-4326-a2c1-582b6e246a28}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -18,14 +33,41 @@
     <ClInclude Include="..\src\include\macros.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\win64\include\pthread.h">
+      <Filter>extlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\win64\include\sched.h">
+      <Filter>extlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\win64\include\semaphore.h">
+      <Filter>extlib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ErasureCodeInterface.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\Thread.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_setproctitle.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_compat.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cc" />
-    <ClCompile Include="..\src\common\Logger.cc">
-      <Filter>common</Filter>
+    <ClCompile Include="..\src\log\Logger.cc">
+      <Filter>log</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\common\Config.cc">
-      <Filter>common</Filter>
+    <ClCompile Include="..\src\config\Config.cc">
+      <Filter>config</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\arch\setproctitle.c">
+      <Filter>arch</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\CMakeList.txt" />
   </ItemGroup>
 </Project>

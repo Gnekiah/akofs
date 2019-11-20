@@ -43,10 +43,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(IncludePath);$(SolutionDir)\src\include</IncludePath>
+    <IncludePath>$(IncludePath);$(SolutionDir)\src\include;$(SolutionDir)\win64\include</IncludePath>
+    <LibraryPath>$(SolutionDir)\win64\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(IncludePath);$(SolutionDir)\src\include</IncludePath>
+    <IncludePath>$(IncludePath);$(SolutionDir)\src\include;$(SolutionDir)\win64\include</IncludePath>
+    <LibraryPath>$(SolutionDir)\win64\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -75,14 +77,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\common\Config.cc" />
-    <ClCompile Include="..\src\common\Logger.cc" />
+    <ClCompile Include="..\src\arch\setproctitle.c" />
+    <ClCompile Include="..\src\config\Config.cc" />
+    <ClCompile Include="..\src\log\Logger.cc" />
     <ClCompile Include="..\src\main.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\include\spk_compat.h" />
     <ClInclude Include="..\src\include\Config.h" />
+    <ClInclude Include="..\src\include\ErasureCodeInterface.h" />
     <ClInclude Include="..\src\include\Logger.h" />
     <ClInclude Include="..\src\include\macros.h" />
+    <ClInclude Include="..\src\include\spk_setproctitle.h" />
+    <ClInclude Include="..\src\include\Thread.h" />
+    <ClInclude Include="..\win64\include\pthread.h" />
+    <ClInclude Include="..\win64\include\sched.h" />
+    <ClInclude Include="..\win64\include\semaphore.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\CMakeList.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

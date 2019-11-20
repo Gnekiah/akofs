@@ -1,5 +1,5 @@
-#ifndef SPARKLE_MACROS_
-#define SPARKLE_MACROS_
+#ifndef SPARKLE_MACROS_H_
+#define SPARKLE_MACROS_H_
 
 // A macro to disallow the copy constructor and operator= functions 
 // This should be used in the priavte:declarations for a class
@@ -9,4 +9,4 @@
     TypeName& operator=(const TypeName&)
 #endif 
 
-#endif  // SPARKLE_MACROS_
+#endif  // SPARKLE_MACROS_H_

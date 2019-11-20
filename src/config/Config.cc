@@ -1,6 +1,6 @@
 #include <Config.h>
 
-namespace sparkle {
+namespace spk {
     Config::Config(const std::string& path, std::string delimiter = "=",
         std::string comment = "#") {
 
