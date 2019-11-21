@@ -7,10 +7,10 @@
 
 extern char** environ;
 
-int spk_setproctitle(char** argv, char* title) {
-    char* last = nullptr, *p = nullptr;
+int spk_setproctitle(char** argv, const char* title) {
+    char* last = NULL, *p = NULL;
     size_t size = 0;
-    uint32_t i;
+    int i;
 
     for (i = 0; environ[i]; i++) {
         size += strlen(environ[i]) + 1;

@@ -17,4 +17,12 @@ else(WIN32)
     add_definitions(-pthread)
 endif(WIN32)
 
+add_subdirectory(../src/arch/ arch_objs)
+
+set(TEST_LIBS
+    arch_objs
+    gtest
+    gtest_main)
+
 add_executable(sparkle_test ${TEST_SRCS})
+target_link_libraries(sparkle_test ${TEST_LIBS})
