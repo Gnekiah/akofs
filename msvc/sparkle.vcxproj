@@ -95,7 +95,7 @@
     <ClInclude Include="..\win64\include\semaphore.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\CMakeLists.txt" />
+    <Text Include="..\src\CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

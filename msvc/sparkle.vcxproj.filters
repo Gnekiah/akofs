@@ -68,6 +68,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\CMakeLists.txt" />
+    <Text Include="..\src\CMakeLists.txt" />
   </ItemGroup>
 </Project>
