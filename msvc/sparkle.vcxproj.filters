@@ -30,9 +30,6 @@
     <ClInclude Include="..\src\include\Logger.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\include\macros.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\win64\include\pthread.h">
       <Filter>extlib</Filter>
     </ClInclude>
@@ -54,6 +51,9 @@
     <ClInclude Include="..\src\include\spk_compat.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\include\spk_macros.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cc" />
@@ -63,11 +63,11 @@
     <ClCompile Include="..\src\config\Config.cc">
       <Filter>config</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\arch\setproctitle.c">
+    <ClCompile Include="..\src\arch\spk_setproctitle.c">
       <Filter>arch</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\CMakeList.txt" />
+    <Text Include="..\CMakeLists.txt" />
   </ItemGroup>
 </Project>

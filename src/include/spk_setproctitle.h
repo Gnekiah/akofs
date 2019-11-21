@@ -1,5 +1,5 @@
-#ifndef SPARKLE_SET_PROCTITLE_H_
-#define SPARKLE_SET_PROCTITLE_H_
+#ifndef SPARKLE_SPK_SET_PROCTITLE_H_
+#define SPARKLE_SPK_SET_PROCTITLE_H_
 
 #if defined(HAVE_SETPROCTITLE)
 #define spk_setproctitle(argv, title) setproctitle("%s", title)
@@ -17,4 +17,4 @@ int spk_setproctitle(char** argv, char* title);
 #endif
 #endif
 
-#endif // SPARKLE_SET_PROCTITLE_H_
+#endif // SPARKLE_SPK_SET_PROCTITLE_H_

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="spk_src">
+      <UniqueIdentifier>{79885a31-e8c6-4d50-98fd-c6f0975d78c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="spk_src\include">
+      <UniqueIdentifier>{94ecc67c-66c3-44be-9f5b-649e57f07b20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test_arch">
+      <UniqueIdentifier>{f0f3aa23-d007-4aca-8ad5-eb8ec908394f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\include\spk_setproctitle.h">
+      <Filter>spk_src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\test_arch\test_spk_setproctitle.hpp">
+      <Filter>test_arch</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\test\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\test\CMakeLists.txt" />
+  </ItemGroup>
+</Project>

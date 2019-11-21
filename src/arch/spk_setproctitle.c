@@ -1,4 +1,4 @@
-#include <setproctitle.h>
+#include <spk_setproctitle.h>
 
 #if defined(SETPROCTITLE_USES_ENV)
 
@@ -8,7 +8,7 @@
 extern char** environ;
 
 int spk_setproctitle(char** argv, char* title) {
-    char* last = nullptr, p = nullptr;
+    char* last = nullptr, *p = nullptr;
     size_t size = 0;
     uint32_t i;
 
@@ -37,8 +37,8 @@ int spk_setproctitle(char** argv, char* title) {
 
     last--;
     argv[1] = NULL;
-    p = strncpy(argv[0], "sparkle: ", last - argv[0]);
-    p = strncpy(p, title, last - p);
+    p = strncpy(argv[0], title, last - argv[0]);
+    p += strlen(title);
     if (last - p) {
         memset(p, '\0', last - p);
     }
