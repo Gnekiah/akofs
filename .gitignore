@@ -61,5 +61,4 @@ test/CMakeCache.txt
 test/CMakeFiles/
 test/arch_objs/
 test/sparkle_test
-Makefile
 *.cmake
