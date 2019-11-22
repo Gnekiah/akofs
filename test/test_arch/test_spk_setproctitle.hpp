@@ -1,5 +1,5 @@
-#ifndef SPARKLE_TEST_SPK_SET_PROCTITLE_H_
-#define SPARKLE_TEST_SPK_SET_PROCTITLE_H_
+#ifndef SPARKLE_TEST_SPK_SET_PROCTITLE_HPP_
+#define SPARKLE_TEST_SPK_SET_PROCTITLE_HPP_
 
 #include <string>
 #include <spk_setproctitle.h>
@@ -25,4 +25,4 @@ sparkle_test_sparkle_test_sparkle_test_sparkle_test_sparkle_test";
     ASSERT_STREQ(test_arch_test_argv[0], long_title.c_str());
 }
 
-#endif // SPARKLE_TEST_SPK_SET_PROCTITLE_H_
+#endif // SPARKLE_TEST_SPK_SET_PROCTITLE_HPP_

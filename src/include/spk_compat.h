@@ -5,8 +5,12 @@
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
-#ifndef SPARKLE_COMPAT_H_
-#define SPARKLE_COMPAT_H_
+#ifndef SPARKLE_SPK_COMPAT_H_
+#define SPARKLE_SPK_COMPAT_H_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include <pthread.h>
 
@@ -42,4 +46,8 @@
     0; })
 #endif
 
-#endif // SPARKLE_COMPAT_H_
+#ifdef __cplusplus
+}
+#endif
+
+#endif // SPARKLE_SPK_COMPAT_H_
