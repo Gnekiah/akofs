@@ -1,14 +1,13 @@
 set_property(GLOBAL	PROPERTY USE_FOLDERS ON)
 
-set(LIB_TYPE STATIC)
-if(BUILD_SHARED_LIBS)
-	set(LIB_TYPE SHARED)
-	add_definitions(-DLIBCONFIG_EXPORTS)
-	add_definitions(-DLIBCONFIGXX_EXPORTS)
-else()	
-	add_definitions(-DLIBCONFIG_STATIC)
-	add_definitions(-DLIBCONFIGXX_STATIC)
-endif()
+add_definitions(-DLIBCONFIG_STATIC)
+add_definitions(-DLIBCONFIGXX_STATIC)
 
 include(GNUInstallDirs)
 add_subdirectory(libconfig)
+
+set(CONFIG_SRCS
+    a.cc)
+
+add_library(config_objs STATIC ${CONFIG_SRCS})
+target_include_directories(config_objs PRIVATE ../include/)

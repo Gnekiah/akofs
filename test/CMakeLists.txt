@@ -44,9 +44,11 @@ if(WIN32)
 endif(WIN32)
 
 add_subdirectory(../src/arch/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/arch_objs)
+add_subdirectory(../src/config/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/config_objs)
 
 set(TEST_LIBS
     arch_objs
+    config_objs
     gtest
     gtest_main
     pthread)
