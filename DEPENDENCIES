@@ -5,3 +5,5 @@ libstdc++ that should be provided by the operating system.
 malloc on Linux by default. It has good performances and excellent 
 fragmentation behavior.
 * **EasyLogger-2.1.0** is a ultra-lightweight(ROM<1.6K, RAM<0.3k), high-performance C/C++ log library.
+* **libconfig-1.7.2** is a C/C++ library for processing structured 
+configuration files.
