@@ -4,11 +4,17 @@
 #include <string>
 #include <spk_compat.h>
 
+#if defined(__linux__)
+#include <unistd.h>
+#else
+#define sleep(t) 0
+#endif 
+
 void* thrd(void*) {
     pthread_t tid;
     tid = pthread_self();
-    printf("tid:%d (0x%x)\n", tid, tid);
-    while (1) {}
+    // printf("tid:%d (0x%x)\n", tid, tid);
+    sleep(1);
     return NULL;
 }
 
@@ -18,8 +24,8 @@ TEST(test_spk_compat, case_1) {
     ASSERT_TRUE(unlikely(1 < 2));
     ASSERT_FALSE(unlikely(1 > 2));
 
-    std::string title1 = "sparkle_thread_test_sparkle_thread_test-1";
-    std::string title2 = "sparkle_thread_test_sparkle_thread_test-2";
+    std::string title1 = "spkthrd-1";
+    std::string title2 = "spkthrd-2";
     pthread_t pa, pb;
     char ret_title[64];
     int pl_th1 = pthread_create(&pa, NULL, thrd, NULL);
