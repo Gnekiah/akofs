@@ -1,3 +1,10 @@
+/*
+ *
+ *
+ * Copyright (C) 2019 CQU STARLab. All rights reserved.
+ * Author: Xxiong <xxiong@cqu.edu.cn>
+ */
+
 #ifndef SPARKLE_THREAD_H_
 #define SPARKLE_THREAD_H_
 

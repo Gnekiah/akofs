@@ -18,6 +18,12 @@
     <ClInclude Include="..\test\test_arch\test_spk_setproctitle.hpp">
       <Filter>test_arch</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\include\spk_compat.h">
+      <Filter>spk_src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\test_arch\test_spk_compat.hpp">
+      <Filter>test_arch</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\test\main.cpp" />

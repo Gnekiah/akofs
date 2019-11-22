@@ -60,7 +60,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>gtest_maind.lib;gtestd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gtest_maind.lib;gtestd.lib;pthreadVC2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -80,7 +80,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\include\spk_compat.h" />
     <ClInclude Include="..\src\include\spk_setproctitle.h" />
+    <ClInclude Include="..\test\test_arch\test_spk_compat.hpp" />
     <ClInclude Include="..\test\test_arch\test_spk_setproctitle.hpp" />
   </ItemGroup>
   <ItemGroup>

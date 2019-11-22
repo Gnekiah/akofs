@@ -1,3 +1,10 @@
+/*
+ * Configuration interface.
+ *
+ * Copyright (C) 2019 CQU STARLab. All rights reserved.
+ * Author: Xxiong <xxiong@cqu.edu.cn>
+ */
+
 #ifndef SPARKLE_CONFIG_CONFIG_H_
 #define SPARKLE_CONFIG_CONFIG_H_
 

@@ -12,6 +12,10 @@
 extern "C" {
 #endif
 
+#ifdef _WIN32
+#define HAVE_STRUCT_TIMESPEC
+#endif
+
 #include <pthread.h>
 
 #if defined(__GNUC__)
@@ -25,25 +29,29 @@ extern "C" {
 #if defined(HAVE_PTHREAD_SETNAME_NP)
 #define spk_pthread_setname pthread_setname_np
 #elif defined(HAVE_PTHREAD_SET_NAME_NP)
-#define spk_pthread_setname(thread, name) ({ \
-    pthread_set_name_np(thread, name);          \
-    0; })
+#define spk_pthread_setname(thread, name) do { \
+    pthread_set_name_np(thread, name); \
+    0; \
+} while(0);
 #else
-#define spk_pthread_setname(thread, name) ({ \
-    0; })
+#define spk_pthread_setname(thread, name) do { \
+    0; \
+} while(0);
 #endif
 
 #if defined(HAVE_PTHREAD_GETNAME_NP)
 #define spk_pthread_getname pthread_getname_np
 #elif defined(HAVE_PTHREAD_GET_NAME_NP)
-#define spk_pthread_getname(thread, name, len) ({ \
-    pthread_get_name_np(thread, name, len);          \
-    0; })
+#define spk_pthread_getname(thread, name, len) do { \
+    pthread_get_name_np(thread, name, len); \
+    0; \
+} while(0);
 #else
-#define spk_pthread_getname(thread, name, len) ({ \
-    if (name != NULL)                              \
-        *name = '\0';                              \
-    0; })
+#define spk_pthread_getname(thread, name, len) do { \
+    if (name != NULL) \
+        *name = '\0'; \
+    0; \
+} while(0);
 #endif
 
 #ifdef __cplusplus
