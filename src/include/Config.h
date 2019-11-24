@@ -1,5 +1,10 @@
 /*
  * Configuration interface.
+ * 
+ * Ops.:
+ * spk::Config config(path, &map);
+ * config->Set(section, name, value)
+ * config->Get(section, name, spk_config_type)
  *
  * Copyright (C) 2019 CQU STARLab. All rights reserved.
  * Author: Xxiong <xxiong@cqu.edu.cn>
@@ -11,7 +16,7 @@
 #include <string>
 #include <map>
 #include <iostream>
-#include <spk_macros.h>
+#include <mutex>
 
 class INIReader;
 
@@ -25,6 +30,19 @@ typedef std::string spk_config_string_t;
 #define SPK_CONFIG_TYPE_DOUBLE  1.1
 #define SPK_CONFIG_TYPE_STRING  ""
 
+// global config ptr
+namespace spk {
+    class Config;
+}
+extern spk::Config *g_spk_config;
+/*
+ * init config settings from specificated .conf path
+ * path: .conf file path
+ * config_map: default config mapping
+ */
+spk::Config* spk_init_config(const std::string& path,
+    std::map<std::string, std::string>* config_map);
+
 namespace spk {
 
     class Config {
@@ -34,7 +52,8 @@ namespace spk {
         Config& operator=(const Config&) = delete;
         explicit Config(const std::string& path, std::map<std::string, std::string> *config_map = nullptr);
         // explicit Config(const std::string& path, std::string delimiter = "=", std::string comment = "#");
-        ~Config();
+
+        ~Config() {}
 
         void Set(const std::string& section, const std::string& name, const int value);
         void Set(const std::string& section, const std::string& name, const long value);
@@ -64,15 +83,12 @@ namespace spk {
         // friend std::istream& operator >> (std::istream& is, Config& config);
        
     private:
-        void InitConfig();
-
-    private:
         // std::string delimiter_;
         // std::string comment_;
         // std::map<std::string, std::string> contents_;
         // INIReader *inireader_ = nullptr;
-
         std::map<std::string, std::string> *config_map_ = nullptr;
+        std::mutex lock_;
     };
 }
 

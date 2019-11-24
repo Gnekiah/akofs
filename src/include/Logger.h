@@ -8,6 +8,25 @@
 #ifndef SPARKLE_LOG_LOGGER_H_
 #define SPARKLE_LOG_LOGGER_H_
 
+#include <string>
 
+namespace spk {
+
+    class Logger {
+    public:
+        Logger() = delete;
+        Logger(const Logger&) = delete;
+        Logger& operator=(const Logger&) = delete;
+        explicit Logger(std::string& config_path);
+        // explicit Config(const std::string& path, std::string delimiter = "=", std::string comment = "#");
+        ~Logger();
+
+    public:
+        static int CheckConfig(std::string& config_path);
+
+    private:
+
+    };
+}
 
 #endif  // SPARKLE_LOG_LOGGER_H_

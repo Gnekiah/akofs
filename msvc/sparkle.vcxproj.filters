@@ -25,6 +25,9 @@
     <Filter Include="config\inih">
       <UniqueIdentifier>{fbdc0330-e564-48e6-ae94-974b7794aa00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="log\zlog">
+      <UniqueIdentifier>{da478912-6ebf-4efd-8ab6-17c9cfee0b89}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\include\Config.h">
@@ -63,6 +66,78 @@
     <ClInclude Include="..\src\config\inih\INIReader.h">
       <Filter>config\inih</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\log\zlog\buf.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\category.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\category_table.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\conf.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\event.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\fmacros.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\format.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\level.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\level_list.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\mdc.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\record.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\record_table.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\rotater.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\rule.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\spec.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\thread.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\version.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\zc_arraylist.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\zc_defs.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\zc_hashtable.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\zc_profile.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\zc_util.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\zc_xplatform.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\log\zlog\zlog.h">
+      <Filter>log\zlog</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cc" />
@@ -80,6 +155,66 @@
     </ClCompile>
     <ClCompile Include="..\src\config\inih\INIReader.cpp">
       <Filter>config\inih</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\buf.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\category.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\category_table.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\conf.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\event.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\format.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\level.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\level_list.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\mdc.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\record.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\record_table.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\rotater.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\rule.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\spec.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\thread.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\zc_arraylist.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\zc_hashtable.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\zc_profile.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\zc_util.c">
+      <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\zlog\zlog.c">
+      <Filter>log\zlog</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

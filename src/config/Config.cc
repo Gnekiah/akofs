@@ -1,5 +1,5 @@
 /*
- * 
+ * source of Config module
  *
  * Copyright (C) 2019 CQU STARLab. All rights reserved.
  * Author: Xxiong <xxiong@cqu.edu.cn>
@@ -23,8 +23,22 @@
 
 #include "inih/INIReader.h"
 
-namespace spk {
+spk::Config* g_spk_config = nullptr;
 
+spk::Config* spk_init_config(const std::string& path,
+    std::map<std::string, std::string>* config_map) {
+    if (!g_spk_config) {
+        try {
+            g_spk_config = new spk::Config(path, config_map);
+        }
+        catch (std::runtime_error& e) {
+            return nullptr;
+        }
+    }
+    return g_spk_config;
+}
+
+namespace spk {
     template<typename T>
     static inline std::string type2str(const T& t)
     {
@@ -65,16 +79,14 @@ namespace spk {
             throw std::runtime_error(err_ss.str());
         }
         // init config_map_
+        lock_.lock();
         config_map_ = new std::map<std::string, std::string>();
         if (config_map) {
             for (auto iter = config_map->begin(); iter != config_map->end(); iter++) {
                 config_map_->insert(std::pair<std::string, std::string>(iter->first, iter->second));
             }
         }
-        else {
-            InitConfig();
-        }
-        
+
         // syntax recheck
         std::map<std::string, std::string> __unknown_map;
         std::map<std::string, std::string>& __config_map = inireader._values;
@@ -86,7 +98,9 @@ namespace spk {
             else // syntax error: unknown key
                 __unknown_map.insert(std::pair<std::string, std::string>(key, val));
         }
+        lock_.unlock();
 
+        // print parse failed message
         if (__unknown_map.size()) {
             std::stringstream err_ss;
             err_ss << "Error! Unknown the symbols:" << std::endl;
@@ -95,11 +109,6 @@ namespace spk {
             }
             throw std::runtime_error(err_ss.str());
         }
-    }
-
-    Config::~Config() {
-        if (config_map_)
-            delete config_map_;
     }
 
     void Config::Set(const std::string& section, const std::string& name, const int value) {
@@ -119,10 +128,13 @@ namespace spk {
     }
     void Config::Set(const std::string& section, const std::string& name, const std::string& value) {
         std::string key = make_key(section, name);
+        lock_.lock();
         if (config_map_->count(key)) {
             config_map_->find(key)->second = value;
+            lock_.unlock();
             return;
         }
+        lock_.unlock();
         std::cerr << "<" << __FUNCTION__ << "> Error! Unknown the key: " << key << std::endl;
         assert(false);
     }
@@ -142,15 +154,14 @@ namespace spk {
     std::string Config::Get(const std::string& section, const std::string& name, spk_config_string_t) {
         std::string key = make_key(section, name);
         // Use _values.find() here instead of _values.at() to support pre C++11 compilers
+        lock_.lock();
         if (config_map_->count(key)) {
             std::string val = config_map_->find(key)->second;
+            lock_.unlock();
             return val;
         }
+        lock_.unlock();
         std::cerr << "<" << __FUNCTION__ << "> Error! Unknown the key: " << key << std::endl;
         assert(false);
-    }
-
-    void Config::InitConfig() {
-        // TODO: Init config inner <class Config>
     }
 }

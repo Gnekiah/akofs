@@ -6,3 +6,20 @@
  */
 
 #include <Logger.h>
+
+static void* g_conf;
+
+namespace spk {
+    Logger::Logger(std::string& config_path) {
+
+    }
+
+    Logger::~Logger() {
+
+    }
+
+    int Logger::CheckConfig(std::string& config_path) {
+
+    }
+
+}

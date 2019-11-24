@@ -153,7 +153,9 @@ whitespace before ';'";
 
     spk::Config* config = nullptr;
     try {
-        config = new spk::Config(ini_path + "normal.ini", &config_map);
+        config = spk_init_config(ini_path + "normal.ini", &config_map);
+        if (config == nullptr)
+            throw -1;
     }
     catch (...) {
         ASSERT_TRUE(false);
