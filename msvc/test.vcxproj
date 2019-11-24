@@ -76,16 +76,23 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>gtest.lib;gtest_main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gtest.lib;gtest_main.lib;pthreadVC2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\config\inih\ini.h" />
+    <ClInclude Include="..\src\config\inih\INIReader.h" />
     <ClInclude Include="..\src\include\spk_compat.h" />
     <ClInclude Include="..\src\include\spk_setproctitle.h" />
     <ClInclude Include="..\test\test_arch\test_spk_compat.hpp" />
     <ClInclude Include="..\test\test_arch\test_spk_setproctitle.hpp" />
+    <ClInclude Include="..\test\test_config\test_Config.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\arch\spk_setproctitle.c" />
+    <ClCompile Include="..\src\config\Config.cc" />
+    <ClCompile Include="..\src\config\inih\ini.c" />
+    <ClCompile Include="..\src\config\inih\INIReader.cpp" />
     <ClCompile Include="..\test\main.cpp" />
   </ItemGroup>
   <ItemGroup>

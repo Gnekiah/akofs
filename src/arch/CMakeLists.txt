@@ -1,4 +1,3 @@
-
 set(ARCH_SRCS
     spk_setproctitle.c)
 

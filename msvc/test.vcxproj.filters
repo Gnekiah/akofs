@@ -10,6 +10,18 @@
     <Filter Include="test_arch">
       <UniqueIdentifier>{f0f3aa23-d007-4aca-8ad5-eb8ec908394f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="spk_src\arch">
+      <UniqueIdentifier>{521c79aa-cd3f-49b8-b2cb-bc1d983f0aba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="spk_src\config">
+      <UniqueIdentifier>{04b49c48-a044-469d-944f-593f89579de4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="spk_src\config\inih">
+      <UniqueIdentifier>{fea96aa4-7821-4fa8-bb83-4b99e9f9fe95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test_config">
+      <UniqueIdentifier>{fa1819b5-4950-47ed-a830-d42adb32882a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\include\spk_setproctitle.h">
@@ -24,9 +36,30 @@
     <ClInclude Include="..\test\test_arch\test_spk_compat.hpp">
       <Filter>test_arch</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\config\inih\ini.h">
+      <Filter>spk_src\config\inih</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\inih\INIReader.h">
+      <Filter>spk_src\config\inih</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\test_config\test_Config.hpp">
+      <Filter>test_config</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\test\main.cpp" />
+    <ClCompile Include="..\src\arch\spk_setproctitle.c">
+      <Filter>spk_src\arch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\Config.cc">
+      <Filter>spk_src\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\inih\ini.c">
+      <Filter>spk_src\config\inih</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\inih\INIReader.cpp">
+      <Filter>spk_src\config\inih</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\test\CMakeLists.txt" />

@@ -59,6 +59,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <AdditionalDependencies>pthreadVC2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -74,15 +75,20 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>pthreadVC2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\arch\spk_setproctitle.c" />
     <ClCompile Include="..\src\config\Config.cc" />
+    <ClCompile Include="..\src\config\inih\ini.c" />
+    <ClCompile Include="..\src\config\inih\INIReader.cpp" />
     <ClCompile Include="..\src\log\Logger.cc" />
     <ClCompile Include="..\src\main.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\config\inih\ini.h" />
+    <ClInclude Include="..\src\config\inih\INIReader.h" />
     <ClInclude Include="..\src\include\spk_compat.h" />
     <ClInclude Include="..\src\include\Config.h" />
     <ClInclude Include="..\src\include\ErasureCodeInterface.h" />
@@ -95,7 +101,9 @@
     <ClInclude Include="..\win64\include\semaphore.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\src\arch\CMakeLists.txt" />
     <Text Include="..\src\CMakeLists.txt" />
+    <Text Include="..\src\config\CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

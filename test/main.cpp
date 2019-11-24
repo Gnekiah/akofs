@@ -2,6 +2,7 @@
 
 #include "test_arch/test_spk_setproctitle.hpp"
 #include "test_arch/test_spk_compat.hpp"
+#include "test_config/test_Config.hpp"
 
 int main(int argc, char** argv) {
     test_arch_test_argc = argc;

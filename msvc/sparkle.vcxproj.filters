@@ -22,6 +22,9 @@
     <Filter Include="arch">
       <UniqueIdentifier>{9ddbcc89-080f-4326-a2c1-582b6e246a28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="config\inih">
+      <UniqueIdentifier>{fbdc0330-e564-48e6-ae94-974b7794aa00}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\include\Config.h">
@@ -54,6 +57,12 @@
     <ClInclude Include="..\src\include\spk_macros.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\config\inih\ini.h">
+      <Filter>config\inih</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\inih\INIReader.h">
+      <Filter>config\inih</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cc" />
@@ -66,8 +75,20 @@
     <ClCompile Include="..\src\arch\spk_setproctitle.c">
       <Filter>arch</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\config\inih\ini.c">
+      <Filter>config\inih</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\inih\INIReader.cpp">
+      <Filter>config\inih</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\src\CMakeLists.txt" />
+    <Text Include="..\src\arch\CMakeLists.txt">
+      <Filter>arch</Filter>
+    </Text>
+    <Text Include="..\src\config\CMakeLists.txt">
+      <Filter>config</Filter>
+    </Text>
   </ItemGroup>
 </Project>
