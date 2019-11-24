@@ -13,8 +13,10 @@
 
 #ifdef  _WIN32
 #include <io.h>
+#define __tmp__access__ _access 
 #elif defined(__linux__)
-#include <sys/io.h>
+#include <unistd.h>
+#define __tmp__access__ access
 #else
 #error No <io.h> or <sys/io.h> found.
 #endif //  _WIN32
@@ -49,7 +51,7 @@ namespace spk {
     }
 
     Config::Config(const std::string& path, std::map<std::string, std::string>* config_map) {
-        if (_access(path.c_str(), 04)) {
+        if (__tmp__access__(path.c_str(), 04)) {
             std::stringstream err_ss;
             err_ss << path << ": Permission denied or not exist." << std::endl;
             throw std::runtime_error(err_ss.str());
@@ -112,11 +114,16 @@ namespace spk {
     void Config::Set(const std::string& section, const std::string& name, const bool value) {
         Set(section, name, type2str(value));
     }
+    void Config::Set(const std::string& section, const std::string& name, const char* value) {
+        Set(section, name, type2str(value));
+    }
     void Config::Set(const std::string& section, const std::string& name, const std::string& value) {
         std::string key = make_key(section, name);
         if (config_map_->count(key)) {
             config_map_->find(key)->second = value;
+            return;
         }
+        std::cerr << "<" << __FUNCTION__ << "> Error! Unknown the key: " << key << std::endl;
         assert(false);
     }
 
@@ -139,6 +146,7 @@ namespace spk {
             std::string val = config_map_->find(key)->second;
             return val;
         }
+        std::cerr << "<" << __FUNCTION__ << "> Error! Unknown the key: " << key << std::endl;
         assert(false);
     }
 

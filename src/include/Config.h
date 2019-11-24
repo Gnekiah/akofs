@@ -40,6 +40,7 @@ namespace spk {
         void Set(const std::string& section, const std::string& name, const long value);
         void Set(const std::string& section, const std::string& name, const double value);
         void Set(const std::string& section, const std::string& name, const bool value);
+        void Set(const std::string& section, const std::string& name, const char* value);
         void Set(const std::string& section, const std::string& name, const std::string& value);
 
         long Get(const std::string& section, const std::string& name, const spk_config_int_t);
