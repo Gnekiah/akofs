@@ -149,6 +149,19 @@ config_objs/fast:
 	$(MAKE) -f lib/config_objs/CMakeFiles/config_objs.dir/build.make lib/config_objs/CMakeFiles/config_objs.dir/build
 .PHONY : config_objs/fast
 
+#=============================================================================
+# Target rules for targets named log_objs
+
+# Build rule for target.
+log_objs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 log_objs
+.PHONY : log_objs
+
+# fast build rule for target.
+log_objs/fast:
+	$(MAKE) -f lib/log_objs/CMakeFiles/log_objs.dir/build.make lib/log_objs/CMakeFiles/log_objs.dir/build
+.PHONY : log_objs/fast
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -187,6 +200,7 @@ help:
 	@echo "... sparkle_test"
 	@echo "... arch_objs"
 	@echo "... config_objs"
+	@echo "... log_objs"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
