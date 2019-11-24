@@ -62,3 +62,4 @@ test/CMakeFiles/
 test/lib/
 test/bin/
 *.cmake
+*.log

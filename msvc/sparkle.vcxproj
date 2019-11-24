@@ -59,7 +59,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>pthreadVC2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>pthreadVC2.lib;zlog.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -75,7 +75,7 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>pthreadVC2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>pthreadVC2.lib;zlog.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -83,7 +83,7 @@
     <ClCompile Include="..\src\config\Config.cc" />
     <ClCompile Include="..\src\config\inih\ini.c" />
     <ClCompile Include="..\src\config\inih\INIReader.cpp" />
-    <ClCompile Include="..\src\log\Logger.cc" />
+    <ClCompile Include="..\src\log\spk_logger.c" />
     <ClCompile Include="..\src\log\zlog\buf.c" />
     <ClCompile Include="..\src\log\zlog\category.c" />
     <ClCompile Include="..\src\log\zlog\category_table.c" />
@@ -112,7 +112,7 @@
     <ClInclude Include="..\src\include\spk_compat.h" />
     <ClInclude Include="..\src\include\Config.h" />
     <ClInclude Include="..\src\include\ErasureCodeInterface.h" />
-    <ClInclude Include="..\src\include\Logger.h" />
+    <ClInclude Include="..\src\include\spk_logger.h" />
     <ClInclude Include="..\src\include\spk_macros.h" />
     <ClInclude Include="..\src\include\spk_setproctitle.h" />
     <ClInclude Include="..\src\include\Thread.h" />

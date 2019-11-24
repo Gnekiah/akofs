@@ -45,10 +45,12 @@ endif(WIN32)
 
 add_subdirectory(../src/arch/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/arch_objs)
 add_subdirectory(../src/config/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/config_objs)
+add_subdirectory(../src/log/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/log_objs)
 
 set(TEST_LIBS
     arch_objs
     config_objs
+    log_objs
     gtest
     gtest_main
     pthread)

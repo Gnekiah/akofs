@@ -40,7 +40,7 @@ extern spk::Config *g_spk_config;
  * path: .conf file path
  * config_map: default config mapping
  */
-spk::Config* spk_init_config(const std::string& path,
+extern spk::Config* spk_config_init(const std::string& path,
     std::map<std::string, std::string>* config_map);
 
 namespace spk {

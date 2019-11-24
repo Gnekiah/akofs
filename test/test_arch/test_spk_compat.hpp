@@ -6,15 +6,17 @@
 
 #if defined(__linux__)
 #include <unistd.h>
+#define msleep(t) usleep(t * 1000)
 #else
-#define sleep(t) 0
+#include <Windows.h>
+#define msleep(t) Sleep(t)
 #endif 
 
 void* thrd(void*) {
     pthread_t tid;
     tid = pthread_self();
     // printf("tid:%d (0x%x)\n", tid, tid);
-    sleep(1);
+    msleep(100);
     return NULL;
 }
 

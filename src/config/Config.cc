@@ -25,7 +25,7 @@
 
 spk::Config* g_spk_config = nullptr;
 
-spk::Config* spk_init_config(const std::string& path,
+spk::Config* spk_config_init(const std::string& path,
     std::map<std::string, std::string>* config_map) {
     if (!g_spk_config) {
         try {

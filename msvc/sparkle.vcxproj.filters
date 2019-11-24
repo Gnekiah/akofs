@@ -33,9 +33,6 @@
     <ClInclude Include="..\src\include\Config.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\include\Logger.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\win64\include\pthread.h">
       <Filter>extlib</Filter>
     </ClInclude>
@@ -138,12 +135,12 @@
     <ClInclude Include="..\src\log\zlog\zlog.h">
       <Filter>log\zlog</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\include\spk_logger.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cc" />
-    <ClCompile Include="..\src\log\Logger.cc">
-      <Filter>log</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\config\Config.cc">
       <Filter>config</Filter>
     </ClCompile>
@@ -215,6 +212,9 @@
     </ClCompile>
     <ClCompile Include="..\src\log\zlog\zlog.c">
       <Filter>log\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\spk_logger.c">
+      <Filter>log</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

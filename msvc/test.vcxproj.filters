@@ -22,6 +22,12 @@
     <Filter Include="test_config">
       <UniqueIdentifier>{fa1819b5-4950-47ed-a830-d42adb32882a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="spk_src\log">
+      <UniqueIdentifier>{4c34bd2d-7a7a-4aee-bb7e-d0cc76c12854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test_log">
+      <UniqueIdentifier>{84d58939-440c-4ea1-9553-4f1ddbe5f250}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\include\spk_setproctitle.h">
@@ -45,6 +51,15 @@
     <ClInclude Include="..\test\test_config\test_Config.hpp">
       <Filter>test_config</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\include\spk_logger.h">
+      <Filter>spk_src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\Config.h">
+      <Filter>spk_src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\test_log\test_spk_logger.hpp">
+      <Filter>test_log</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\test\main.cpp" />
@@ -59,6 +74,9 @@
     </ClCompile>
     <ClCompile Include="..\src\config\inih\INIReader.cpp">
       <Filter>spk_src\config\inih</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\log\spk_logger.c">
+      <Filter>spk_src\log</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
