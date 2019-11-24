@@ -225,5 +225,8 @@
     <Text Include="..\src\config\CMakeLists.txt">
       <Filter>config</Filter>
     </Text>
+    <Text Include="..\src\log\CMakeLists.txt">
+      <Filter>log</Filter>
+    </Text>
   </ItemGroup>
 </Project>

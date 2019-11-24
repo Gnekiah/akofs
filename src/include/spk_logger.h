@@ -97,49 +97,49 @@ extern void spk_logger_free(void);
 #define spklog_hex_debug(buf, buf_len) do { \
     if (likely(__spklog_cat_debug__)) \
         hzlog(__spklog_cat_debug__, __FILE__, sizeof(__FILE__)-1, __FUNCTION__, \
-            sizeof(__FUNCTION__)-1, __LINE__, ZLOG_LEVEL_DEBUG, buf, buf_len) \
+            sizeof(__FUNCTION__)-1, __LINE__, ZLOG_LEVEL_DEBUG, buf, buf_len); \
     else hdzlog(__FILE__, sizeof(__FILE__)-1, __FUNCTION__, sizeof(__FUNCTION__)-1, \
-        __LINE__, ZLOG_LEVEL_DEBUG, buf, buf_len) \
+        __LINE__, ZLOG_LEVEL_DEBUG, buf, buf_len); \
 } while(0)
 
 #define spklog_hex_info(buf, buf_len) do { \
     if (likely(__spklog_cat_info__)) \
         hzlog(__spklog_cat_info__, __FILE__, sizeof(__FILE__)-1, __FUNCTION__, \
-            sizeof(__FUNCTION__)-1, __LINE__, ZLOG_LEVEL_INFO, buf, buf_len) \
+            sizeof(__FUNCTION__)-1, __LINE__, ZLOG_LEVEL_INFO, buf, buf_len); \
     else hdzlog(__FILE__, sizeof(__FILE__)-1, __FUNCTION__, sizeof(__FUNCTION__)-1, \
-        __LINE__, ZLOG_LEVEL_INFO, buf, buf_len) \
+        __LINE__, ZLOG_LEVEL_INFO, buf, buf_len); \
 } while(0)
 
 #define spklog_hex_notice(buf, buf_len) do { \
     if (likely(__spklog_cat_notice__)) \
         hzlog(__spklog_cat_notice__, __FILE__, sizeof(__FILE__)-1, __FUNCTION__, \
-            sizeof(__FUNCTION__)-1, __LINE__, ZLOG_LEVEL_NOTICE, buf, buf_len) \
+            sizeof(__FUNCTION__)-1, __LINE__, ZLOG_LEVEL_NOTICE, buf, buf_len); \
     else hdzlog(__FILE__, sizeof(__FILE__)-1, __FUNCTION__, sizeof(__FUNCTION__)-1, \
-        __LINE__, ZLOG_LEVEL_NOTICE, buf, buf_len) \
+        __LINE__, ZLOG_LEVEL_NOTICE, buf, buf_len); \
 } while(0)
 
 #define spklog_hex_warn(buf, buf_len) do { \
     if (likely(__spklog_cat_warn__)) \
         hzlog(__spklog_cat_warn__, __FILE__, sizeof(__FILE__)-1, __FUNCTION__, \
-            sizeof(__FUNCTION__)-1, __LINE__, ZLOG_LEVEL_WARN, buf, buf_len) \
+            sizeof(__FUNCTION__)-1, __LINE__, ZLOG_LEVEL_WARN, buf, buf_len); \
     else hdzlog(__FILE__, sizeof(__FILE__)-1, __FUNCTION__, sizeof(__FUNCTION__)-1, \
-        __LINE__, ZLOG_LEVEL_WARN, buf, buf_len) \
+        __LINE__, ZLOG_LEVEL_WARN, buf, buf_len); \
 } while(0)
 
 #define spklog_hex_error(buf, buf_len) do { \
     if (likely(__spklog_cat_error__)) \
         hzlog(__spklog_cat_error__, __FILE__, sizeof(__FILE__)-1, __FUNCTION__, \
-            sizeof(__FUNCTION__)-1, __LINE__, ZLOG_LEVEL_ERROR, buf, buf_len) \
+            sizeof(__FUNCTION__)-1, __LINE__, ZLOG_LEVEL_ERROR, buf, buf_len); \
     else hdzlog(__FILE__, sizeof(__FILE__)-1, __FUNCTION__, sizeof(__FUNCTION__)-1, \
-        __LINE__, ZLOG_LEVEL_ERROR, buf, buf_len) \
+        __LINE__, ZLOG_LEVEL_ERROR, buf, buf_len); \
 } while(0)
 
 #define spklog_hex_fatal(buf, buf_len) do { \
     if (likely(__spklog_cat_fatal__)) \
         hzlog(__spklog_cat_fatal__, __FILE__, sizeof(__FILE__)-1, __FUNCTION__, \
-            sizeof(__FUNCTION__)-1, __LINE__, ZLOG_LEVEL_FATAL, buf, buf_len) \
+            sizeof(__FUNCTION__)-1, __LINE__, ZLOG_LEVEL_FATAL, buf, buf_len); \
     else hdzlog(__FILE__, sizeof(__FILE__)-1, __FUNCTION__, sizeof(__FUNCTION__)-1, \
-        __LINE__, ZLOG_LEVEL_FATAL, buf, buf_len) \
+        __LINE__, ZLOG_LEVEL_FATAL, buf, buf_len); \
 } while(0)
 
 #ifdef __cplusplus

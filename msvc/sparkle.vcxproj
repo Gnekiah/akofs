@@ -148,6 +148,7 @@
     <Text Include="..\src\arch\CMakeLists.txt" />
     <Text Include="..\src\CMakeLists.txt" />
     <Text Include="..\src\config\CMakeLists.txt" />
+    <Text Include="..\src\log\CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
