@@ -12,6 +12,7 @@ typedef uint32_t z_crc_t;
 #define DO1 crc = crc_table[0][((int)crc ^ (*buf++)) & 0xff] ^ (crc >> 8)
 #define DO8 DO1; DO1; DO1; DO1; DO1; DO1; DO1; DO1
 #define GF2_DIM 32      /* dimension of GF(2) vectors (length of CRC) */
+#define NULL 0
 
 /* Definitions for doing the crc four data bytes at a time. */
 static const z_crc_t crc_table[1][256] =
