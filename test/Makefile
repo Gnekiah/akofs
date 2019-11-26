@@ -162,6 +162,19 @@ log_objs/fast:
 	$(MAKE) -f lib/log_objs/CMakeFiles/log_objs.dir/build.make lib/log_objs/CMakeFiles/log_objs.dir/build
 .PHONY : log_objs/fast
 
+#=============================================================================
+# Target rules for targets named compto_objs
+
+# Build rule for target.
+compto_objs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 compto_objs
+.PHONY : compto_objs
+
+# fast build rule for target.
+compto_objs/fast:
+	$(MAKE) -f lib/compto_objs/CMakeFiles/compto_objs.dir/build.make lib/compto_objs/CMakeFiles/compto_objs.dir/build
+.PHONY : compto_objs/fast
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -201,6 +214,7 @@ help:
 	@echo "... arch_objs"
 	@echo "... config_objs"
 	@echo "... log_objs"
+	@echo "... compto_objs"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

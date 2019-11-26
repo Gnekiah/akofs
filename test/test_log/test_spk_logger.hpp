@@ -205,7 +205,6 @@ TEST(test_spk_logger, case_parse_conf_and_do_logging) {
     spklog_hex_warn(buf, buf_len);
     spklog_hex_error(buf, buf_len);
     spklog_hex_fatal(buf, buf_len);
-    getchar();
     spk_logger_free();
 }
 
