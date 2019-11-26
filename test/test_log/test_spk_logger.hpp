@@ -190,6 +190,7 @@ TEST(test_spk_logger, case_parse_conf_and_do_logging) {
     msleep(500);
     ret = spk_logger_reload((conf_path + "normal.conf").c_str());
     ASSERT_EQ(0, ret);
+
     spklog_debug("spklog_debug");
     spklog_info("spklog_info");
     spklog_notice("spklog_notice");
@@ -204,6 +205,7 @@ TEST(test_spk_logger, case_parse_conf_and_do_logging) {
     spklog_hex_warn(buf, buf_len);
     spklog_hex_error(buf, buf_len);
     spklog_hex_fatal(buf, buf_len);
+    getchar();
     spk_logger_free();
 }
 

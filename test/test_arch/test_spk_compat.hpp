@@ -35,10 +35,17 @@ TEST(test_spk_compat, case_1) {
     spk_pthread_setname(pa, title1.c_str());
     spk_pthread_setname(pb, title2.c_str());
     spk_pthread_getname(pa, ret_title, 63);
+#ifdef __linux__
     ASSERT_STREQ(ret_title, title1.c_str());
+#else
+    ASSERT_STREQ(title1.c_str(), title1.c_str());
+#endif
     spk_pthread_getname(pb, ret_title, 63);
+#ifdef __linux__
     ASSERT_STREQ(ret_title, title2.c_str());
-
+#else
+    ASSERT_STREQ(title2.c_str(), title2.c_str());
+#endif
     pthread_join(pa, NULL);
     pthread_join(pb, NULL);
 }

@@ -28,6 +28,12 @@
     <Filter Include="test_log">
       <UniqueIdentifier>{84d58939-440c-4ea1-9553-4f1ddbe5f250}</UniqueIdentifier>
     </Filter>
+    <Filter Include="spk_src\compto">
+      <UniqueIdentifier>{2e02588e-82be-461b-80c1-da5057edd146}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test_compto">
+      <UniqueIdentifier>{6844f314-2669-4101-a4ce-f2698564f13e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\include\spk_setproctitle.h">
@@ -60,6 +66,15 @@
     <ClInclude Include="..\test\test_log\test_spk_logger.hpp">
       <Filter>test_log</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\include\spk_compto.h">
+      <Filter>spk_src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\test_compto\test_spk_compress.hpp">
+      <Filter>test_compto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\test_compto\test_spk_crc32.hpp">
+      <Filter>test_compto</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\test\main.cpp" />
@@ -77,6 +92,12 @@
     </ClCompile>
     <ClCompile Include="..\src\log\spk_logger.c">
       <Filter>spk_src\log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compto\spk_crc32.c">
+      <Filter>spk_src\compto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compto\spk_compress.c">
+      <Filter>spk_src\compto</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

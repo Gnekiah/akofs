@@ -28,6 +28,9 @@
     <Filter Include="log\zlog">
       <UniqueIdentifier>{da478912-6ebf-4efd-8ab6-17c9cfee0b89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="compto">
+      <UniqueIdentifier>{f798a116-9d85-4d1d-b4bc-77b755f3b753}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\include\Config.h">
@@ -138,6 +141,12 @@
     <ClInclude Include="..\src\include\spk_logger.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\include\spk_core.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_compto.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cc" />
@@ -215,6 +224,12 @@
     </ClCompile>
     <ClCompile Include="..\src\log\spk_logger.c">
       <Filter>log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compto\spk_compress.c">
+      <Filter>compto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compto\spk_crc32.c">
+      <Filter>compto</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

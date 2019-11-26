@@ -4,6 +4,8 @@
 #include "test_arch/test_spk_compat.hpp"
 #include "test_config/test_Config.hpp"
 #include "test_log/test_spk_logger.hpp"
+#include "test_compto/test_spk_crc32.hpp"
+#include "test_compto/test_spk_compress.hpp"
 
 int main(int argc, char** argv) {
     test_arch_test_argc = argc;
