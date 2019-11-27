@@ -55,6 +55,8 @@ set(TEST_LIBS
     gtest
     gtest_main
     pthread
+    crypto
+    ssl
     z)
 
 add_executable(sparkle_test ${TEST_SRCS})

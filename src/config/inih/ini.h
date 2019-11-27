@@ -1,18 +1,10 @@
-/* inih -- simple .INI file parser
+/*
+ * inih -- simple .INI file parser
+ *
+ */
 
-SPDX-License-Identifier: BSD-3-Clause
-
-Copyright (C) 2009-2019, Ben Hoyt
-
-inih is released under the New BSD license (see LICENSE.txt). Go to the project
-home page for more info:
-
-https://github.com/benhoyt/inih
-
-*/
-
-#ifndef __INI_H__
-#define __INI_H__
+#ifndef SPARKLE_SPK_INIH_INI_H_
+#define SPARKLE_SPK_INIH_INI_H_
 
 /* Make this header file easier to include in C++ code */
 #ifdef __cplusplus
@@ -145,4 +137,4 @@ int ini_parse_string(const char* string, ini_handler handler, void* user);
 }
 #endif
 
-#endif /* __INI_H__ */
+#endif /* SPARKLE_SPK_INIH_INI_H_ */

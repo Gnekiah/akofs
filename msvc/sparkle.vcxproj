@@ -59,7 +59,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>pthreadVC2.lib;zlog.lib;zlibstat.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>pthreadVC2.lib;zlog.lib;zlibstat.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -75,13 +75,14 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>pthreadVC2.lib;zlog.lib;zlibstat.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>pthreadVC2.lib;zlog.lib;zlibstat.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\arch\spk_setproctitle.c" />
     <ClCompile Include="..\src\compto\spk_compress.c" />
     <ClCompile Include="..\src\compto\spk_crc32.c" />
+    <ClCompile Include="..\src\compto\spk_hash.c" />
     <ClCompile Include="..\src\config\Config.cc" />
     <ClCompile Include="..\src\config\inih\ini.c" />
     <ClCompile Include="..\src\config\inih\INIReader.cpp" />
@@ -144,13 +145,11 @@
     <ClInclude Include="..\src\log\zlog\zc_util.h" />
     <ClInclude Include="..\src\log\zlog\zc_xplatform.h" />
     <ClInclude Include="..\src\log\zlog\zlog.h" />
-    <ClInclude Include="..\win64\include\pthread.h" />
-    <ClInclude Include="..\win64\include\sched.h" />
-    <ClInclude Include="..\win64\include\semaphore.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\src\arch\CMakeLists.txt" />
     <Text Include="..\src\CMakeLists.txt" />
+    <Text Include="..\src\compto\CMakeLists.txt" />
     <Text Include="..\src\config\CMakeLists.txt" />
     <Text Include="..\src\log\CMakeLists.txt" />
   </ItemGroup>

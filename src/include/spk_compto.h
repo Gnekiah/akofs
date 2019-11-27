@@ -69,6 +69,23 @@ extern uint32_t spk_crc32(uint32_t crc, const uint8_t* buf, uint32_t len);
  */
 extern uint32_t spk_crc32_combine(uint32_t crc1, uint32_t crc2, uint32_t len2);
 
+// 128 bit
+extern uint8_t* spk_md4(const uint8_t* src, uint64_t src_size, uint8_t* dst);
+// 128 bit
+extern uint8_t* spk_md5(const uint8_t* src, uint64_t src_size, uint8_t* dst);
+// 128 bit
+extern uint8_t* spk_mdc2(const uint8_t* src, uint64_t src_size, uint8_t* dst);
+// 160 bit
+extern uint8_t* spk_sha1(const uint8_t* src, uint64_t src_size, uint8_t* dst);
+// 224 bit
+extern uint8_t* spk_sha224(const uint8_t* src, uint64_t src_size, uint8_t* dst);
+// 256 bit
+extern uint8_t* spk_sha256(const uint8_t* src, uint64_t src_size, uint8_t* dst);
+// 384 bit
+extern uint8_t* spk_sha384(const uint8_t* src, uint64_t src_size, uint8_t* dst);
+// 512 bit
+extern uint8_t* spk_sha512(const uint8_t* src, uint64_t src_size, uint8_t* dst);
+
 #ifdef __cplusplus
 }
 #endif

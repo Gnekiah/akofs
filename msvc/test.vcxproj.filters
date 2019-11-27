@@ -75,6 +75,9 @@
     <ClInclude Include="..\test\test_compto\test_spk_crc32.hpp">
       <Filter>test_compto</Filter>
     </ClInclude>
+    <ClInclude Include="..\test\test_compto\test_spk_hash.hpp">
+      <Filter>test_compto</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\test\main.cpp" />
@@ -97,6 +100,9 @@
       <Filter>spk_src\compto</Filter>
     </ClCompile>
     <ClCompile Include="..\src\compto\spk_compress.c">
+      <Filter>spk_src\compto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compto\spk_hash.c">
       <Filter>spk_src\compto</Filter>
     </ClCompile>
   </ItemGroup>

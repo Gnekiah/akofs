@@ -1,3 +1,8 @@
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_DEPRECATE
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <gtest/gtest.h>
 
 #include "test_arch/test_spk_setproctitle.hpp"
@@ -6,6 +11,7 @@
 #include "test_log/test_spk_logger.hpp"
 #include "test_compto/test_spk_crc32.hpp"
 #include "test_compto/test_spk_compress.hpp"
+#include "test_compto/test_spk_hash.hpp"
 
 int main(int argc, char** argv) {
     test_arch_test_argc = argc;

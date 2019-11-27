@@ -60,7 +60,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>gtest_maind.lib;gtestd.lib;pthreadVC2.lib;zlog.lib;zlibstat.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gtest_maind.lib;gtestd.lib;pthreadVC2.lib;zlog.lib;zlibstat.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
     </Link>
@@ -78,7 +78,7 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>gtest.lib;gtest_main.lib;pthreadVC2.lib;zlog.lib;zlibstat.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>gtest.lib;gtest_main.lib;pthreadVC2.lib;zlog.lib;zlibstat.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
     </Link>
@@ -95,6 +95,7 @@
     <ClInclude Include="..\test\test_arch\test_spk_setproctitle.hpp" />
     <ClInclude Include="..\test\test_compto\test_spk_compress.hpp" />
     <ClInclude Include="..\test\test_compto\test_spk_crc32.hpp" />
+    <ClInclude Include="..\test\test_compto\test_spk_hash.hpp" />
     <ClInclude Include="..\test\test_config\test_Config.hpp" />
     <ClInclude Include="..\test\test_log\test_spk_logger.hpp" />
   </ItemGroup>
@@ -102,6 +103,7 @@
     <ClCompile Include="..\src\arch\spk_setproctitle.c" />
     <ClCompile Include="..\src\compto\spk_compress.c" />
     <ClCompile Include="..\src\compto\spk_crc32.c" />
+    <ClCompile Include="..\src\compto\spk_hash.c" />
     <ClCompile Include="..\src\config\Config.cc" />
     <ClCompile Include="..\src\config\inih\ini.c" />
     <ClCompile Include="..\src\config\inih\INIReader.cpp" />

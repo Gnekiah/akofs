@@ -10,9 +10,6 @@
     <Filter Include="config">
       <UniqueIdentifier>{587f8be8-b648-4025-b7a8-683492bdeabb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="extlib">
-      <UniqueIdentifier>{a48bbe6c-9d94-4fd8-a465-6370e0faefb0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="erasure-code">
       <UniqueIdentifier>{49dbc34a-9263-4e4e-8820-1342c689cb95}</UniqueIdentifier>
     </Filter>
@@ -35,15 +32,6 @@
   <ItemGroup>
     <ClInclude Include="..\src\include\Config.h">
       <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\win64\include\pthread.h">
-      <Filter>extlib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\win64\include\sched.h">
-      <Filter>extlib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\win64\include\semaphore.h">
-      <Filter>extlib</Filter>
     </ClInclude>
     <ClInclude Include="..\src\include\ErasureCodeInterface.h">
       <Filter>include</Filter>
@@ -231,6 +219,9 @@
     <ClCompile Include="..\src\compto\spk_crc32.c">
       <Filter>compto</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\compto\spk_hash.c">
+      <Filter>compto</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\src\CMakeLists.txt" />
@@ -242,6 +233,9 @@
     </Text>
     <Text Include="..\src\log\CMakeLists.txt">
       <Filter>log</Filter>
+    </Text>
+    <Text Include="..\src\compto\CMakeLists.txt">
+      <Filter>compto</Filter>
     </Text>
   </ItemGroup>
 </Project>

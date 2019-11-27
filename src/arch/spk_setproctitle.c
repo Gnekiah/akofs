@@ -1,5 +1,5 @@
 /*
- * Source for renaming process title.
+ * spk_setproctitle.c -- Source for renaming process title.
  *
  * Copyright (C) 2019 CQU STARLab. All rights reserved.
  * Author: Xxiong <xxiong@cqu.edu.cn>
