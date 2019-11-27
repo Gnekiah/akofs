@@ -10,7 +10,9 @@
 
 #include <openssl/md4.h>
 #include <openssl/md5.h>
+#ifdef HAVE_OPENSSL_MDC2_H
 #include <openssl/mdc2.h>
+#endif
 #include <openssl/sha.h>
 
 inline uint8_t* spk_md4(const uint8_t* src, uint64_t src_size, uint8_t* dst) {
@@ -22,7 +24,11 @@ inline uint8_t* spk_md5(const uint8_t* src, uint64_t src_size, uint8_t* dst) {
 }
 
 inline uint8_t* spk_mdc2(const uint8_t* src, uint64_t src_size, uint8_t* dst) {
+#ifdef HAVE_OPENSSL_MDC2_H
     return MDC2(src, src_size, dst);
+#else
+    return MD5(src, src_size, dst);
+#endif
 }
 
 inline uint8_t* spk_sha1(const uint8_t* src, uint64_t src_size, uint8_t* dst) {

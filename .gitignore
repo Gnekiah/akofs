@@ -63,3 +63,4 @@ test/lib/
 test/bin/
 *.cmake
 *.log
+test_multithread-logs.txt
