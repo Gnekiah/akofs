@@ -86,6 +86,48 @@ extern uint8_t* spk_sha384(const uint8_t* src, uint64_t src_size, uint8_t* dst);
 // 512 bit
 extern uint8_t* spk_sha512(const uint8_t* src, uint64_t src_size, uint8_t* dst);
 
+/*
+ * out is null-terminated encode string.
+ * return values is out length, exclusive terminating `\0'
+ */
+extern uint64_t spk_base64_encode(const uint8_t* src, uint64_t src_size, int8_t* dst);
+extern uint64_t spk_base64_enbound(uint64_t size);
+/*
+ * return values is out length
+ */
+extern uint64_t spk_base64_decode(const int8_t* src, uint64_t src_size, uint8_t* dst);
+extern uint64_t spk_base64_debound(uint64_t size);
+
+
+extern uint64_t spk_des_bound(uint64_t size);
+extern uint64_t spk_des_ecb_encrypt(const uint8_t* src, const uint64_t src_size, uint8_t* dst,
+    const char* key);
+extern uint64_t spk_des_ecb_decrypt(const uint8_t* src, const uint64_t src_size, uint8_t* dst,
+    const char* key);
+extern uint64_t spk_des_ncbc_encrypt(const uint8_t* src, const uint64_t src_size, uint8_t* dst,
+    const char* key);
+extern uint64_t spk_des_ncbc_decrypt(const uint8_t* src, const uint64_t src_size, uint8_t* dst,
+    const char* key);
+
+
+extern int spk_rsa_generate_keypair_2048(int8_t* pri_key, uint64_t* pri_key_size,
+    int8_t* pub_key, uint64_t* pub_key_size);
+extern uint64_t spk_rsa_pub_encrypt(const uint8_t* src, const uint64_t src_size, uint8_t* dst,
+    uint64_t dst_size, const int8_t* pub_key);
+extern uint64_t spk_rsa_pri_decrypt(const uint8_t* src, const uint64_t src_size, uint8_t* dst,
+    uint64_t dst_size, const int8_t* pri_key);
+extern uint64_t spk_rsa_pri_sign(const uint8_t* src, const uint64_t src_size, int8_t* sign,
+    uint64_t sign_alloc_size, const int8_t* pri_key);
+extern int spk_rsa_pub_verify(const uint8_t* src, const uint64_t src_size, const int8_t* sign,
+    const uint64_t sign_size, const int8_t* pub_key);
+
+
+extern uint64_t spk_aes_bound(uint64_t size);
+extern uint64_t spk_aes_cbc256_encrypt(const uint8_t* src, const uint64_t src_size, uint8_t* dst,
+    uint64_t dst_size, const char* key);
+extern uint64_t spk_aes_cbc256_decrypt(const uint8_t* src, const uint64_t src_size, uint8_t* dst,
+    uint64_t dst_size, const char* key);
+
 #ifdef __cplusplus
 }
 #endif

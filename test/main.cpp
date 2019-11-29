@@ -12,6 +12,10 @@
 #include "test_compto/test_spk_crc32.hpp"
 #include "test_compto/test_spk_compress.hpp"
 #include "test_compto/test_spk_hash.hpp"
+#include "test_compto/test_spk_base64.hpp"
+#include "test_compto/test_spk_des.hpp"
+#include "test_compto/test_spk_rsa.hpp"
+#include "test_compto/test_spk_aes.hpp"
 
 int main(int argc, char** argv) {
     test_arch_test_argc = argc;

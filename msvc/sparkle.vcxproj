@@ -80,9 +80,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\arch\spk_setproctitle.c" />
+    <ClCompile Include="..\src\compto\spk_aes.c" />
+    <ClCompile Include="..\src\compto\spk_base64.c" />
     <ClCompile Include="..\src\compto\spk_compress.c" />
     <ClCompile Include="..\src\compto\spk_crc32.c" />
+    <ClCompile Include="..\src\compto\spk_des.c" />
     <ClCompile Include="..\src\compto\spk_hash.c" />
+    <ClCompile Include="..\src\compto\spk_rsa.c" />
     <ClCompile Include="..\src\config\Config.cc" />
     <ClCompile Include="..\src\config\inih\ini.c" />
     <ClCompile Include="..\src\config\inih\INIReader.cpp" />

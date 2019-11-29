@@ -222,6 +222,18 @@
     <ClCompile Include="..\src\compto\spk_hash.c">
       <Filter>compto</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\compto\spk_base64.c">
+      <Filter>compto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compto\spk_des.c">
+      <Filter>compto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compto\spk_rsa.c">
+      <Filter>compto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\compto\spk_aes.c">
+      <Filter>compto</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\src\CMakeLists.txt" />

@@ -16,6 +16,14 @@ extern "C" {
 #define HAVE_STRUCT_TIMESPEC
 #endif
 
+#ifndef MIN
+#define MIN(a, b)   (a > b ? b : a)
+#endif
+
+#ifndef MAX
+#define MAX(a, b)   (a < b ? b : a)
+#endif
+
 #include <pthread.h>
 
 #if defined(__GNUC__)

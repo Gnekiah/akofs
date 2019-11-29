@@ -78,7 +78,11 @@ TEST(test_spk_hash, case_mdc2_hex_check_1) {
         sprintf(tmp, "%02x", md[i]);
         encode_hex += tmp;
     }
+#ifdef HAVE_OPENSSL_MDC2_H
     EXPECT_STREQ("a411d52e316cd92c67a442e847cae3c8", encode_hex.c_str());
+#else 
+    EXPECT_STREQ("ba225c7364dbd54fdf9a244454029609", encode_hex.c_str());
+#endif
 }
 
 TEST(test_spk_hash, case_sha1_hex_check_1) {

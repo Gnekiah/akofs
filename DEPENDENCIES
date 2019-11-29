@@ -4,8 +4,14 @@ libstdc++ that should be provided by the operating system.
 * **zlog-1.2.14** is a reliable, high-performance, thread safe, flexsible, 
 clear-model, pure C logging library. It can process 250,000 logs per second 
 on simgle thread.
+
 * **zlib-1.2.7** is a general purpose data compression library.  All the 
 code is thread safe.  The data format used by the zlib library is described 
 by RFCs (Request for Comments) 1950 to 1952 in the files 
 http://tools.ietf.org/html/rfc1950 (zlib format), rfc1951 (deflate format) 
 and rfc1952 (gzip format).
+
+* **openssl-1.0.2k** is a software library for applications that secure 
+communications over computer networks against eavesdropping or need to 
+identify the party at the other end. It is widely used by Internet servers,
+including the majority of HTTPS websites.
