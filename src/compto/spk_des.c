@@ -22,7 +22,7 @@ static uint64_t __spk_des_ecb_encrypt(const uint8_t* src, const uint64_t src_siz
     DES_key_schedule key_sched;
     const_DES_cblock in;
     uint8_t* dst_end = dst;
-    uint8_t* src_end = src + src_size;
+    const uint8_t* src_end = src + src_size;
 
     if (unlikely(!dst || !key || !src || !src_size))
         return 0;
@@ -34,14 +34,14 @@ static uint64_t __spk_des_ecb_encrypt(const uint8_t* src, const uint64_t src_siz
     
     while (src_end - src >= 8) {
         memcpy(in, src, 8);
-        DES_ecb_encrypt(&in, dst_end, &key_sched, flag);
+        DES_ecb_encrypt(&in, (uint8_t(*)[8])dst_end, &key_sched, flag);
         src += 8;
         dst_end += 8;
     }
     if (src_end != src) {
         memset(in, 0, 8);
         memcpy(in, src, MIN(8, src_end - src));
-        DES_ecb_encrypt(&in, dst_end, &key_sched, flag);
+        DES_ecb_encrypt(&in, (uint8_t(*)[8])dst_end, &key_sched, flag);
         src = src_end;
         dst_end += 8;
     }
@@ -62,7 +62,7 @@ inline uint64_t spk_des_ecb_decrypt(const uint8_t* src, const uint64_t src_size,
 static uint64_t __spk_des_ncbc_encrypt(const uint8_t* src, const uint64_t src_size, uint8_t* dst,
     const char* key, int flag) {
     uint8_t* dst_end = dst;
-    uint8_t* src_end = src + src_size;
+    const uint8_t* src_end = src + src_size;
     DES_cblock key_blk, ivec;
     DES_key_schedule key_sched;
 

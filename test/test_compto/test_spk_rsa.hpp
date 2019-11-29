@@ -48,7 +48,7 @@ TEST(test_spk_rsa, case_rsa_pub_encrypt_and_pri_decrypt_2) {
     ASSERT_EQ(0, ret1);
 
     /* mmp, while the src_size is bigger than 245 bytes, rsa pub encrypt would not work. */
-#define PLANE_SIZE 245
+    const int PLANE_SIZE = 245;
     uint8_t plain1[PLANE_SIZE];
     int plain1_size = PLANE_SIZE;
     for (int i = 0; i < PLANE_SIZE; i++) {
@@ -95,7 +95,7 @@ TEST(test_spk_rsa, case_rsa_pri_sign_and_pub_check_2) {
     int ret1 = spk_rsa_generate_keypair_2048(pri_key, &pri_key_size, pub_key, &pub_key_size);
     ASSERT_EQ(0, ret1);
 
-#define PLANE_SIZE 4096
+    const int PLANE_SIZE = 4096;
     uint8_t plain1[PLANE_SIZE];
     int plain1_size = PLANE_SIZE;
     for (int i = 0; i < PLANE_SIZE; i++) {

@@ -8,6 +8,7 @@
 
 #include <spk_compto.h>
 #include <spk_compat.h>
+#include <string.h>
 #include <openssl/aes.h>
 
 inline uint64_t spk_aes_bound(uint64_t size) {
@@ -16,6 +17,10 @@ inline uint64_t spk_aes_bound(uint64_t size) {
 
 uint64_t spk_aes_cbc256_encrypt(const uint8_t* src, const uint64_t src_size, uint8_t* dst,
     uint64_t dst_size, const char* key) {
+    const uint8_t* src_end = src + src_size;
+    uint8_t* dst_end = dst;
+    uint8_t in[AES_BLOCK_SIZE];
+    
     if (unlikely(!dst || !key || !src || !src_size)) {
         return -1;
     }
@@ -28,10 +33,6 @@ uint64_t spk_aes_cbc256_encrypt(const uint8_t* src, const uint64_t src_size, uin
     if (dst_size < spk_aes_bound(src_size)) {
         return -3;
     }
-
-    uint8_t* src_end = src + src_size;
-    uint8_t* dst_end = dst;
-    uint8_t in[AES_BLOCK_SIZE];
 
     while (src_end - src >= AES_BLOCK_SIZE) {
         memcpy(in, src, AES_BLOCK_SIZE);
@@ -53,6 +54,10 @@ uint64_t spk_aes_cbc256_encrypt(const uint8_t* src, const uint64_t src_size, uin
 
 uint64_t spk_aes_cbc256_decrypt(const uint8_t* src, const uint64_t src_size, uint8_t* dst,
     uint64_t dst_size, const char* key) {
+    const uint8_t* src_end = src + src_size;
+    uint8_t* dst_end = dst;
+    uint8_t in[AES_BLOCK_SIZE];
+    
     if (unlikely(!dst || !key || !src || !src_size || dst_size < src_size)) {
         return -1;
     }
@@ -61,10 +66,6 @@ uint64_t spk_aes_cbc256_decrypt(const uint8_t* src, const uint64_t src_size, uin
     if (AES_set_decrypt_key((uint8_t*)key, 256, &aes) < 0) {
         return -2;
     }
-
-    uint8_t* src_end = src + src_size;
-    uint8_t* dst_end = dst;
-    uint8_t in[AES_BLOCK_SIZE];
 
     while (src_end - src >= AES_BLOCK_SIZE) {
         memcpy(in, src, AES_BLOCK_SIZE);

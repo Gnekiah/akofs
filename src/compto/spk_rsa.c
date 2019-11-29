@@ -121,7 +121,7 @@ uint64_t spk_rsa_pri_sign(const uint8_t* src, const uint64_t src_size, int8_t* s
 
     // check destinction buffer enough or not
     /* Gosh! You must set sign_size to 0, Its use LEFT-SHIFT to do init. */
-    uint64_t sign_size = 0;
+    uint32_t sign_size = 0;
     uint64_t __rsa_size = RSA_size(rsa);
     uint64_t __base64_size = spk_base64_enbound(__rsa_size);
     if (sign_alloc_size < __base64_size) {
@@ -129,7 +129,7 @@ uint64_t spk_rsa_pri_sign(const uint8_t* src, const uint64_t src_size, int8_t* s
         goto free;
     }
 
-    uint64_t* sign_bin = malloc(__base64_size);
+    uint8_t* sign_bin = malloc(__base64_size);
     if (!sign_bin) {
         ret = 0;
         goto free;
