@@ -29,8 +29,13 @@ namespace spk {
         class CircularBuffer {
         public:
             // The buffer capacity: read only as it cannot ever change.
+#if __GNUC__ >= 7 || _MSC_VER >= 1910
             static constexpr IT capacity = static_cast<IT>(S);
             static constexpr T type = static_cast<T>(T());
+#else
+            size_t capacity = S;
+            T type = { 0 };
+#endif 
             // Aliases the index type, can be used to obtain the right index type
             // with `decltype(buffer)::index_t`.
             using index_t = IT;
