@@ -32,6 +32,7 @@ spk::Config* spk_config_init(const std::string& path,
             g_spk_config = new spk::Config(path, config_map);
         }
         catch (std::runtime_error& e) {
+            std::cerr << e.what() << std::endl;
             return nullptr;
         }
     }
@@ -79,7 +80,6 @@ namespace spk {
             throw std::runtime_error(err_ss.str());
         }
         // init config_map_
-        lock_.lock();
         config_map_ = new std::map<std::string, std::string>();
         if (config_map) {
             for (auto iter = config_map->begin(); iter != config_map->end(); iter++) {
@@ -98,7 +98,6 @@ namespace spk {
             else // syntax error: unknown key
                 __unknown_map.insert(std::pair<std::string, std::string>(key, val));
         }
-        lock_.unlock();
 
         // print parse failed message
         if (__unknown_map.size()) {
@@ -127,14 +126,16 @@ namespace spk {
         Set(section, name, type2str(value));
     }
     void Config::Set(const std::string& section, const std::string& name, const std::string& value) {
+        int err = -1;
         std::string key = make_key(section, name);
         lock_.lock();
         if (config_map_->count(key)) {
             config_map_->find(key)->second = value;
-            lock_.unlock();
-            return;
+            err = 0;
         }
         lock_.unlock();
+        if (!err)
+            return;
         std::cerr << "<" << __FUNCTION__ << "> Error! Unknown the key: " << key << std::endl;
         assert(false);
     }
@@ -152,15 +153,18 @@ namespace spk {
         return str2type(val, true);
     }
     std::string Config::Get(const std::string& section, const std::string& name, spk_config_string_t) {
+        int err = -1;
         std::string key = make_key(section, name);
+        std::string val;
         // Use _values.find() here instead of _values.at() to support pre C++11 compilers
         lock_.lock();
         if (config_map_->count(key)) {
-            std::string val = config_map_->find(key)->second;
-            lock_.unlock();
-            return val;
+            val = config_map_->find(key)->second;
+            err = 0;
         }
         lock_.unlock();
+        if (!err)
+            return val;
         std::cerr << "<" << __FUNCTION__ << "> Error! Unknown the key: " << key << std::endl;
         assert(false);
     }

@@ -20,8 +20,8 @@ namespace spk {
 
         const pthread_t& thread_id() const;
         pid_t pid() const { return pid_; }
-        bool IsStarted() const;
-        bool IsSelf() const;
+        bool isStarted() const;
+        bool isSelf() const;
         int Kill(int signal);
         int TryCreate(size_t stacksize);
         void Create(const char* name, size_t stacksize = 0);

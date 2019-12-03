@@ -12,6 +12,26 @@
 extern "C" {
 #endif
 
+
+#ifdef __GNUC__
+
+#endif
+
+#ifdef _MSC_VER
+#endif
+
+
+#if defined(__GNUC__)
+#define SPK_PACK( __Declaration__ ) __Declaration__ \
+__attribute__((__packed__))
+#elif defined(_MSC_VER)
+#define SPK_PACK( __Declaration__ ) __pragma( pack(push, 1) ) \
+__Declaration__ __pragma( pack(pop) )
+#else
+#define SPK_PACK( __Declaration__ ) __Declaration__
+#endif
+
+
 #ifdef _WIN32
 #define HAVE_STRUCT_TIMESPEC
 #endif
@@ -61,6 +81,14 @@ extern "C" {
     0; \
 } while(0);
 #endif
+
+// A macro to disallow the copy constructor and operator= functions 
+// This should be used in the priavte:declarations for a class
+#ifndef DISALLOW_COPY_AND_ASSIGN
+#define DISALLOW_COPY_AND_ASSIGN(TypeName)  \
+    TypeName(const TypeName&);              \
+    TypeName& operator=(const TypeName&)
+#endif 
 
 #ifdef __cplusplus
 }

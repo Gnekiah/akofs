@@ -16,6 +16,7 @@
 #include "test_compto/test_spk_des.hpp"
 #include "test_compto/test_spk_rsa.hpp"
 #include "test_compto/test_spk_aes.hpp"
+#include "test_common/test_CircularBuffer.hpp"
 
 int main(int argc, char** argv) {
     test_arch_test_argc = argc;

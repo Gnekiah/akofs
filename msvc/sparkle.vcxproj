@@ -116,6 +116,7 @@
   <ItemGroup>
     <ClInclude Include="..\src\config\inih\ini.h" />
     <ClInclude Include="..\src\config\inih\INIReader.h" />
+    <ClInclude Include="..\src\include\CircularBuffer.hpp" />
     <ClInclude Include="..\src\include\spk_compat.h" />
     <ClInclude Include="..\src\include\Config.h" />
     <ClInclude Include="..\src\include\ErasureCodeInterface.h" />

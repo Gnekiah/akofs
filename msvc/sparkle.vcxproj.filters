@@ -135,6 +135,9 @@
     <ClInclude Include="..\src\include\spk_compto.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\include\CircularBuffer.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cc" />

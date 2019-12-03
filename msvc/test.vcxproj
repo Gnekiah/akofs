@@ -86,6 +86,7 @@
   <ItemGroup>
     <ClInclude Include="..\src\config\inih\ini.h" />
     <ClInclude Include="..\src\config\inih\INIReader.h" />
+    <ClInclude Include="..\src\include\CircularBuffer.hpp" />
     <ClInclude Include="..\src\include\Config.h" />
     <ClInclude Include="..\src\include\spk_compat.h" />
     <ClInclude Include="..\src\include\spk_compto.h" />
@@ -93,6 +94,7 @@
     <ClInclude Include="..\src\include\spk_setproctitle.h" />
     <ClInclude Include="..\test\test_arch\test_spk_compat.hpp" />
     <ClInclude Include="..\test\test_arch\test_spk_setproctitle.hpp" />
+    <ClInclude Include="..\test\test_common\test_CircularBuffer.hpp" />
     <ClInclude Include="..\test\test_compto\test_spk_aes.hpp" />
     <ClInclude Include="..\test\test_compto\test_spk_base64.hpp" />
     <ClInclude Include="..\test\test_compto\test_spk_compress.hpp" />

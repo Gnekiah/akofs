@@ -53,7 +53,7 @@ namespace spk {
         explicit Config(const std::string& path, std::map<std::string, std::string> *config_map = nullptr);
         // explicit Config(const std::string& path, std::string delimiter = "=", std::string comment = "#");
 
-        ~Config() {}
+        ~Config() { }
 
         void Set(const std::string& section, const std::string& name, const int value);
         void Set(const std::string& section, const std::string& name, const long value);

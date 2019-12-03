@@ -87,8 +87,10 @@ int ini_parse_stream(ini_reader reader, void* stream, ini_handler handler,
     char* new_line;
     size_t offset;
 #endif
-    char section[MAX_SECTION] = "";
-    char prev_name[MAX_NAME] = "";
+    char section[MAX_SECTION];
+    char prev_name[MAX_NAME];
+    memset(section, 0, MAX_SECTION);
+    memset(prev_name, 0, MAX_NAME);
 
     char* start;
     char* end;

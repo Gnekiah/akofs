@@ -34,6 +34,9 @@
     <Filter Include="test_compto">
       <UniqueIdentifier>{6844f314-2669-4101-a4ce-f2698564f13e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="test_common">
+      <UniqueIdentifier>{ec36d766-7763-4c10-8215-9794a21be9af}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\include\spk_setproctitle.h">
@@ -89,6 +92,12 @@
     </ClInclude>
     <ClInclude Include="..\test\test_compto\test_spk_aes.hpp">
       <Filter>test_compto</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\CircularBuffer.hpp">
+      <Filter>spk_src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\test_common\test_CircularBuffer.hpp">
+      <Filter>test_common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
