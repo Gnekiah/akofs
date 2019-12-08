@@ -37,6 +37,9 @@
     <Filter Include="test_common">
       <UniqueIdentifier>{ec36d766-7763-4c10-8215-9794a21be9af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="spk_src\common">
+      <UniqueIdentifier>{668d2d1e-d60a-4938-b53e-c742a3845ca7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\include\spk_setproctitle.h">
@@ -54,16 +57,10 @@
     <ClInclude Include="..\src\config\inih\ini.h">
       <Filter>spk_src\config\inih</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\config\inih\INIReader.h">
-      <Filter>spk_src\config\inih</Filter>
-    </ClInclude>
     <ClInclude Include="..\test\test_config\test_Config.hpp">
       <Filter>test_config</Filter>
     </ClInclude>
     <ClInclude Include="..\src\include\spk_logger.h">
-      <Filter>spk_src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\Config.h">
       <Filter>spk_src\include</Filter>
     </ClInclude>
     <ClInclude Include="..\test\test_log\test_spk_logger.hpp">
@@ -99,14 +96,35 @@
     <ClInclude Include="..\test\test_common\test_CircularBuffer.hpp">
       <Filter>test_common</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\config\inih\INIReader.hpp">
+      <Filter>spk_src\config\inih</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\Config.hpp">
+      <Filter>spk_src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_bytebuffer.h">
+      <Filter>spk_src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\test_common\test_spk_bytebuffer.hpp">
+      <Filter>test_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ByteBuffer.hpp">
+      <Filter>spk_src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\test_common\test_ByteBuffer.hpp">
+      <Filter>test_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\test_common\test_spk_slab.hpp">
+      <Filter>test_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\test_arch\test_spk_builtin.hpp">
+      <Filter>test_arch</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\test\main.cpp" />
     <ClCompile Include="..\src\arch\spk_setproctitle.c">
       <Filter>spk_src\arch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\config\Config.cc">
-      <Filter>spk_src\config</Filter>
     </ClCompile>
     <ClCompile Include="..\src\config\inih\ini.c">
       <Filter>spk_src\config\inih</Filter>
@@ -137,6 +155,15 @@
     </ClCompile>
     <ClCompile Include="..\src\compto\spk_aes.c">
       <Filter>spk_src\compto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\Config.cpp">
+      <Filter>spk_src\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\spk_bytebuffer.c">
+      <Filter>spk_src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\spk_slab.c">
+      <Filter>spk_src\common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
-#include <Config.h>
+#include <Config.hpp>
 
 #include <sstream>
 #include <algorithm>
@@ -21,7 +21,7 @@
 #error No <io.h> or <sys/io.h> found.
 #endif //  _WIN32
 
-#include "inih/INIReader.h"
+#include "inih/INIReader.hpp"
 
 spk::Config* g_spk_config = nullptr;
 

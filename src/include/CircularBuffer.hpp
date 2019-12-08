@@ -10,8 +10,8 @@
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
-#ifndef SPARKLE_CIRCULAR_BUFFER_H_
-#define SPARKLE_CIRCULAR_BUFFER_H_
+#ifndef SPARKLE_CIRCULAR_BUFFER_HPP_
+#define SPARKLE_CIRCULAR_BUFFER_HPP_
 
 #include <stdint.h>
 #include <stddef.h>
@@ -73,6 +73,9 @@ namespace spk {
 
             // Array-like access to buffer
             T operator [] (IT index) const;
+
+            CircularBuffer& operator <<(const T& str);
+            CircularBuffer& operator >>(T& value);
 
             // Returns how many elements are actually stored in the buffer.
             IT inline size() const;
@@ -189,6 +192,18 @@ namespace spk {
     }
 
     template<typename T, size_t S, typename IT>
+    CircularBuffer<T, S, IT>& CircularBuffer<T, S, IT>::operator <<(const T& str) {
+        PushBack(str);
+        return *this;
+    }
+
+    template<typename T, size_t S, typename IT>
+    CircularBuffer<T, S, IT>& CircularBuffer<T, S, IT>::operator >>(T& value) {
+        value = PopFront();
+        return *this;
+    }
+
+    template<typename T, size_t S, typename IT>
     IT inline CircularBuffer<T, S, IT>::size() const {
         return count_;
     }
@@ -225,4 +240,4 @@ namespace spk {
     }
 }
 
-#endif // SPARKLE_CIRCULAR_BUFFER_H_
+#endif // SPARKLE_CIRCULAR_BUFFER_HPP_

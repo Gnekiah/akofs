@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 cmake_policy(SET CMP0048 NEW)
 project(sparkle_test VERSION 1.0.0 LANGUAGES CXX C)
 
+#add_definitions(-DSPK_DEBUG_OFF)
+
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 11)

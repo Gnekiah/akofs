@@ -28,17 +28,11 @@
     <Filter Include="compto">
       <UniqueIdentifier>{f798a116-9d85-4d1d-b4bc-77b755f3b753}</UniqueIdentifier>
     </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{353b1906-3739-48f8-8804-0b5a8d1c04a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\include\Config.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\ErasureCodeInterface.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\Thread.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\include\spk_setproctitle.h">
       <Filter>include</Filter>
     </ClInclude>
@@ -49,9 +43,6 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\src\config\inih\ini.h">
-      <Filter>config\inih</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\config\inih\INIReader.h">
       <Filter>config\inih</Filter>
     </ClInclude>
     <ClInclude Include="..\src\log\zlog\buf.h">
@@ -138,12 +129,32 @@
     <ClInclude Include="..\src\include\CircularBuffer.hpp">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\config\inih\INIReader.hpp">
+      <Filter>config\inih</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ByteBuffer.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\Config.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ErasureCodeInterface.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\Thread.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_bytebuffer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_slab.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_builtin.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\main.cc" />
-    <ClCompile Include="..\src\config\Config.cc">
-      <Filter>config</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\arch\spk_setproctitle.c">
       <Filter>arch</Filter>
     </ClCompile>
@@ -236,6 +247,16 @@
     </ClCompile>
     <ClCompile Include="..\src\compto\spk_aes.c">
       <Filter>compto</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\Config.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\common\spk_bytebuffer.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\spk_slab.c">
+      <Filter>common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

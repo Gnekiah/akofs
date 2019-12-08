@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|x64">
@@ -80,6 +80,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\arch\spk_setproctitle.c" />
+    <ClCompile Include="..\src\common\spk_bytebuffer.c" />
+    <ClCompile Include="..\src\common\spk_slab.c" />
     <ClCompile Include="..\src\compto\spk_aes.c" />
     <ClCompile Include="..\src\compto\spk_base64.c" />
     <ClCompile Include="..\src\compto\spk_compress.c" />
@@ -87,7 +89,7 @@
     <ClCompile Include="..\src\compto\spk_des.c" />
     <ClCompile Include="..\src\compto\spk_hash.c" />
     <ClCompile Include="..\src\compto\spk_rsa.c" />
-    <ClCompile Include="..\src\config\Config.cc" />
+    <ClCompile Include="..\src\config\Config.cpp" />
     <ClCompile Include="..\src\config\inih\ini.c" />
     <ClCompile Include="..\src\config\inih\INIReader.cpp" />
     <ClCompile Include="..\src\log\spk_logger.c" />
@@ -111,21 +113,25 @@
     <ClCompile Include="..\src\log\zlog\zc_profile.c" />
     <ClCompile Include="..\src\log\zlog\zc_util.c" />
     <ClCompile Include="..\src\log\zlog\zlog.c" />
-    <ClCompile Include="..\src\main.cc" />
+    <ClCompile Include="..\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\config\inih\ini.h" />
-    <ClInclude Include="..\src\config\inih\INIReader.h" />
+    <ClInclude Include="..\src\config\inih\INIReader.hpp" />
+    <ClInclude Include="..\src\include\ByteBuffer.hpp" />
     <ClInclude Include="..\src\include\CircularBuffer.hpp" />
+    <ClInclude Include="..\src\include\spk_builtin.h" />
+    <ClInclude Include="..\src\include\spk_bytebuffer.h" />
     <ClInclude Include="..\src\include\spk_compat.h" />
-    <ClInclude Include="..\src\include\Config.h" />
-    <ClInclude Include="..\src\include\ErasureCodeInterface.h" />
+    <ClInclude Include="..\src\include\Config.hpp" />
+    <ClInclude Include="..\src\include\ErasureCodeInterface.hpp" />
     <ClInclude Include="..\src\include\spk_compto.h" />
     <ClInclude Include="..\src\include\spk_core.h" />
     <ClInclude Include="..\src\include\spk_logger.h" />
     <ClInclude Include="..\src\include\spk_macros.h" />
     <ClInclude Include="..\src\include\spk_setproctitle.h" />
-    <ClInclude Include="..\src\include\Thread.h" />
+    <ClInclude Include="..\src\include\spk_slab.h" />
+    <ClInclude Include="..\src\include\Thread.hpp" />
     <ClInclude Include="..\src\log\zlog\buf.h" />
     <ClInclude Include="..\src\log\zlog\category.h" />
     <ClInclude Include="..\src\log\zlog\category_table.h" />

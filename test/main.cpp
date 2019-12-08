@@ -17,6 +17,13 @@
 #include "test_compto/test_spk_rsa.hpp"
 #include "test_compto/test_spk_aes.hpp"
 #include "test_common/test_CircularBuffer.hpp"
+#include "test_common/test_spk_bytebuffer.hpp"
+#include "test_common/test_ByteBuffer.hpp"
+#include "test_common/test_spk_slab.hpp"
+#include "test_arch/test_spk_builtin.hpp"
+
+extern int test_arch_test_argc;
+extern char** test_arch_test_argv;
 
 int main(int argc, char** argv) {
     test_arch_test_argc = argc;

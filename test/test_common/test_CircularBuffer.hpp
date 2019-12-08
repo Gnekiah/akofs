@@ -24,7 +24,7 @@ typedef struct Item1Field {
     uint64_t v2;
 } Item1Field;
 
-typedef SPK_PACK(struct Item2Field {
+typedef SPK_PACKED(struct Item2Field {
     uint8_t v1;
     uint64_t v2;
 }) Item2Field;
@@ -273,6 +273,33 @@ TEST(test_CircularBuffer, case_crush_test_1) {
     EXPECT_EQ(0, buffer.size());
     PRINT_BUFFER(buffer, ss);
     EXPECT_STREQ("empty", ss.str().c_str());
+}
+
+TEST(test_CircularBuffer, case_reload_test_1) {
+    spk::CircularBuffer<char, 10> buffer;
+    buffer << 'x' << 'y' << 'z';
+
+    std::stringstream ss;
+    PRINT_BUFFER(buffer, ss);
+    EXPECT_STREQ("[x,y,z] (3/7)", ss.str().c_str());
+
+    char x = 0;
+    buffer >> x;
+    EXPECT_EQ('x', x);
+    buffer >> x;
+    EXPECT_EQ('y', x);
+    buffer >> x;
+    EXPECT_EQ('z', x);
+    buffer >> x;
+    EXPECT_EQ(0, x);
+}
+
+TEST(test_CircularBuffer, case_crush_test_2) {
+    spk::CircularBuffer<char, 10> buffer;
+    char x = 0;
+    buffer >> x;
+    std::stringstream ss;
+    EXPECT_EQ(0, x);
 }
 
 #endif // SPARKLE_TEST_CIRCULAR_BUFFER_HPP_
