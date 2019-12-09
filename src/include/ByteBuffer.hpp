@@ -15,7 +15,8 @@
 #include <string>
 #include <memory>
 
-#if __cplusplus <= 201103L
+/* FUKOFF!!! `__cplusplus` in MSVC IS 199711L !!! */
+#if defined(__GNUC__) && (__cplusplus <= 201103L)
 namespace std {
     template<typename T, typename... Args>
     unique_ptr<T> make_unique(Args&&... params) {
