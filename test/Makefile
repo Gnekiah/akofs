@@ -175,6 +175,19 @@ compto_objs/fast:
 	$(MAKE) -f lib/compto_objs/CMakeFiles/compto_objs.dir/build.make lib/compto_objs/CMakeFiles/compto_objs.dir/build
 .PHONY : compto_objs/fast
 
+#=============================================================================
+# Target rules for targets named common_objs
+
+# Build rule for target.
+common_objs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 common_objs
+.PHONY : common_objs
+
+# fast build rule for target.
+common_objs/fast:
+	$(MAKE) -f lib/common_objs/CMakeFiles/common_objs.dir/build.make lib/common_objs/CMakeFiles/common_objs.dir/build
+.PHONY : common_objs/fast
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -215,6 +228,7 @@ help:
 	@echo "... config_objs"
 	@echo "... log_objs"
 	@echo "... compto_objs"
+	@echo "... common_objs"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

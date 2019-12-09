@@ -61,12 +61,14 @@ add_subdirectory(../src/arch/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/arch_objs)
 add_subdirectory(../src/config/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/config_objs)
 add_subdirectory(../src/log/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/log_objs)
 add_subdirectory(../src/compto/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/compto_objs)
+add_subdirectory(../src/common/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/common_objs)
 
 set(TEST_LIBS
     arch_objs
     config_objs
     log_objs
     compto_objs
+    common_objs
     gtest
     gtest_main
     pthread

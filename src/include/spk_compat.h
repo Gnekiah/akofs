@@ -67,7 +67,7 @@ __Declaration__
  * considered as an error).
  */
 #if defined(__GNUC__)
-#define SPK_UNUSED (__attribute__((unused)))
+#define SPK_UNUSED __attribute__((unused))
 #else
 #define SPK_UNUSED
 #endif

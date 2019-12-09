@@ -15,6 +15,15 @@
 #include <string>
 #include <memory>
 
+#if __cplusplus <= 201103L
+namespace std {
+    template<typename T, typename... Args>
+    unique_ptr<T> make_unique(Args&&... params) {
+        return unique_ptr<T>(new T(forward<Args>(params)...));
+    }
+}
+#endif
+
 namespace spk {
 
     class ByteBuffer {
@@ -57,7 +66,7 @@ namespace spk {
         // and making sure they are the same
         // @param other A pointer to a ByteBuffer to compare to this one
         // @return True if the internal buffers match. False if otherwise
-        bool Equals(const ByteBuffer& const other);
+        bool Equals(const ByteBuffer& other);
 
         // Reallocates memory for the internal buffer of size newSize. Read and write 
         // positions will also be reset
@@ -209,7 +218,7 @@ namespace spk {
     }
 
 
-    bool ByteBuffer::Equals(const ByteBuffer& const other) {
+    bool ByteBuffer::Equals(const ByteBuffer& other) {
         // If sizes aren't equal, they can't be equal
         if (size() != other.size())
             return false;
@@ -356,7 +365,7 @@ namespace spk {
         return *this;
     }
 
-    bool ByteBuffer::operator ==(const ByteBuffer& const bbuf) {
+    bool ByteBuffer::operator ==(const ByteBuffer& bbuf) {
         return Equals(bbuf);
     }
 

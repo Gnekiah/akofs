@@ -52,8 +52,8 @@ TEST(test_spk_builtin, case_bytebuffer_new_test_1) {
     wlb = 0b1000000000000000000000000000000000000000000000000000000;
     EXPECT_EQ(1, spk_builtin_popcount64(wlb));
     EXPECT_EQ(54, spk_builtin_ctzll(wlb));
-    wlb = 0b000000000000000000000000000000000000000000000000000000;
-    EXPECT_EQ(0, spk_builtin_popcount64(wlb));
+    wlb = 0b0000000000000000000000000000000000000000000000000000001;
+    EXPECT_EQ(1, spk_builtin_popcount64(wlb));
     EXPECT_EQ(0, spk_builtin_ctzll(wlb));
 
 }
