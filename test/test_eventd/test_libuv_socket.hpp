@@ -260,12 +260,21 @@ static void test_libuv_socket_connect_client_cb(uv_connect_t* connect, int statu
 
     int ret = 0;
     uv_stream_t* stream = connect->handle;
-    uv_buf_t buffer[] = {
-        {
-            10,
-            (char*)"Command 1",
-        }
-    };
+
+    /*
+     * only C support this way
+     * uv_buf_t buffer[] = {
+     *     {
+     *         .len  = 10,
+     *         .base = (char*)"Command 1"
+     *     }
+     * };
+     */
+
+    uv_buf_t buffer[1];
+    buffer[0].len = 10;
+    buffer[0].base = (char*)"Command 1";
+
     uv_write_t request;
     ret = uv_write(&request, stream, buffer, 1, test_libuv_socket_client_write_cb);
     EXPECT_EQ(0, ret);
@@ -357,16 +366,17 @@ TEST(test_libuv_socket, case_socket_tcp_server_test_1) {
     ret = uv_timer_init(loop, &timer_socket_client);
     EXPECT_EQ(0, ret);
     ret = uv_timer_start(&timer_socket_client, 
-        test_libuv_socket_timer_socket_client_cb, 1000, 0);
+        test_libuv_socket_timer_socket_client_cb, 10, 0);
     EXPECT_EQ(0, ret);
 
     ret = uv_timer_init(loop, &timer_close_loop);
     EXPECT_EQ(0, ret);
     ret = uv_timer_start(&timer_close_loop, 
-        test_libuv_socket_timer_close_loop_cb, 2000, 0);
+        test_libuv_socket_timer_close_loop_cb, 1000, 0);
     EXPECT_EQ(0, ret);
 
     /* loop */
+    /* WARNING: its thread unsafe!!!! */
     ret = uv_run(loop, UV_RUN_DEFAULT);
     EXPECT_EQ(0, ret);
 
@@ -384,7 +394,11 @@ TEST(test_libuv_socket, case_socket_tcp_server_test_1) {
     /* test_libuv_socket_connect_client_cb */
     EXPECT_EQ(1, test_libuv_socket_function_flag_check[2]);
     /* test_libuv_socket_client_read_cb */
+#ifdef __linux__
+    EXPECT_EQ(2, test_libuv_socket_function_flag_check[3]);
+#else
     EXPECT_EQ(1, test_libuv_socket_function_flag_check[3]);
+#endif 
     /* test_libuv_socket_connect_server_cb */
     EXPECT_EQ(1, test_libuv_socket_function_flag_check[4]);
     /* test_libuv_socket_read_cb */
@@ -396,7 +410,11 @@ TEST(test_libuv_socket, case_socket_tcp_server_test_1) {
     /* test_libuv_socket_close_cb */
     EXPECT_EQ(2, test_libuv_socket_function_flag_check[8]);
     /* test_libuv_socket_alloc_cb */
+#ifdef __linux__ 
+    EXPECT_EQ(3, test_libuv_socket_function_flag_check[9]);
+#else 
     EXPECT_EQ(2, test_libuv_socket_function_flag_check[9]);
+#endif 
     /* test_libuv_socket_timer_close_loop_cb */
     EXPECT_EQ(1, test_libuv_socket_function_flag_check[10]);
 }
