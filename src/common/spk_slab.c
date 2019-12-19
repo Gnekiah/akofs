@@ -295,7 +295,7 @@ void spk_slab_free(struct spk_slab_chain* const sch, const void* const addr) {
         slab->slots = SPK_SLOTS_FIRST << slot;
 
         if (likely(slab != sch->full)) {
-            if (likely((slab->prev->next = slab->next) != NULL))
+            if (likely(slab->prev && (slab->prev->next = slab->next) != NULL))
                 slab->next->prev = slab->prev;
 
             slab->prev = NULL;

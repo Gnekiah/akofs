@@ -4,6 +4,7 @@
 #include <string>
 #include <spk_setproctitle.h>
 
+#define TEST_SPK_SET_PROCTITLE_DEF_ARGV
 int test_arch_test_argc;
 char** test_arch_test_argv;
 

@@ -40,6 +40,9 @@
     <Filter Include="spk_src\common">
       <UniqueIdentifier>{668d2d1e-d60a-4938-b53e-c742a3845ca7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="test_eventd">
+      <UniqueIdentifier>{3ffa6185-50e2-40cb-8cdb-c347a39a65ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\include\spk_setproctitle.h">
@@ -119,6 +122,15 @@
     </ClInclude>
     <ClInclude Include="..\test\test_arch\test_spk_builtin.hpp">
       <Filter>test_arch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_builtin.h">
+      <Filter>spk_src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_slab.h">
+      <Filter>spk_src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\test_eventd\test_libuv_socket.hpp">
+      <Filter>test_eventd</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -53,5 +53,27 @@ TEST(test_spk_crc32, case_crc32_combine_2) {
     ASSERT_EQ((uint64_t)crc3, (uint64_t)crc_ret1);
 }
 
+TEST(test_spk_cec32, case_crc32_combine_for_series_case_1) {
+    uint64_t id = 0xf134956824505621;
+    uint64_t dst_id[8];
+
+    uint32_t crc0 = spk_crc32(0, NULL, 0);
+    for (int i = 0; i < 8; i++) {
+        uint64_t crc1 = crc0 + id;
+        crc0 = spk_crc32(crc0, (const uint8_t*)& crc1, 8);
+        dst_id[i] = crc0;
+        crc1 = crc0 + id;
+        crc0 = spk_crc32(crc0, (const uint8_t*)& crc1, 8);
+        dst_id[i] = dst_id[i] << 32 | crc0;
+    }
+    EXPECT_NE(id, dst_id[0]);
+    EXPECT_NE(dst_id[0], dst_id[1]);
+    EXPECT_NE(dst_id[1], dst_id[2]);
+    EXPECT_NE(dst_id[2], dst_id[3]);
+    EXPECT_NE(dst_id[3], dst_id[4]);
+    EXPECT_NE(dst_id[4], dst_id[5]);
+    EXPECT_NE(dst_id[5], dst_id[6]);
+    EXPECT_NE(dst_id[6], dst_id[7]);
+}
 
 #endif // SPARKLE_TEST_SPK_CRC32_HPP_

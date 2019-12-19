@@ -15,3 +15,7 @@ and rfc1952 (gzip format).
 communications over computer networks against eavesdropping or need to 
 identify the party at the other end. It is widely used by Internet servers,
 including the majority of HTTPS websites.
+
+* **libuv-1.0.0** is a multi-platform support library with a focus on 
+asynchronous I/O. It was primarily developed for use by Node.js, but it's 
+also used by Luvit, Julia, pyuv, and others.

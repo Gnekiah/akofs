@@ -4,7 +4,7 @@
 #endif
 
 #include <gtest/gtest.h>
-
+/*
 #include "test_arch/test_spk_setproctitle.hpp"
 #include "test_arch/test_spk_compat.hpp"
 #include "test_config/test_Config.hpp"
@@ -21,13 +21,14 @@
 #include "test_common/test_ByteBuffer.hpp"
 #include "test_common/test_spk_slab.hpp"
 #include "test_arch/test_spk_builtin.hpp"
-
-extern int test_arch_test_argc;
-extern char** test_arch_test_argv;
+*/
+#include "test_eventd/test_libuv_socket.hpp"
 
 int main(int argc, char** argv) {
+#ifdef TEST_SPK_SET_PROCTITLE_DEF_ARGV
     test_arch_test_argc = argc;
     test_arch_test_argv = argv;
+#endif
 
     testing::InitGoogleTest(&argc, argv);
     int err = RUN_ALL_TESTS();
