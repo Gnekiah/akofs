@@ -31,6 +31,33 @@
     <Filter Include="common">
       <UniqueIdentifier>{353b1906-3739-48f8-8804-0b5a8d1c04a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="spk-rms">
+      <UniqueIdentifier>{0a42f00c-23af-45d3-a9f3-f08fe93f8d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="spk-css">
+      <UniqueIdentifier>{a11b8fc1-df6b-4a55-8a12-914fdecc9fc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="spk-das">
+      <UniqueIdentifier>{dd698a97-3e58-4658-9fc1-b6b46cafdc10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="kvstore">
+      <UniqueIdentifier>{bac28301-eb6a-4a21-a59f-cde0d8f37389}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="daemon">
+      <UniqueIdentifier>{044e0e2e-221e-4569-9fed-b53ae855c08a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="msgon">
+      <UniqueIdentifier>{b1d16ec1-ad3e-4e72-88a0-010950e0d850}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="auth">
+      <UniqueIdentifier>{74c350ab-06d0-444a-a737-1a2efae8f54d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="journal">
+      <UniqueIdentifier>{0708c70a-d8b2-4f4e-8f32-33ab8f30f28c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="consprot">
+      <UniqueIdentifier>{e786bf00-8aa4-4303-aafe-769e7780d083}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\include\spk_setproctitle.h">
@@ -153,6 +180,45 @@
     <ClInclude Include="..\src\include\spk_builtin.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\include\spk_timer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_rms.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_css.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_das.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_kvstore.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_daemon.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_eventd.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_msgon.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_auth.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_journal.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_ec.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_consprot.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_config.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\arch\spk_setproctitle.c">
@@ -257,6 +323,45 @@
     </ClCompile>
     <ClCompile Include="..\src\common\spk_slab.c">
       <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\kvstore\spk_kvstore.c">
+      <Filter>kvstore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\eventd\spk_timer.c">
+      <Filter>eventd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\eventd\spk_eventd.c">
+      <Filter>eventd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\msgon\spk_msgon.c">
+      <Filter>msgon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\auth\spk_auth.c">
+      <Filter>auth</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\journal\spk_journal.c">
+      <Filter>journal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\consprot\spk_consprot.c">
+      <Filter>consprot</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\spk_config.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\erasurecode\spk_ec.c">
+      <Filter>erasure-code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\daemon\spk_daemon.cpp">
+      <Filter>daemon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\spk-das\spk-das.cpp">
+      <Filter>spk-das</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\spk-css\spk_css.cpp">
+      <Filter>spk-css</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\spk-rms\spk_rms.cpp">
+      <Filter>spk-rms</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -99,7 +99,7 @@ TEST(test_libuv_loop, case_event_loop_idle_basic_test_1) {
 }
 
 /************************************************/
-static int test_libuv_socket_function_flag_check[11] = { 0 };
+static int test_libuv_socket_function_flag_check[12] = { 0 };
 
 void test_libuv_socket_alloc_cb(uv_handle_t* handle,
     size_t suggested_size, uv_buf_t* buf) {
@@ -324,24 +324,40 @@ void test_libuv_socket_timer_socket_client_cb(uv_timer_t* handle) {
 }
 
 uv_tcp_t test_libuv_socket_server;
+uv_async_t test_libuv_socket_async_handle;
+
+void test_libuv_socket_async_close_loop_cb(uv_async_t* handle) {
+    uv_close((uv_handle_t*)& test_libuv_socket_server, NULL);
+    uv_close((uv_handle_t*)handle, NULL);
+
+    /* flagset for checking */
+    test_libuv_socket_function_flag_check[11]++;
+}
 
 void test_libuv_socket_timer_close_loop_cb(uv_timer_t* handle) {
     int ret = 0;
     uint64_t tmr = 0;
+    uv_loop_t* loop = uv_default_loop();
 
     tmr = uv_now(handle->loop);
     EXPECT_LT(0, tmr);
     tmr = uv_hrtime();
     EXPECT_LT(0, tmr);
+
     /* flagset for checking */
     test_libuv_socket_function_flag_check[10]++;
+
+    ret = uv_async_init(loop, &test_libuv_socket_async_handle, 
+        test_libuv_socket_async_close_loop_cb);
+    EXPECT_EQ(0, ret);
+
+    ret = uv_async_send(&test_libuv_socket_async_handle);
+    EXPECT_EQ(0, ret);
 
     ret = uv_timer_stop(handle);
     EXPECT_EQ(0, ret);
     ret = uv_loop_alive(handle->loop);
     EXPECT_EQ(1, ret);
-
-    uv_close((uv_handle_t*)& test_libuv_socket_server, NULL);
 }
 
 TEST(test_libuv_socket, case_socket_tcp_server_test_1) {
@@ -417,6 +433,8 @@ TEST(test_libuv_socket, case_socket_tcp_server_test_1) {
 #endif 
     /* test_libuv_socket_timer_close_loop_cb */
     EXPECT_EQ(1, test_libuv_socket_function_flag_check[10]);
+    /* test_libuv_socket_async_close_loop_cb */
+    EXPECT_EQ(1, test_libuv_socket_function_flag_check[11]);
 }
 
 #endif // SPARKLE_TEST_LIBUV_SOCKET_HPP_

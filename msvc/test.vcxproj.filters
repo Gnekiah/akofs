@@ -132,6 +132,9 @@
     <ClInclude Include="..\test\test_eventd\test_libuv_socket.hpp">
       <Filter>test_eventd</Filter>
     </ClInclude>
+    <ClInclude Include="..\test\test_config\test_spk_config.hpp">
+      <Filter>test_config</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\test\main.cpp" />
@@ -176,6 +179,9 @@
     </ClCompile>
     <ClCompile Include="..\src\common\spk_slab.c">
       <Filter>spk_src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\spk_config.cpp">
+      <Filter>spk_src\config</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

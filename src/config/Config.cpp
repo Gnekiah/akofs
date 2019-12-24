@@ -23,20 +23,17 @@
 
 #include "inih/INIReader.hpp"
 
-spk::Config* g_spk_config = nullptr;
-
-spk::Config* spk_config_init(const std::string& path,
+spk::Config* __ConfigInit(const std::string& path,
     std::map<std::string, std::string>* config_map) {
-    if (!g_spk_config) {
-        try {
-            g_spk_config = new spk::Config(path, config_map);
-        }
-        catch (std::runtime_error& e) {
-            std::cerr << e.what() << std::endl;
-            return nullptr;
-        }
+    spk::Config* config = nullptr;
+    try {
+        config = new spk::Config(path, config_map);
     }
-    return g_spk_config;
+    catch (std::runtime_error& e) {
+        std::cerr << e.what() << std::endl;
+        config = nullptr;
+    }
+    return config;
 }
 
 namespace spk {

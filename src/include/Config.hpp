@@ -20,6 +20,9 @@
 
 class INIReader;
 
+#ifndef SPK_CONFIG_TYPE_T
+#define SPK_CONFIG_TYPE_T
+
 typedef int* spk_config_int_t;
 typedef char spk_config_bool_t;
 typedef double spk_config_double_t;
@@ -30,17 +33,21 @@ typedef std::string spk_config_string_t;
 #define SPK_CONFIG_TYPE_DOUBLE  1.1
 #define SPK_CONFIG_TYPE_STRING  ""
 
+#endif
+
 // global config ptr
 namespace spk {
     class Config;
 }
-extern spk::Config *g_spk_config;
+
 /*
  * init config settings from specificated .conf path
  * path: .conf file path
  * config_map: default config mapping
+ *
+ * for Maintain compatibility
  */
-extern spk::Config* spk_config_init(const std::string& path,
+extern spk::Config* __ConfigInit(const std::string& path,
     std::map<std::string, std::string>* config_map);
 
 namespace spk {
