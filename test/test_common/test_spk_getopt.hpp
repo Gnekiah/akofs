@@ -123,7 +123,7 @@ TEST(test_spk_getopt, get_option_as_GNU_getopt_long_case_1) {
         {"brief", 'b', SPK_OPTPARSE_NONE},
         {"color", 'c', SPK_OPTPARSE_REQUIRED},
         {"delay", 'd', SPK_OPTPARSE_OPTIONAL},
-        {NULL, NULL, SPK_OPTPARSE_NONE}
+        {NULL, 0, SPK_OPTPARSE_NONE}
     };
 
     while ((option = spk_optparse_long(&options, longopts, &longindex)) != -1) {
@@ -194,7 +194,7 @@ TEST(test_spk_getopt, get_option_as_GNU_getopt_long_case_2) {
         {"brief", 'b', SPK_OPTPARSE_OPTIONAL},
         {"color", 'c', SPK_OPTPARSE_REQUIRED},
         {"delay", 'd', SPK_OPTPARSE_OPTIONAL},
-        {NULL, NULL, SPK_OPTPARSE_NONE}
+        {NULL, 0, SPK_OPTPARSE_NONE}
     };
 
     while ((option = spk_optparse_long(&options, longopts, &longindex)) != -1) {
