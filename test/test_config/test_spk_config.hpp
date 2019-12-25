@@ -83,4 +83,10 @@ whitespace before ';'";
         spk_config_get("section1", "one", SPK_CONFIG_TYPE_STRING).c_str());
 }
 
+/*
+ * TODO: 
+ *      test for spk_config_get_##alias
+ *      test for spk_config_set_##alias
+ */
+
 #endif // SPARKLE_TEST_SPK_CONFIG_HPP_

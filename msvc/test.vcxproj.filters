@@ -135,6 +135,12 @@
     <ClInclude Include="..\test\test_config\test_spk_config.hpp">
       <Filter>test_config</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\include\spk_getopt.h">
+      <Filter>spk_src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\test_common\test_spk_getopt.hpp">
+      <Filter>test_common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\test\main.cpp" />
@@ -182,6 +188,9 @@
     </ClCompile>
     <ClCompile Include="..\src\config\spk_config.cpp">
       <Filter>spk_src\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\spk_getopt.c">
+      <Filter>spk_src\common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

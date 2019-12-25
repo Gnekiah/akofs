@@ -94,6 +94,7 @@
     <ClInclude Include="..\src\include\spk_bytebuffer.h" />
     <ClInclude Include="..\src\include\spk_compat.h" />
     <ClInclude Include="..\src\include\spk_compto.h" />
+    <ClInclude Include="..\src\include\spk_getopt.h" />
     <ClInclude Include="..\src\include\spk_logger.h" />
     <ClInclude Include="..\src\include\spk_setproctitle.h" />
     <ClInclude Include="..\src\include\spk_slab.h" />
@@ -103,6 +104,7 @@
     <ClInclude Include="..\test\test_common\test_ByteBuffer.hpp" />
     <ClInclude Include="..\test\test_common\test_CircularBuffer.hpp" />
     <ClInclude Include="..\test\test_common\test_spk_bytebuffer.hpp" />
+    <ClInclude Include="..\test\test_common\test_spk_getopt.hpp" />
     <ClInclude Include="..\test\test_common\test_spk_slab.hpp" />
     <ClInclude Include="..\test\test_compto\test_spk_aes.hpp" />
     <ClInclude Include="..\test\test_compto\test_spk_base64.hpp" />
@@ -119,6 +121,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\arch\spk_setproctitle.c" />
     <ClCompile Include="..\src\common\spk_bytebuffer.c" />
+    <ClCompile Include="..\src\common\spk_getopt.c" />
     <ClCompile Include="..\src\common\spk_slab.c" />
     <ClCompile Include="..\src\compto\spk_aes.c" />
     <ClCompile Include="..\src\compto\spk_base64.c" />

@@ -82,6 +82,7 @@
     <ClCompile Include="..\src\arch\spk_setproctitle.c" />
     <ClCompile Include="..\src\auth\spk_auth.c" />
     <ClCompile Include="..\src\common\spk_bytebuffer.c" />
+    <ClCompile Include="..\src\common\spk_getopt.c" />
     <ClCompile Include="..\src\common\spk_slab.c" />
     <ClCompile Include="..\src\compto\spk_aes.c" />
     <ClCompile Include="..\src\compto\spk_base64.c" />
@@ -148,6 +149,7 @@
     <ClInclude Include="..\src\include\spk_das.h" />
     <ClInclude Include="..\src\include\spk_ec.h" />
     <ClInclude Include="..\src\include\spk_eventd.h" />
+    <ClInclude Include="..\src\include\spk_getopt.h" />
     <ClInclude Include="..\src\include\spk_journal.h" />
     <ClInclude Include="..\src\include\spk_kvstore.h" />
     <ClInclude Include="..\src\include\spk_logger.h" />

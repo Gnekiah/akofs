@@ -219,6 +219,9 @@
     <ClInclude Include="..\src\include\spk_config.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\include\spk_getopt.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\arch\spk_setproctitle.c">
@@ -362,6 +365,9 @@
     </ClCompile>
     <ClCompile Include="..\src\spk-rms\spk_rms.cpp">
       <Filter>spk-rms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\spk_getopt.c">
+      <Filter>common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
