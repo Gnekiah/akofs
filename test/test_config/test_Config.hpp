@@ -3,7 +3,7 @@
 
 #include <gtest/gtest.h>
 #include <exception>
-#include <Config.hpp>
+#include "../../src/config/Config.hpp"
 
 std::string ini_path = "../test/test_config/ini_tests/";
 

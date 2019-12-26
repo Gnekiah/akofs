@@ -5,7 +5,7 @@
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
-#include <Config.hpp>
+#include "Config.hpp"
 #include <spk_config.h>
 #include <spk_compat.h>
 

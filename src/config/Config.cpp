@@ -5,7 +5,7 @@
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
-#include <Config.hpp>
+#include "Config.hpp"
 
 #include <sstream>
 #include <algorithm>

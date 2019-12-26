@@ -162,9 +162,6 @@
     <ClInclude Include="..\src\include\ByteBuffer.hpp">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\include\Config.hpp">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\include\ErasureCodeInterface.hpp">
       <Filter>include</Filter>
     </ClInclude>
@@ -221,6 +218,12 @@
     </ClInclude>
     <ClInclude Include="..\src\include\spk_getopt.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_errno.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\Config.hpp">
+      <Filter>config</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

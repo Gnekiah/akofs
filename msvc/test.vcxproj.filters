@@ -102,9 +102,6 @@
     <ClInclude Include="..\src\config\inih\INIReader.hpp">
       <Filter>spk_src\config\inih</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\include\Config.hpp">
-      <Filter>spk_src\include</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\include\spk_bytebuffer.h">
       <Filter>spk_src\include</Filter>
     </ClInclude>
@@ -140,6 +137,9 @@
     </ClInclude>
     <ClInclude Include="..\test\test_common\test_spk_getopt.hpp">
       <Filter>test_common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\Config.hpp">
+      <Filter>spk_src\config</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

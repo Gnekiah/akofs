@@ -138,7 +138,7 @@
     <ClInclude Include="..\src\include\spk_builtin.h" />
     <ClInclude Include="..\src\include\spk_bytebuffer.h" />
     <ClInclude Include="..\src\include\spk_compat.h" />
-    <ClInclude Include="..\src\include\Config.hpp" />
+    <ClInclude Include="..\src\config\Config.hpp" />
     <ClInclude Include="..\src\include\ErasureCodeInterface.hpp" />
     <ClInclude Include="..\src\include\spk_compto.h" />
     <ClInclude Include="..\src\include\spk_config.h" />
@@ -148,6 +148,7 @@
     <ClInclude Include="..\src\include\spk_daemon.h" />
     <ClInclude Include="..\src\include\spk_das.h" />
     <ClInclude Include="..\src\include\spk_ec.h" />
+    <ClInclude Include="..\src\include\spk_errno.h" />
     <ClInclude Include="..\src\include\spk_eventd.h" />
     <ClInclude Include="..\src\include\spk_getopt.h" />
     <ClInclude Include="..\src\include\spk_journal.h" />

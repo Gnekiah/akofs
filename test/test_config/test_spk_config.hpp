@@ -27,6 +27,8 @@ whitespace before ';'";
     config_map[std::string("colon_tests=funny4")] = "two : colons";
 
     spk_config_exit();
+
+    std::string ini_path = "../test/test_config/ini_tests/";
     int ret = spk_config_init(ini_path + "normal.ini", &config_map);
     EXPECT_EQ(0, ret);
 
