@@ -165,9 +165,6 @@
     <ClInclude Include="..\src\include\ErasureCodeInterface.hpp">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\include\Thread.hpp">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\include\spk_bytebuffer.h">
       <Filter>include</Filter>
     </ClInclude>
@@ -330,32 +327,17 @@
     <ClCompile Include="..\src\common\spk_slab.c">
       <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\kvstore\spk_kvstore.c">
-      <Filter>kvstore</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\eventd\spk_timer.c">
       <Filter>eventd</Filter>
     </ClCompile>
     <ClCompile Include="..\src\eventd\spk_eventd.c">
       <Filter>eventd</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\msgon\spk_msgon.c">
-      <Filter>msgon</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\auth\spk_auth.c">
       <Filter>auth</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\journal\spk_journal.c">
-      <Filter>journal</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\consprot\spk_consprot.c">
-      <Filter>consprot</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\config\spk_config.cpp">
       <Filter>config</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\erasurecode\spk_ec.c">
-      <Filter>erasure-code</Filter>
     </ClCompile>
     <ClCompile Include="..\src\daemon\spk_daemon.cpp">
       <Filter>daemon</Filter>
@@ -371,6 +353,21 @@
     </ClCompile>
     <ClCompile Include="..\src\common\spk_getopt.c">
       <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\consprot\spk_consprot.cpp">
+      <Filter>consprot</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\erasurecode\spk_ec.cpp">
+      <Filter>erasure-code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\journal\spk_journal.cpp">
+      <Filter>journal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\kvstore\spk_kvstore.cpp">
+      <Filter>kvstore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\msgon\spk_msgon.cpp">
+      <Filter>msgon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

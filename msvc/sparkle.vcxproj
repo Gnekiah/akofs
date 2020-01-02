@@ -95,13 +95,13 @@
     <ClCompile Include="..\src\config\inih\ini.c" />
     <ClCompile Include="..\src\config\inih\INIReader.cpp" />
     <ClCompile Include="..\src\config\spk_config.cpp" />
-    <ClCompile Include="..\src\consprot\spk_consprot.c" />
+    <ClCompile Include="..\src\consprot\spk_consprot.cpp" />
     <ClCompile Include="..\src\daemon\spk_daemon.cpp" />
-    <ClCompile Include="..\src\erasurecode\spk_ec.c" />
+    <ClCompile Include="..\src\erasurecode\spk_ec.cpp" />
     <ClCompile Include="..\src\eventd\spk_eventd.c" />
     <ClCompile Include="..\src\eventd\spk_timer.c" />
-    <ClCompile Include="..\src\journal\spk_journal.c" />
-    <ClCompile Include="..\src\kvstore\spk_kvstore.c" />
+    <ClCompile Include="..\src\journal\spk_journal.cpp" />
+    <ClCompile Include="..\src\kvstore\spk_kvstore.cpp" />
     <ClCompile Include="..\src\log\spk_logger.c" />
     <ClCompile Include="..\src\log\zlog\buf.c" />
     <ClCompile Include="..\src\log\zlog\category.c" />
@@ -124,7 +124,7 @@
     <ClCompile Include="..\src\log\zlog\zc_util.c" />
     <ClCompile Include="..\src\log\zlog\zlog.c" />
     <ClCompile Include="..\src\main.cpp" />
-    <ClCompile Include="..\src\msgon\spk_msgon.c" />
+    <ClCompile Include="..\src\msgon\spk_msgon.cpp" />
     <ClCompile Include="..\src\spk-css\spk_css.cpp" />
     <ClCompile Include="..\src\spk-das\spk-das.cpp" />
     <ClCompile Include="..\src\spk-rms\spk_rms.cpp" />
@@ -160,7 +160,6 @@
     <ClInclude Include="..\src\include\spk_setproctitle.h" />
     <ClInclude Include="..\src\include\spk_slab.h" />
     <ClInclude Include="..\src\include\spk_timer.h" />
-    <ClInclude Include="..\src\include\Thread.hpp" />
     <ClInclude Include="..\src\log\zlog\buf.h" />
     <ClInclude Include="..\src\log\zlog\category.h" />
     <ClInclude Include="..\src\log\zlog\category_table.h" />
