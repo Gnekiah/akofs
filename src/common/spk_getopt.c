@@ -6,6 +6,7 @@
  */
 
 #include <spk_getopt.h>
+#include <spk_errno.h>
 
 #define SPK_OPTPARSE_MSG_INVALID "invalid option"
 #define SPK_OPTPARSE_MSG_MISSING "option requires an argument"

@@ -79,6 +79,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\arch\spk_gnu_getopt.c" />
     <ClCompile Include="..\src\arch\spk_setproctitle.c" />
     <ClCompile Include="..\src\auth\spk_auth.c" />
     <ClCompile Include="..\src\common\spk_bytebuffer.c" />
@@ -95,13 +96,24 @@
     <ClCompile Include="..\src\config\inih\ini.c" />
     <ClCompile Include="..\src\config\inih\INIReader.cpp" />
     <ClCompile Include="..\src\config\spk_config.cpp" />
-    <ClCompile Include="..\src\consprot\spk_consprot.c" />
+    <ClCompile Include="..\src\consprot\spk_consprot.cpp" />
     <ClCompile Include="..\src\daemon\spk_daemon.cpp" />
-    <ClCompile Include="..\src\erasurecode\spk_ec.c" />
+    <ClCompile Include="..\src\erasurecode\spk_ec.cpp" />
     <ClCompile Include="..\src\eventd\spk_eventd.c" />
     <ClCompile Include="..\src\eventd\spk_timer.c" />
-    <ClCompile Include="..\src\journal\spk_journal.c" />
-    <ClCompile Include="..\src\kvstore\spk_kvstore.c" />
+    <ClCompile Include="..\src\journal\spk_journal.cpp" />
+    <ClCompile Include="..\src\kvstore\kvdb\kvassert.c" />
+    <ClCompile Include="..\src\kvstore\kvdb\kvblock.c" />
+    <ClCompile Include="..\src\kvstore\kvdb\kvdb.c" />
+    <ClCompile Include="..\src\kvstore\kvdb\kvdbo.cpp" />
+    <ClCompile Include="..\src\kvstore\kvdb\kvprime.c" />
+    <ClCompile Include="..\src\kvstore\kvdb\kvserialization.cpp" />
+    <ClCompile Include="..\src\kvstore\kvdb\kvtable.c" />
+    <ClCompile Include="..\src\kvstore\lz4\lz4.c" />
+    <ClCompile Include="..\src\kvstore\lz4\lz4frame.c" />
+    <ClCompile Include="..\src\kvstore\lz4\lz4hc.c" />
+    <ClCompile Include="..\src\kvstore\lz4\xxhash.c" />
+    <ClCompile Include="..\src\kvstore\spk_kvstore.cpp" />
     <ClCompile Include="..\src\log\spk_logger.c" />
     <ClCompile Include="..\src\log\zlog\buf.c" />
     <ClCompile Include="..\src\log\zlog\category.c" />
@@ -124,7 +136,7 @@
     <ClCompile Include="..\src\log\zlog\zc_util.c" />
     <ClCompile Include="..\src\log\zlog\zlog.c" />
     <ClCompile Include="..\src\main.cpp" />
-    <ClCompile Include="..\src\msgon\spk_msgon.c" />
+    <ClCompile Include="..\src\msgon\spk_msgon.cpp" />
     <ClCompile Include="..\src\spk-css\spk_css.cpp" />
     <ClCompile Include="..\src\spk-das\spk-das.cpp" />
     <ClCompile Include="..\src\spk-rms\spk_rms.cpp" />
@@ -132,13 +144,14 @@
   <ItemGroup>
     <ClInclude Include="..\src\config\inih\ini.h" />
     <ClInclude Include="..\src\config\inih\INIReader.hpp" />
+    <ClInclude Include="..\src\eventd\eventd_core.h" />
     <ClInclude Include="..\src\include\ByteBuffer.hpp" />
     <ClInclude Include="..\src\include\CircularBuffer.hpp" />
     <ClInclude Include="..\src\include\spk_auth.h" />
     <ClInclude Include="..\src\include\spk_builtin.h" />
     <ClInclude Include="..\src\include\spk_bytebuffer.h" />
     <ClInclude Include="..\src\include\spk_compat.h" />
-    <ClInclude Include="..\src\include\Config.hpp" />
+    <ClInclude Include="..\src\config\Config.hpp" />
     <ClInclude Include="..\src\include\ErasureCodeInterface.hpp" />
     <ClInclude Include="..\src\include\spk_compto.h" />
     <ClInclude Include="..\src\include\spk_config.h" />
@@ -148,8 +161,10 @@
     <ClInclude Include="..\src\include\spk_daemon.h" />
     <ClInclude Include="..\src\include\spk_das.h" />
     <ClInclude Include="..\src\include\spk_ec.h" />
+    <ClInclude Include="..\src\include\spk_errno.h" />
     <ClInclude Include="..\src\include\spk_eventd.h" />
     <ClInclude Include="..\src\include\spk_getopt.h" />
+    <ClInclude Include="..\src\include\spk_gnu_getopt.h" />
     <ClInclude Include="..\src\include\spk_journal.h" />
     <ClInclude Include="..\src\include\spk_kvstore.h" />
     <ClInclude Include="..\src\include\spk_logger.h" />
@@ -159,7 +174,24 @@
     <ClInclude Include="..\src\include\spk_setproctitle.h" />
     <ClInclude Include="..\src\include\spk_slab.h" />
     <ClInclude Include="..\src\include\spk_timer.h" />
-    <ClInclude Include="..\src\include\Thread.hpp" />
+    <ClInclude Include="..\src\include\spk_gnu_unistd.h" />
+    <ClInclude Include="..\src\kvstore\kvdb\kvassert.h" />
+    <ClInclude Include="..\src\kvstore\kvdb\kvblock.h" />
+    <ClInclude Include="..\src\kvstore\kvdb\kvbloom.h" />
+    <ClInclude Include="..\src\kvstore\kvdb\kvdb.h" />
+    <ClInclude Include="..\src\kvstore\kvdb\kvdbo.h" />
+    <ClInclude Include="..\src\kvstore\kvdb\kvendian.h" />
+    <ClInclude Include="..\src\kvstore\kvdb\kvmurmurhash.h" />
+    <ClInclude Include="..\src\kvstore\kvdb\kvpaddingutils.h" />
+    <ClInclude Include="..\src\kvstore\kvdb\kvprime.h" />
+    <ClInclude Include="..\src\kvstore\kvdb\kvserialization.h" />
+    <ClInclude Include="..\src\kvstore\kvdb\kvtable.h" />
+    <ClInclude Include="..\src\kvstore\kvdb\kvtypes.h" />
+    <ClInclude Include="..\src\kvstore\lz4\lz4.h" />
+    <ClInclude Include="..\src\kvstore\lz4\lz4frame.h" />
+    <ClInclude Include="..\src\kvstore\lz4\lz4frame_static.h" />
+    <ClInclude Include="..\src\kvstore\lz4\lz4hc.h" />
+    <ClInclude Include="..\src\kvstore\lz4\xxhash.h" />
     <ClInclude Include="..\src\log\zlog\buf.h" />
     <ClInclude Include="..\src\log\zlog\category.h" />
     <ClInclude Include="..\src\log\zlog\category_table.h" />
@@ -190,6 +222,9 @@
     <Text Include="..\src\CMakeLists.txt" />
     <Text Include="..\src\compto\CMakeLists.txt" />
     <Text Include="..\src\config\CMakeLists.txt" />
+    <Text Include="..\src\kvstore\CMakeLists.txt" />
+    <Text Include="..\src\kvstore\kvdb\CMakeLists.txt" />
+    <Text Include="..\src\kvstore\lz4\CMakeLists.txt" />
     <Text Include="..\src\log\CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

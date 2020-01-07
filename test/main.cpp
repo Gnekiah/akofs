@@ -6,7 +6,7 @@
 #endif
 
 #include <gtest/gtest.h>
-/*
+
 #include "test_arch/test_spk_setproctitle.hpp"
 #include "test_arch/test_spk_compat.hpp"
 #include "test_config/test_Config.hpp"
@@ -25,7 +25,7 @@
 #include "test_common/test_spk_slab.hpp"
 #include "test_arch/test_spk_builtin.hpp"
 #include "test_eventd/test_libuv_socket.hpp"
-*/
+
 #include "test_common/test_spk_getopt.hpp"
 
 int main(int argc, char** argv) {

@@ -89,7 +89,7 @@
     <ClInclude Include="..\src\config\inih\INIReader.hpp" />
     <ClInclude Include="..\src\include\ByteBuffer.hpp" />
     <ClInclude Include="..\src\include\CircularBuffer.hpp" />
-    <ClInclude Include="..\src\include\Config.hpp" />
+    <ClInclude Include="..\src\config\Config.hpp" />
     <ClInclude Include="..\src\include\spk_builtin.h" />
     <ClInclude Include="..\src\include\spk_bytebuffer.h" />
     <ClInclude Include="..\src\include\spk_compat.h" />

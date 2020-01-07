@@ -58,6 +58,12 @@
     <Filter Include="consprot">
       <UniqueIdentifier>{e786bf00-8aa4-4303-aafe-769e7780d083}</UniqueIdentifier>
     </Filter>
+    <Filter Include="kvstore\kvdb">
+      <UniqueIdentifier>{d015c5c9-3d3a-45a4-bfd9-d326be661ded}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="kvstore\lz4">
+      <UniqueIdentifier>{20759bcd-bb2b-4de8-bbc6-1629d68dc3de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\include\spk_setproctitle.h">
@@ -162,13 +168,7 @@
     <ClInclude Include="..\src\include\ByteBuffer.hpp">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\include\Config.hpp">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\include\ErasureCodeInterface.hpp">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\Thread.hpp">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="..\src\include\spk_bytebuffer.h">
@@ -221,6 +221,72 @@
     </ClInclude>
     <ClInclude Include="..\src\include\spk_getopt.h">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_errno.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\Config.hpp">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\kvdb\kvassert.h">
+      <Filter>kvstore\kvdb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\kvdb\kvblock.h">
+      <Filter>kvstore\kvdb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\kvdb\kvbloom.h">
+      <Filter>kvstore\kvdb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\kvdb\kvdb.h">
+      <Filter>kvstore\kvdb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\kvdb\kvdbo.h">
+      <Filter>kvstore\kvdb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\kvdb\kvendian.h">
+      <Filter>kvstore\kvdb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\kvdb\kvmurmurhash.h">
+      <Filter>kvstore\kvdb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\kvdb\kvpaddingutils.h">
+      <Filter>kvstore\kvdb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\kvdb\kvprime.h">
+      <Filter>kvstore\kvdb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\kvdb\kvserialization.h">
+      <Filter>kvstore\kvdb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\kvdb\kvtable.h">
+      <Filter>kvstore\kvdb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\kvdb\kvtypes.h">
+      <Filter>kvstore\kvdb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\lz4\lz4.h">
+      <Filter>kvstore\lz4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\lz4\lz4frame.h">
+      <Filter>kvstore\lz4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\lz4\lz4frame_static.h">
+      <Filter>kvstore\lz4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\lz4\lz4hc.h">
+      <Filter>kvstore\lz4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\kvstore\lz4\xxhash.h">
+      <Filter>kvstore\lz4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_gnu_getopt.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\spk_gnu_unistd.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\eventd\eventd_core.h">
+      <Filter>eventd</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -327,32 +393,17 @@
     <ClCompile Include="..\src\common\spk_slab.c">
       <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\kvstore\spk_kvstore.c">
-      <Filter>kvstore</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\eventd\spk_timer.c">
       <Filter>eventd</Filter>
     </ClCompile>
     <ClCompile Include="..\src\eventd\spk_eventd.c">
       <Filter>eventd</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\msgon\spk_msgon.c">
-      <Filter>msgon</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\auth\spk_auth.c">
       <Filter>auth</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\journal\spk_journal.c">
-      <Filter>journal</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\consprot\spk_consprot.c">
-      <Filter>consprot</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\config\spk_config.cpp">
       <Filter>config</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\erasurecode\spk_ec.c">
-      <Filter>erasure-code</Filter>
     </ClCompile>
     <ClCompile Include="..\src\daemon\spk_daemon.cpp">
       <Filter>daemon</Filter>
@@ -369,6 +420,57 @@
     <ClCompile Include="..\src\common\spk_getopt.c">
       <Filter>common</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\consprot\spk_consprot.cpp">
+      <Filter>consprot</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\erasurecode\spk_ec.cpp">
+      <Filter>erasure-code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\journal\spk_journal.cpp">
+      <Filter>journal</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\kvstore\spk_kvstore.cpp">
+      <Filter>kvstore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\msgon\spk_msgon.cpp">
+      <Filter>msgon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\kvstore\kvdb\kvassert.c">
+      <Filter>kvstore\kvdb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\kvstore\kvdb\kvblock.c">
+      <Filter>kvstore\kvdb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\kvstore\kvdb\kvdb.c">
+      <Filter>kvstore\kvdb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\kvstore\kvdb\kvdbo.cpp">
+      <Filter>kvstore\kvdb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\kvstore\kvdb\kvprime.c">
+      <Filter>kvstore\kvdb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\kvstore\kvdb\kvserialization.cpp">
+      <Filter>kvstore\kvdb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\kvstore\kvdb\kvtable.c">
+      <Filter>kvstore\kvdb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\kvstore\lz4\lz4.c">
+      <Filter>kvstore\lz4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\kvstore\lz4\lz4frame.c">
+      <Filter>kvstore\lz4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\kvstore\lz4\lz4hc.c">
+      <Filter>kvstore\lz4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\kvstore\lz4\xxhash.c">
+      <Filter>kvstore\lz4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\arch\spk_gnu_getopt.c">
+      <Filter>arch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\src\CMakeLists.txt" />
@@ -383,6 +485,15 @@
     </Text>
     <Text Include="..\src\compto\CMakeLists.txt">
       <Filter>compto</Filter>
+    </Text>
+    <Text Include="..\src\kvstore\kvdb\CMakeLists.txt">
+      <Filter>kvstore\kvdb</Filter>
+    </Text>
+    <Text Include="..\src\kvstore\lz4\CMakeLists.txt">
+      <Filter>kvstore\lz4</Filter>
+    </Text>
+    <Text Include="..\src\kvstore\CMakeLists.txt">
+      <Filter>kvstore</Filter>
     </Text>
   </ItemGroup>
 </Project>
