@@ -46,6 +46,11 @@ extern int spk_logger_check_config(const char* path);
 extern int spk_logger_reload(const char* path);
 extern void spk_logger_free(void);
 
+/*
+ * Macro for getting error position inner throwed file
+ */
+#define LOGGING_POSITION  __FILE__,",",__LINE__,",",__FUNCTION__,": "
+
 #define spklog_debug(...) do { \
     if (likely(__spklog_cat_debug__)) \
         zlog(__spklog_cat_debug__, __FILE__, sizeof(__FILE__)-1, __FUNCTION__, \

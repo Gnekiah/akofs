@@ -12,8 +12,14 @@
 extern "C" {
 #endif
 
-#define SPKE_NOMEM              1
-#define SPKE_
+#define SPKE_NOMEM                          1
+
+
+#define SPKE_EVENTD_LOOP_NULL               201
+#define SPKE_EVENTD_TCP_INIT_ERROR          202
+#define SPKE_EVENTD_ADDR_ERROR              203
+#define SPKE_EVENTD_TCP_BIND_ERROR          204
+#define SPKE_EVENTD_TCP_LISTEN_ERROR        205
 
 #ifdef __cplusplus
 }

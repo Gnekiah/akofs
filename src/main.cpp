@@ -14,6 +14,9 @@
 #include <spk_getopt.h>
 #include <spk_errno.h>
 #include <spk_daemon.h>
+#include <spk_slab.h>
+#include <spk_eventd.h>
+#include <spk_core.h>
 
 #define SPK_VERSION_MAJOR       0
 #define SPK_VERSION_MINOR       0
@@ -209,6 +212,15 @@ static int spk_enable_opts() {
     return ret;
 }
 
+/*
+ * Macro for getting error position inner throwed file
+ */
+#define STDCERR_POSITION_IN_SRC_BEFORE_LOGGER   \
+"FATAL ERROR: in file '" << __FILE__ << "', " \
+<< "at line No " << __LINE__ << ", " \
+<< "function '" << __FUNCTION__ << "', "
+
+
 int main(int argc, const char **argv) 
 {
     const char* spk_proc_name = "sparkle";
@@ -217,61 +229,143 @@ int main(int argc, const char **argv)
 
     int err = 0;
     std::map<std::string, std::string>* default_config_map = nullptr;
+    struct spk_slab_chain *slab_chain = nullptr;
+    const int slab_chain_size = 1024 * 64;  /* should specified by config file */
+    struct spk_css_ops* css = nullptr;
+    struct spk_rms_ops* rms = nullptr;
+    struct spk_das_ops* das = nullptr;
 
     spk_setproctitle(argv, spk_proc_name);
     spk_pthread_setname(pthread_self(), spk_main_thread_name);
 
+    /* parsing options from command */
     err = spk_parse_opts(argc, argv);
     if (err) {
         /* on parse options error or get usage information */
+        std::cerr << STDCERR_POSITION_IN_SRC_BEFORE_LOGGER 
+            << "spk_parse_opts error" << std::endl;
         goto out;
     }
 
+    /* init configuration mapping */
     default_config_map = spk_config_map_init();
     if (!default_config_map) {
         /* malloc failed */
+        std::cerr << STDCERR_POSITION_IN_SRC_BEFORE_LOGGER 
+            << "spk_config_map_init error" << std::endl;
         goto out;
     }
 
+    /* init configuration, and load from config file */
     err = spk_config_init(spk_config_path, default_config_map);
     if (err) {
         /* error on config init, maybe its malloc failed */
+        std::cerr << STDCERR_POSITION_IN_SRC_BEFORE_LOGGER
+            << "spk_config_init failed" << std::endl;
         goto err_config;
     }
 
+    /* enable options into configuration */
     err = spk_enable_opts();
     if (err) {
+        std::cerr << STDCERR_POSITION_IN_SRC_BEFORE_LOGGER
+            << "spk_enable_opts error." << std::endl;
         goto err_config;
     }
 
+    /* init logger */
     err = spk_logger_init(spk_config_get_string("Logger", "config_path").c_str());
     if (err) {
+        /* after logger inited, use logging `spklog_xxx` instead of `std::cerr` */
+        std::cerr << STDCERR_POSITION_IN_SRC_BEFORE_LOGGER
+            << "spk_logger_init failed." << std::endl;
         goto err_logger;
     }
 
- 
-    // 初始化功能模块
-    // 初始化事件驱动模型
-    // 初始化定时器
-    // 初始化网络IO
-    // 初始化消息协议模块
-    // 初始化KV持久化存储
-    // 初始化事务日志
-    // 初始化数据节点服务（向虚拟节点管理服务中注册事件处理回调函数，并向定时器注册定时事件）
-    // 初始化超级节点服务（ ... ）
-    // 初始化访问节点服务（ ... ）
-    // 从节点文件尝试恢复节点（数据节点和/或超级节点）
-    // 启动消息循环
+    /* init slab allocator */
+    slab_chain = new struct spk_slab_chain;
+    if (!slab_chain) {
+        spklog_fatal(LOGGING_POSITION, "failed to alloc slab allocator");
+        goto err_slab;
+    }
+    spk_slab_init(slab_chain, slab_chain_size);
 
-    err = spk_daemon_init();
+    /* init event driver and socket server */
+    err = spk_eventd_init();
     if (err) {
-        goto err_daemon;
+        spklog_fatal(LOGGING_POSITION, "failed to init event driver and socket server");
+        goto err_eventd;
+    }
+    
+    /* init chunk storage subject service */
+    css = new struct spk_css_ops;
+    if (!css) {
+        spklog_fatal(LOGGING_POSITION, "failed to alloc `spk_css_ops`");
+        goto err_css;
+    }
+    err = spk_css_init(css);
+    if (err) {
+        spklog_fatal(LOGGING_POSITION, "failed to init chunk storage subject service");
+        goto err_css;
     }
 
+    /* init regional management service */
+    rms = new struct spk_rms_ops;
+    if (!rms) {
+        spklog_fatal(LOGGING_POSITION, "failed to alloc `spk_rms_ops`");
+        goto err_rms;
+    }
+    err = spk_rms_init(rms);
+    if (err) {
+        spklog_fatal(LOGGING_POSITION, "failed to init regional management service");
+        goto err_rms;
+    }
+
+    /* init data access subject service */
+    das = new struct spk_das_ops;
+    if (!das) {
+        spklog_fatal(LOGGING_POSITION, "failed to alloc `spk_das_ops`");
+        goto err_das;
+    }
+    err = spk_das_init(das);
+    if (err) {
+        spklog_fatal(LOGGING_POSITION, "failed to init data access subject service");
+        goto err_das;
+    }
+
+    /* init sparkle daemon service */
+    err = spk_daemon_init();
+    if (err) {
+        spklog_fatal(LOGGING_POSITION, "failed to init sparkle daemon service");
+        goto err_daemon;
+    }
     err = spk_daemon_start();
 
 err_daemon:
     spk_daemon_exit();
+
+err_das:
+    spk_das_exit();
+    delete das;
+    das = nullptr;
+
+err_rms:
+    spk_rms_exit();
+    delete rms;
+    rms = nullptr;
+
+err_css:
+    spk_css_exit();
+    delete css;
+    css = nullptr;
+
+err_eventd:
+    spk_eventd_exit();
+
+err_slab:
+    spk_slab_destroy(slab_chain);
+    delete slab_chain;
+    slab_chain = nullptr;
 
 err_logger:
     spk_logger_free();
