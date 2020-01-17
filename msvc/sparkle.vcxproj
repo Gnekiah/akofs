@@ -99,6 +99,9 @@
     <ClCompile Include="..\src\consprot\spk_consprot.cpp" />
     <ClCompile Include="..\src\daemon\spk_daemon.cpp" />
     <ClCompile Include="..\src\erasurecode\spk_ec.cpp" />
+    <ClCompile Include="..\src\eventd\socket_client.c" />
+    <ClCompile Include="..\src\eventd\socket_server_css.c" />
+    <ClCompile Include="..\src\eventd\socket_server_das.c" />
     <ClCompile Include="..\src\eventd\spk_eventd.c" />
     <ClCompile Include="..\src\eventd\spk_timer.c" />
     <ClCompile Include="..\src\journal\spk_journal.cpp" />
@@ -147,6 +150,7 @@
     <ClInclude Include="..\src\eventd\eventd_core.h" />
     <ClInclude Include="..\src\include\ByteBuffer.hpp" />
     <ClInclude Include="..\src\include\CircularBuffer.hpp" />
+    <ClInclude Include="..\src\include\message\Message.hpp" />
     <ClInclude Include="..\src\include\spk_auth.h" />
     <ClInclude Include="..\src\include\spk_builtin.h" />
     <ClInclude Include="..\src\include\spk_bytebuffer.h" />
@@ -157,9 +161,7 @@
     <ClInclude Include="..\src\include\spk_config.h" />
     <ClInclude Include="..\src\include\spk_consprot.h" />
     <ClInclude Include="..\src\include\spk_core.h" />
-    <ClInclude Include="..\src\include\spk_css.h" />
     <ClInclude Include="..\src\include\spk_daemon.h" />
-    <ClInclude Include="..\src\include\spk_das.h" />
     <ClInclude Include="..\src\include\spk_ec.h" />
     <ClInclude Include="..\src\include\spk_errno.h" />
     <ClInclude Include="..\src\include\spk_eventd.h" />
@@ -170,7 +172,6 @@
     <ClInclude Include="..\src\include\spk_logger.h" />
     <ClInclude Include="..\src\include\spk_macros.h" />
     <ClInclude Include="..\src\include\spk_msgon.h" />
-    <ClInclude Include="..\src\include\spk_rms.h" />
     <ClInclude Include="..\src\include\spk_setproctitle.h" />
     <ClInclude Include="..\src\include\spk_slab.h" />
     <ClInclude Include="..\src\include\spk_timer.h" />

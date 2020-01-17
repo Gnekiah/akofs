@@ -8,12 +8,6 @@
 #ifndef SPARKLE_SPK_MSGON_H_
 #define SPARKLE_SPK_MSGON_H_
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
-#ifdef __cplusplus
-}
-#endif
 
 #endif // SPARKLE_SPK_MSGON_H_

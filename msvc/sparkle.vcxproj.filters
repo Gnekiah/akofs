@@ -64,6 +64,9 @@
     <Filter Include="kvstore\lz4">
       <UniqueIdentifier>{20759bcd-bb2b-4de8-bbc6-1629d68dc3de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\message">
+      <UniqueIdentifier>{88b35273-f754-48d6-b7c7-4ff3998aa878}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\include\spk_setproctitle.h">
@@ -183,15 +186,6 @@
     <ClInclude Include="..\src\include\spk_timer.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\include\spk_rms.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_css.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_das.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\include\spk_kvstore.h">
       <Filter>include</Filter>
     </ClInclude>
@@ -287,6 +281,9 @@
     </ClInclude>
     <ClInclude Include="..\src\eventd\eventd_core.h">
       <Filter>eventd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\Message.hpp">
+      <Filter>include\message</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -470,6 +467,15 @@
     </ClCompile>
     <ClCompile Include="..\src\arch\spk_gnu_getopt.c">
       <Filter>arch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\eventd\socket_server_das.c">
+      <Filter>eventd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\eventd\socket_server_css.c">
+      <Filter>eventd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\eventd\socket_client.c">
+      <Filter>eventd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
