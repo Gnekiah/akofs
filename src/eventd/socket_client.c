@@ -81,8 +81,8 @@ static void connect_client_cb(uv_connect_t* connect, int status) {
     ret = uv_read_start(stream, socket_alloc_cb, socket_client_read_cb);
 }
 
-struct eventd_io_context_t* spk_socket_client_new(struct 
-    eventd_socket_client_t* conf) {
+struct eventd_io_context* spk_socket_client_new(struct 
+    eventd_socket_client* conf) {
     int ret = 0;
     struct sockaddr_in addr;
     uv_tcp_t* socket_client = NULL;
@@ -90,7 +90,7 @@ struct eventd_io_context_t* spk_socket_client_new(struct
     struct eventd_io_context_t* context = NULL;
     uv_shutdown_t* shutdown_req = NULL;
 
-    context = (struct eventd_io_context_t*)malloc(sizeof(struct eventd_io_context_t));
+    context = (struct eventd_io_context_t*)malloc(sizeof(struct eventd_io_context));
     if (!context) {
         spklog_error(LOGGING_POSITION, 
             "malloc `struct eventd_io_context_t` error, out of memory");

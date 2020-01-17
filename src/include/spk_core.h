@@ -18,7 +18,7 @@
 struct spk_io_context {
     Message* message;
     std::mutex lock;
-    void* conn_context;
+    void* conn_context;     /* point to eventd_io_context */
 };
 
 /*
@@ -27,10 +27,57 @@ struct spk_io_context {
 typedef void (spk_callback_fn)(struct spk_io_context*);
 
 /*
+ * ops
+ */
+struct spk_callback_ops {
+    spk_callback_fn ping_fn;
+    spk_callback_fn pong_fn;
+    spk_callback_fn req_probe_fn;
+    spk_callback_fn resp_probe_fn;
+    spk_callback_fn req_join_fn;
+    spk_callback_fn resp_join_fn;
+
+    spk_callback_fn req_sync_fn;
+    spk_callback_fn resp_sync_fn;
+
+    spk_callback_fn req_sub_sync_fn;
+    spk_callback_fn resp_sub_sync_fn;
+    spk_callback_fn rtn_sync_fn;
+
+    spk_callback_fn req_unsub_sync_fn;
+    spk_callback_fn resp_unsub_sync_fn;
+    spk_callback_fn ntc_sync_fn;
+
+    spk_callback_fn req_get_metadata_fn;
+    spk_callback_fn resp_get_metadata_fn;
+    spk_callback_fn req_put_metadata_fn;
+    spk_callback_fn resp_put_metadata_fn;
+
+    spk_callback_fn req_get_blk_mapping_fn;
+    spk_callback_fn resp_get_blk_mapping_fn;
+    spk_callback_fn req_put_blk_mapping_fn;
+    spk_callback_fn resp_put_blk_mapping_fn;
+
+    spk_callback_fn req_get_chunk_fn;
+    spk_callback_fn resp_get_chunk_fn;
+    spk_callback_fn req_put_chunk_fn;
+    spk_callback_fn resp_put_chunk_fn;
+
+    spk_callback_fn req_fsck_fn;
+    spk_callback_fn resp_fsck_fn;
+
+    spk_callback_fn cmd_shutdown_fn;
+    spk_callback_fn resp_cmd_shutdown_fn;
+    spk_callback_fn cmd_reboot_fn;
+    spk_callback_fn resp_cmd_reboot_fn;
+};
+
+/*
  * Regional Manager callback defination
  */
 struct spk_rms_ops {
     uint64_t rms_id;
+    struct spk_callback_ops ops;
 };
 
 /*
@@ -38,6 +85,7 @@ struct spk_rms_ops {
  */
 struct spk_css_ops {
     uint64_t css_id;
+    struct spk_callback_ops ops;
 };
 
 /*
@@ -45,6 +93,7 @@ struct spk_css_ops {
  */
 struct spk_das_ops {
     uint64_t das_id;
+    struct spk_callback_ops ops;
 };
 
 //#ifdef __cplusplus

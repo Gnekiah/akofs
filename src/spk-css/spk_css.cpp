@@ -5,4 +5,15 @@
  * Author: 
  */
 
-#include <spk_css.h>
+#include <spk_core.h>
+
+int spk_css_init(struct spk_css_ops* css) {
+    int err = 0;
+
+
+    return err;
+}
+
+void spk_css_exit(void) {
+
+}
