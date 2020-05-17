@@ -42,6 +42,19 @@ static struct spk_config_item_t spk_config_string_default[] = {
     {"Config", "config_path", ""},
     /* Logger Section */
     {"Logger", "config_path", "sparkle-logger.conf"},
+    /* DAS Section */
+    {"DAS", "backlog", "2048"},
+    {"DAS", "port", "20211"},
+    {"DAS", "addr", "0.0.0.0"},
+    /* CSS Section */
+    {"CSS", "backlog", "2048"},
+    {"CSS", "port", "20212"},
+    {"CSS", "addr", "0.0.0.0"},
+
+
+
+
+
     /* End of Config String */
     NULL
 };
@@ -234,6 +247,8 @@ int main(int argc, const char **argv)
     struct spk_css_ops* css = nullptr;
     struct spk_rms_ops* rms = nullptr;
     struct spk_das_ops* das = nullptr;
+    /* config unit */
+    struct eventd_config_t *eventd_config = nullptr;
 
     spk_setproctitle(argv, spk_proc_name);
     spk_pthread_setname(pthread_self(), spk_main_thread_name);
@@ -291,7 +306,23 @@ int main(int argc, const char **argv)
     spk_slab_init(slab_chain, slab_chain_size);
 
     /* init event driver and socket server */
-    err = spk_eventd_init();
+    eventd_config = new struct eventd_config_t;
+    if (!eventd_config) {
+        spklog_fatal(LOGGING_POSITION, "failed to alloc eventd config unit");
+        goto err_eventd;
+    }
+    /* dump eventd/css/server config */
+    strcpy(eventd_config->css_conf.addr, 
+        spk_config_get_string("CSS", "addr").c_str());
+    eventd_config->css_conf.backlog = spk_config_get_int("CSS", "backlog");
+    eventd_config->css_conf.port = spk_config_get_int("CSS", "port");
+    /* dump eventd/das/server config */
+    strcpy(eventd_config->das_conf.addr,
+        spk_config_get_string("DAS", "addr").c_str());
+    eventd_config->das_conf.backlog = spk_config_get_int("DAS", "backlog");
+    eventd_config->das_conf.port = spk_config_get_int("DAS", "port");
+    /* do eventd init */
+    err = spk_eventd_init(eventd_config);
     if (err) {
         spklog_fatal(LOGGING_POSITION, "failed to init event driver and socket server");
         goto err_eventd;
@@ -361,6 +392,8 @@ err_css:
 
 err_eventd:
     spk_eventd_exit();
+    delete eventd_config;
+    eventd_config = nullptr;
 
 err_slab:
     spk_slab_destroy(slab_chain);

@@ -8,6 +8,8 @@
 #ifndef SPARKLE_SPK_DAEMON_H_
 #define SPARKLE_SPK_DAEMON_H_
 
+#include <spk_core.h>
+
 extern int spk_daemon_init();
 
 extern int spk_daemon_start();

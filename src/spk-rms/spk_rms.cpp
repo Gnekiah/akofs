@@ -18,6 +18,7 @@ void call_back_demo_fn(spk_io_context* context) {
 
 int spk_rms_init(struct spk_rms_ops* rms) {
     int err = 0;
+    /* 申请内存资源 */
     
     /* 注册一个定时任务，在1秒钟后开始执行，只执行一次 */
     spk_timer_init(cron_timer_demo_fn, 1000);
@@ -33,5 +34,5 @@ int spk_rms_init(struct spk_rms_ops* rms) {
 }
 
 void spk_rms_exit(void) {
-
+    /* 释放内存资源 */
 }

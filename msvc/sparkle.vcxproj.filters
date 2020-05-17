@@ -285,6 +285,102 @@
     <ClInclude Include="..\src\include\message\Message.hpp">
       <Filter>include\message</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\include\message\PingMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\PongMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\ReqProbeMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RespProbeMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\ReqJoinMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RespJoinMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\ReqSyncMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RespSyncMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RespSubscribeSyncMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\ReqSubscribeSyncMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RetSyncMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\ReqUnsubscribeSyncMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RespUnsubscribeSyncMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\NoticeSyncMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\ReqGetMetadataMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RespGetMetadataMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\ReqGetBlockMappingMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RespGetBlockMappingMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\ReqPutMetadataMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RespPutMetadataMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\ReqPutBlockMappingMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RespPutBlockMappingMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\ReqGetChunkMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RespGetChunkMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\ReqPutChunkMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RespPutChunkMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\ReqConsisCheckMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RespConsisCheckMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\CmdShutdownMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RespCmdShutdownMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\CmdRebootMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RespCmdRebootMessage.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\arch\spk_setproctitle.c">
