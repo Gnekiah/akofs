@@ -1,8 +1,8 @@
-# sparkle
+# AkoFS
 
 ## 依赖
 
-- C11 / C++11
+- C11 & C++11
 - cmake-3.10.x
 - zlib-1.x.x（libz）
 - openssl-1.x.x（libcrypto / libssl）
@@ -17,7 +17,7 @@
 - 在 `test/main.cpp` 中添加测试单元 `.hpp` 头文件
 - `cd test/` ，执行 `cmake3 ./` 生成 Makefile 文件
 - 执行 `make` 编译测试用例
-- 执行 `./bin/sparkle-test` 运行测试用例
+- 执行 `./bin/akofs-test` 运行测试用例
 
 #### MSVC 
 

@@ -7,7 +7,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "akofs", "msvc\akofs.vcxproj
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "msvc\test.vcxproj", "{C58DF14A-08F8-4BB8-8D83-02E2207AAFEC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cms", "msvc\cms.vcxproj", "{8CED3F31-04FC-413A-9309-BD9CB79BD15F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "akocli", "msvc\akocli.vcxproj", "{8CED3F31-04FC-413A-9309-BD9CB79BD15F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,7 +29,7 @@ Global
 		{C58DF14A-08F8-4BB8-8D83-02E2207AAFEC}.Release|x64.ActiveCfg = Release|x64
 		{C58DF14A-08F8-4BB8-8D83-02E2207AAFEC}.Release|x64.Build.0 = Release|x64
 		{C58DF14A-08F8-4BB8-8D83-02E2207AAFEC}.Release|x86.ActiveCfg = Release|x64
-		{8CED3F31-04FC-413A-9309-BD9CB79BD15F}.Debug|x64.ActiveCfg = Debug|x64
+        {8CED3F31-04FC-413A-9309-BD9CB79BD15F}.Debug|x64.ActiveCfg = Debug|x64
 		{8CED3F31-04FC-413A-9309-BD9CB79BD15F}.Debug|x64.Build.0 = Debug|x64
 		{8CED3F31-04FC-413A-9309-BD9CB79BD15F}.Debug|x86.ActiveCfg = Debug|x64
 		{8CED3F31-04FC-413A-9309-BD9CB79BD15F}.Release|x64.ActiveCfg = Release|x64
