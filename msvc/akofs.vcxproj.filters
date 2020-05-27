@@ -34,12 +34,6 @@
     <Filter Include="spk-rms">
       <UniqueIdentifier>{0a42f00c-23af-45d3-a9f3-f08fe93f8d18}</UniqueIdentifier>
     </Filter>
-    <Filter Include="spk-css">
-      <UniqueIdentifier>{a11b8fc1-df6b-4a55-8a12-914fdecc9fc1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="spk-das">
-      <UniqueIdentifier>{dd698a97-3e58-4658-9fc1-b6b46cafdc10}</UniqueIdentifier>
-    </Filter>
     <Filter Include="kvstore">
       <UniqueIdentifier>{bac28301-eb6a-4a21-a59f-cde0d8f37389}</UniqueIdentifier>
     </Filter>
@@ -54,9 +48,6 @@
     </Filter>
     <Filter Include="journal">
       <UniqueIdentifier>{0708c70a-d8b2-4f4e-8f32-33ab8f30f28c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="consprot">
-      <UniqueIdentifier>{e786bf00-8aa4-4303-aafe-769e7780d083}</UniqueIdentifier>
     </Filter>
     <Filter Include="kvstore\kvdb">
       <UniqueIdentifier>{d015c5c9-3d3a-45a4-bfd9-d326be661ded}</UniqueIdentifier>
@@ -501,20 +492,11 @@
     <ClCompile Include="..\src\daemon\spk_daemon.cpp">
       <Filter>daemon</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\spk-das\spk-das.cpp">
-      <Filter>spk-das</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\spk-css\spk_css.cpp">
-      <Filter>spk-css</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\spk-rms\spk_rms.cpp">
       <Filter>spk-rms</Filter>
     </ClCompile>
     <ClCompile Include="..\src\common\spk_getopt.c">
       <Filter>common</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\consprot\spk_consprot.cpp">
-      <Filter>consprot</Filter>
     </ClCompile>
     <ClCompile Include="..\src\erasurecode\spk_ec.cpp">
       <Filter>erasure-code</Filter>
