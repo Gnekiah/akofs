@@ -5,14 +5,14 @@
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
-#include <spk_getopt.h>
-#include <spk_errno.h>
+#include <ako_getopt.h>
+#include <ako_errno.h>
 
-#define SPK_OPTPARSE_MSG_INVALID "invalid option"
-#define SPK_OPTPARSE_MSG_MISSING "option requires an argument"
-#define SPK_OPTPARSE_MSG_TOOMANY "option takes no arguments"
+#define AKO_OPTPARSE_MSG_INVALID "invalid option"
+#define AKO_OPTPARSE_MSG_MISSING "option requires an argument"
+#define AKO_OPTPARSE_MSG_TOOMANY "option takes no arguments"
 
-static int spk_optparse_error(struct spk_optparse* options, const char* msg, const char* data)
+static int ako_optparse_error(struct ako_optparse* options, const char* msg, const char* data)
 {
     unsigned p = 0;
     const char* sep = " -- '";
@@ -27,7 +27,7 @@ static int spk_optparse_error(struct spk_optparse* options, const char* msg, con
     return '?';
 }
 
-void spk_optparse_init(struct spk_optparse* options, char** argv)
+void ako_optparse_init(struct ako_optparse* options, char** argv)
 {
     options->argv = argv;
     options->permute = 1;
@@ -37,22 +37,22 @@ void spk_optparse_init(struct spk_optparse* options, char** argv)
     options->errmsg[0] = '\0';
 }
 
-static int spk_optparse_is_dashdash(const char* arg)
+static int ako_optparse_is_dashdash(const char* arg)
 {
     return arg != 0 && arg[0] == '-' && arg[1] == '-' && arg[2] == '\0';
 }
 
-static int spk_optparse_is_shortopt(const char* arg)
+static int ako_optparse_is_shortopt(const char* arg)
 {
     return arg != 0 && arg[0] == '-' && arg[1] != '-' && arg[1] != '\0';
 }
 
-static int spk_optparse_is_longopt(const char* arg)
+static int ako_optparse_is_longopt(const char* arg)
 {
     return arg != 0 && arg[0] == '-' && arg[1] == '-' && arg[2] != '\0';
 }
 
-static void spk_optparse_permute(struct spk_optparse* options, int index)
+static void ako_optparse_permute(struct ako_optparse* options, int index)
 {
     char* nonoption = options->argv[index];
     int i;
@@ -61,9 +61,9 @@ static void spk_optparse_permute(struct spk_optparse* options, int index)
     options->argv[options->optind - 1] = nonoption;
 }
 
-static int spk_optparse_argtype(const char* optstring, char c)
+static int ako_optparse_argtype(const char* optstring, char c)
 {
-    int count = SPK_OPTPARSE_NONE;
+    int count = AKO_OPTPARSE_NONE;
     if (c == ':')
         return -1;
     for (; *optstring && c != *optstring; optstring++);
@@ -74,7 +74,7 @@ static int spk_optparse_argtype(const char* optstring, char c)
     return count;
 }
 
-int spk_optparse(struct spk_optparse* options, const char* optstring)
+int ako_optparse(struct ako_optparse* options, const char* optstring)
 {
     int type;
     char* next;
@@ -85,15 +85,15 @@ int spk_optparse(struct spk_optparse* options, const char* optstring)
     if (option == 0) {
         return -1;
     }
-    else if (spk_optparse_is_dashdash(option)) {
+    else if (ako_optparse_is_dashdash(option)) {
         options->optind++; /* consume "--" */
         return -1;
     }
-    else if (!spk_optparse_is_shortopt(option)) {
+    else if (!ako_optparse_is_shortopt(option)) {
         if (options->permute) {
             int index = options->optind++;
-            int r = spk_optparse(options, optstring);
-            spk_optparse_permute(options, index);
+            int r = ako_optparse(options, optstring);
+            ako_optparse_permute(options, index);
             options->optind--;
             return r;
         }
@@ -103,16 +103,16 @@ int spk_optparse(struct spk_optparse* options, const char* optstring)
     }
     option += options->subopt + 1;
     options->optopt = option[0];
-    type = spk_optparse_argtype(optstring, option[0]);
+    type = ako_optparse_argtype(optstring, option[0]);
     next = options->argv[options->optind + 1];
     switch (type) {
     case -1: {
         char str[2] = { 0, 0 };
         str[0] = option[0];
         options->optind++;
-        return spk_optparse_error(options, SPK_OPTPARSE_MSG_INVALID, str);
+        return ako_optparse_error(options, AKO_OPTPARSE_MSG_INVALID, str);
     }
-    case SPK_OPTPARSE_NONE:
+    case AKO_OPTPARSE_NONE:
         if (option[1]) {
             options->subopt++;
         }
@@ -121,7 +121,7 @@ int spk_optparse(struct spk_optparse* options, const char* optstring)
             options->optind++;
         }
         return option[0];
-    case SPK_OPTPARSE_REQUIRED:
+    case AKO_OPTPARSE_REQUIRED:
         options->subopt = 0;
         options->optind++;
         if (option[1]) {
@@ -135,10 +135,10 @@ int spk_optparse(struct spk_optparse* options, const char* optstring)
             char str[2] = { 0, 0 };
             str[0] = option[0];
             options->optarg = 0;
-            return spk_optparse_error(options, SPK_OPTPARSE_MSG_MISSING, str);
+            return ako_optparse_error(options, AKO_OPTPARSE_MSG_MISSING, str);
         }
         return option[0];
-    case SPK_OPTPARSE_OPTIONAL:
+    case AKO_OPTPARSE_OPTIONAL:
         options->subopt = 0;
         options->optind++;
         if (option[1])
@@ -150,7 +150,7 @@ int spk_optparse(struct spk_optparse* options, const char* optstring)
     return 0;
 }
 
-char* spk_optparse_arg(struct spk_optparse* options)
+char* ako_optparse_arg(struct ako_optparse* options)
 {
     char* option = options->argv[options->optind];
     options->subopt = 0;
@@ -159,16 +159,16 @@ char* spk_optparse_arg(struct spk_optparse* options)
     return option;
 }
 
-static int spk_optparse_longopts_end(const struct spk_optparse_long* longopts, int i)
+static int ako_optparse_longopts_end(const struct ako_optparse_long* longopts, int i)
 {
     return !longopts[i].longname && !longopts[i].shortname;
 }
 
-static void spk_optparse_from_long(const struct spk_optparse_long* longopts, char* optstring)
+static void ako_optparse_from_long(const struct ako_optparse_long* longopts, char* optstring)
 {
     char* p = optstring;
     int i;
-    for (i = 0; !spk_optparse_longopts_end(longopts, i); i++) {
+    for (i = 0; !ako_optparse_longopts_end(longopts, i); i++) {
         if (longopts[i].shortname) {
             int a;
             *p++ = longopts[i].shortname;
@@ -180,7 +180,7 @@ static void spk_optparse_from_long(const struct spk_optparse_long* longopts, cha
 }
 
 /* Unlike strcmp(), handles options containing "=". */
-static int spk_optparse_longopts_match(const char* longname, const char* option)
+static int ako_optparse_longopts_match(const char* longname, const char* option)
 {
     const char* a = option, * n = longname;
     if (longname == 0)
@@ -192,7 +192,7 @@ static int spk_optparse_longopts_match(const char* longname, const char* option)
 }
 
 /* Return the part after "=", or NULL. */
-static char* spk_optparse_longopts_arg(char* option)
+static char* ako_optparse_longopts_arg(char* option)
 {
     for (; *option && *option != '='; option++);
     if (*option == '=')
@@ -201,19 +201,19 @@ static char* spk_optparse_longopts_arg(char* option)
         return 0;
 }
 
-static int spk_optparse_long_fallback(struct spk_optparse* options,
-    const struct spk_optparse_long* longopts,
+static int ako_optparse_long_fallback(struct ako_optparse* options,
+    const struct ako_optparse_long* longopts,
     int* longindex)
 {
     int result;
     char optstring[96 * 3 + 1]; /* 96 ASCII printable characters */
-    spk_optparse_from_long(longopts, optstring);
-    result = spk_optparse(options, optstring);
+    ako_optparse_from_long(longopts, optstring);
+    result = ako_optparse(options, optstring);
     if (longindex != 0) {
         *longindex = -1;
         if (result != -1) {
             int i;
-            for (i = 0; !spk_optparse_longopts_end(longopts, i); i++)
+            for (i = 0; !ako_optparse_longopts_end(longopts, i); i++)
                 if (longopts[i].shortname == options->optopt)
                     * longindex = i;
         }
@@ -221,8 +221,8 @@ static int spk_optparse_long_fallback(struct spk_optparse* options,
     return result;
 }
 
-int spk_optparse_long(struct spk_optparse* options,
-    const struct spk_optparse_long* longopts,
+int ako_optparse_long(struct ako_optparse* options,
+    const struct ako_optparse_long* longopts,
     int* longindex)
 {
     int i;
@@ -230,18 +230,18 @@ int spk_optparse_long(struct spk_optparse* options,
     if (option == 0) {
         return -1;
     }
-    else if (spk_optparse_is_dashdash(option)) {
+    else if (ako_optparse_is_dashdash(option)) {
         options->optind++; /* consume "--" */
         return -1;
     }
-    else if (spk_optparse_is_shortopt(option)) {
-        return spk_optparse_long_fallback(options, longopts, longindex);
+    else if (ako_optparse_is_shortopt(option)) {
+        return ako_optparse_long_fallback(options, longopts, longindex);
     }
-    else if (!spk_optparse_is_longopt(option)) {
+    else if (!ako_optparse_is_longopt(option)) {
         if (options->permute) {
             int index = options->optind++;
-            int r = spk_optparse_long(options, longopts, longindex);
-            spk_optparse_permute(options, index);
+            int r = ako_optparse_long(options, longopts, longindex);
+            ako_optparse_permute(options, index);
             options->optind--;
             return r;
         }
@@ -256,28 +256,28 @@ int spk_optparse_long(struct spk_optparse* options,
     options->optarg = 0;
     option += 2; /* skip "--" */
     options->optind++;
-    for (i = 0; !spk_optparse_longopts_end(longopts, i); i++) {
+    for (i = 0; !ako_optparse_longopts_end(longopts, i); i++) {
         const char* name = longopts[i].longname;
-        if (spk_optparse_longopts_match(name, option)) {
+        if (ako_optparse_longopts_match(name, option)) {
             char* arg;
             if (longindex)
                 * longindex = i;
             options->optopt = longopts[i].shortname;
-            arg = spk_optparse_longopts_arg(option);
-            if (longopts[i].argtype == SPK_OPTPARSE_NONE && arg != 0) {
-                return spk_optparse_error(options, SPK_OPTPARSE_MSG_TOOMANY, name);
+            arg = ako_optparse_longopts_arg(option);
+            if (longopts[i].argtype == AKO_OPTPARSE_NONE && arg != 0) {
+                return ako_optparse_error(options, AKO_OPTPARSE_MSG_TOOMANY, name);
             } if (arg != 0) {
                 options->optarg = arg;
             }
-            else if (longopts[i].argtype == SPK_OPTPARSE_REQUIRED) {
+            else if (longopts[i].argtype == AKO_OPTPARSE_REQUIRED) {
                 options->optarg = options->argv[options->optind];
                 if (options->optarg == 0)
-                    return spk_optparse_error(options, SPK_OPTPARSE_MSG_MISSING, name);
+                    return ako_optparse_error(options, AKO_OPTPARSE_MSG_MISSING, name);
                 else
                     options->optind++;
             }
             return options->optopt;
         }
     }
-    return spk_optparse_error(options, SPK_OPTPARSE_MSG_INVALID, option);
+    return ako_optparse_error(options, AKO_OPTPARSE_MSG_INVALID, option);
 }

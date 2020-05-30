@@ -5,14 +5,14 @@
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
-#include <spk_slab.h>
+#include <ako_slab.h>
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <assert.h>
 
-#include <spk_builtin.h>
+#include <ako_builtin.h>
 
 #ifdef __linux__
 #include <unistd.h>
@@ -25,7 +25,7 @@
 #define MAP_PRIVATE                 0
 #define MAP_ANONYMOUS               0
 #define MAP_FAILED                  NULL
-#define SPK_SLAB_PAGE_SIZE_DEFAULT  4096
+#define AKO_SLAB_PAGE_SIZE_DEFAULT  4096
 #define sysconf(x)                  (4096)
 
 static int __check_align(size_t align) {
@@ -57,77 +57,77 @@ static int munmap(void* start, size_t length) {
 }
 #endif
 
-#define SPK_SLOTS_ALL_ZERO      ((uint64_t) 0)
-#define SPK_SLOTS_FIRST         ((uint64_t) 1)
-#define SPK_FIRST_FREE_SLOT(s)  ((size_t) spk_builtin_ctzll(s))
-#define SPK_FREE_SLOTS(s)       ((size_t) spk_builtin_popcount64(s))
+#define AKO_SLOTS_ALL_ZERO      ((uint64_t) 0)
+#define AKO_SLOTS_FIRST         ((uint64_t) 1)
+#define AKO_FIRST_FREE_SLOT(s)  ((size_t) ako_builtin_ctzll(s))
+#define AKO_FREE_SLOTS(s)       ((size_t) ako_builtin_popcount64(s))
 
-#define SPK_ONE_USED_SLOT(slot, slot_mask) \
-(((~(slot) & (slot_mask)) & ((~(slot) & (slot_mask)) - 1)) == SPK_SLOTS_ALL_ZERO)
+#define AKO_ONE_USED_SLOT(slot, slot_mask) \
+(((~(slot) & (slot_mask)) & ((~(slot) & (slot_mask)) - 1)) == AKO_SLOTS_ALL_ZERO)
 
-#define SPK_POWER_OF2(x) ((x) != 0 && ((x) & ((x) - 1)) == 0)
+#define AKO_POWER_OF2(x) ((x) != 0 && ((x) & ((x) - 1)) == 0)
 
-size_t spk_slab_pagesize;
+size_t ako_slab_pagesize;
 
 
-SPK_UNUSED static int __spk_slab_is_valid(const struct spk_slab_chain* const sch) {
-#ifndef SPK_DEBUG_OFF
-    assert(SPK_POWER_OF2(spk_slab_pagesize));
-    assert(SPK_POWER_OF2(sch->slabsize));
-    assert(SPK_POWER_OF2(sch->pages_per_alloc));
+AKO_UNUSED static int __ako_slab_is_valid(const struct ako_slab_chain* const sch) {
+#ifndef AKO_DEBUG_OFF
+    assert(AKO_POWER_OF2(ako_slab_pagesize));
+    assert(AKO_POWER_OF2(sch->slabsize));
+    assert(AKO_POWER_OF2(sch->pages_per_alloc));
 
     assert(sch->itemcount >= 2 && sch->itemcount <= 64);
     assert(sch->itemsize >= 1 && sch->itemsize <= SIZE_MAX);
-    assert(sch->pages_per_alloc >= spk_slab_pagesize);
+    assert(sch->pages_per_alloc >= ako_slab_pagesize);
     assert(sch->pages_per_alloc >= sch->slabsize);
 
-    assert(offsetof(struct spk_slab_header, data) +
+    assert(offsetof(struct ako_slab_header, data) +
         sch->itemsize * sch->itemcount <= sch->slabsize);
 
-    assert(sch->empty_slotmask == ~SPK_SLOTS_ALL_ZERO >> (64 - sch->itemcount));
-    assert(sch->initial_slotmask == (sch->empty_slotmask ^ SPK_SLOTS_FIRST));
+    assert(sch->empty_slotmask == ~AKO_SLOTS_ALL_ZERO >> (64 - sch->itemcount));
+    assert(sch->initial_slotmask == (sch->empty_slotmask ^ AKO_SLOTS_FIRST));
     assert(sch->alignment_mask == ~(sch->slabsize - 1));
 
-    const struct spk_slab_header* const heads[] = {
+    const struct ako_slab_header* const heads[] = {
         sch->full, 
         sch->empty, 
         sch->partial 
     };
 
     for (size_t head = 0; head < 3; ++head) {
-        const struct spk_slab_header* prev = NULL;
-        const struct spk_slab_header* slab = NULL;
+        const struct ako_slab_header* prev = NULL;
+        const struct ako_slab_header* slab = NULL;
 
         for (slab = heads[head]; slab != NULL; slab = slab->next) {
             assert((slab->prev == (prev == NULL ? NULL : prev)));
 
             switch (head) {
             case 0:
-                assert(slab->slots == SPK_SLOTS_ALL_ZERO);
+                assert(slab->slots == AKO_SLOTS_ALL_ZERO);
                 break;
             case 1:
                 assert(slab->slots == sch->empty_slotmask);
                 break;
             case 2:
-                assert((slab->slots & ~sch->empty_slotmask) == SPK_SLOTS_ALL_ZERO);
-                assert(SPK_FREE_SLOTS(slab->slots) >= 1);
-                assert(SPK_FREE_SLOTS(slab->slots) < sch->itemcount);
+                assert((slab->slots & ~sch->empty_slotmask) == AKO_SLOTS_ALL_ZERO);
+                assert(AKO_FREE_SLOTS(slab->slots) >= 1);
+                assert(AKO_FREE_SLOTS(slab->slots) < sch->itemcount);
                 break;
             }
 
             if (slab->refcount == 0) {
                 assert((uintptr_t)slab % sch->slabsize == 0);
 
-                if (sch->slabsize >= spk_slab_pagesize)
+                if (sch->slabsize >= ako_slab_pagesize)
                     assert((uintptr_t)slab->page % sch->slabsize == 0);
                 else
-                    assert((uintptr_t)slab->page % spk_slab_pagesize == 0);
+                    assert((uintptr_t)slab->page % ako_slab_pagesize == 0);
             }
             else {
-                if (sch->slabsize >= spk_slab_pagesize)
+                if (sch->slabsize >= ako_slab_pagesize)
                     assert((uintptr_t)slab % sch->slabsize == 0);
                 else
-                    assert((uintptr_t)slab % spk_slab_pagesize == 0);
+                    assert((uintptr_t)slab % ako_slab_pagesize == 0);
             }
             prev = slab;
         }
@@ -136,16 +136,16 @@ SPK_UNUSED static int __spk_slab_is_valid(const struct spk_slab_chain* const sch
     return 1;
 }
 
-void spk_slab_init(struct spk_slab_chain* const sch, const size_t itemsize) {
-    spk_slab_pagesize = (size_t)sysconf(_SC_PAGESIZE);
+void ako_slab_init(struct ako_slab_chain* const sch, const size_t itemsize) {
+    ako_slab_pagesize = (size_t)sysconf(_SC_PAGESIZE);
 
     assert(sch != NULL);
     assert(itemsize >= 1 && itemsize <= SIZE_MAX);
-    assert(SPK_POWER_OF2(spk_slab_pagesize));
+    assert(AKO_POWER_OF2(ako_slab_pagesize));
 
     sch->itemsize = itemsize;
 
-    const size_t data_offset = offsetof(struct spk_slab_header, data);
+    const size_t data_offset = offsetof(struct ako_slab_header, data);
     const size_t least_slabsize = data_offset + 64 * sch->itemsize;
     sch->slabsize = (size_t)1 << (size_t)ceil(log2((double)least_slabsize));
     sch->itemcount = 64;
@@ -161,30 +161,30 @@ void spk_slab_init(struct spk_slab_chain* const sch, const size_t itemsize) {
         }
     }
 
-    sch->pages_per_alloc = sch->slabsize > spk_slab_pagesize ?
-        sch->slabsize : spk_slab_pagesize;
+    sch->pages_per_alloc = sch->slabsize > ako_slab_pagesize ?
+        sch->slabsize : ako_slab_pagesize;
 
-    sch->empty_slotmask = ~SPK_SLOTS_ALL_ZERO >> (64 - sch->itemcount);
-    sch->initial_slotmask = sch->empty_slotmask ^ SPK_SLOTS_FIRST;
+    sch->empty_slotmask = ~AKO_SLOTS_ALL_ZERO >> (64 - sch->itemcount);
+    sch->initial_slotmask = sch->empty_slotmask ^ AKO_SLOTS_FIRST;
     sch->alignment_mask = ~(sch->slabsize - 1);
     sch->partial = sch->empty = sch->full = NULL;
 
-    assert(__spk_slab_is_valid(sch));
+    assert(__ako_slab_is_valid(sch));
 }
 
-void* spk_slab_alloc(struct spk_slab_chain* const sch) {
+void* ako_slab_alloc(struct ako_slab_chain* const sch) {
     assert(sch != NULL);
-    assert(__spk_slab_is_valid(sch));
+    assert(__ako_slab_is_valid(sch));
 
     if (likely(sch->partial != NULL)) {
         /* found a partial slab, locate the first free slot */
         register const size_t slot = 
-            SPK_FIRST_FREE_SLOT((unsigned long)sch->partial->slots);
-        sch->partial->slots ^= SPK_SLOTS_FIRST << slot;
+            AKO_FIRST_FREE_SLOT((unsigned long)sch->partial->slots);
+        sch->partial->slots ^= AKO_SLOTS_FIRST << slot;
 
-        if (unlikely(sch->partial->slots == SPK_SLOTS_ALL_ZERO)) {
+        if (unlikely(sch->partial->slots == AKO_SLOTS_ALL_ZERO)) {
             /* slab has become full, change state from partial to full */
-            struct spk_slab_header* const tmp = sch->partial;
+            struct ako_slab_header* const tmp = sch->partial;
 
             /* skip first slab from partial list */
             if (likely((sch->partial = sch->partial->next) != NULL))
@@ -216,7 +216,7 @@ void* spk_slab_alloc(struct spk_slab_chain* const sch) {
     }
     else {
         /* no empty or partial slabs available, create a new one */
-        if (sch->slabsize <= spk_slab_pagesize) {
+        if (sch->slabsize <= ako_slab_pagesize) {
             sch->partial = mmap(NULL, sch->pages_per_alloc,
                 PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
 
@@ -237,13 +237,13 @@ void* spk_slab_alloc(struct spk_slab_chain* const sch) {
             }
         }
 
-        struct spk_slab_header* prev = NULL;
+        struct ako_slab_header* prev = NULL;
 
         const char* const page_end = (char*)sch->partial + sch->pages_per_alloc;
 
         union {
             const char* c;
-            struct spk_slab_header* const s;
+            struct ako_slab_header* const s;
         } curr = {
             .c = (const char*)sch->partial + sch->slabsize,
         };
@@ -279,20 +279,20 @@ void* spk_slab_alloc(struct spk_slab_chain* const sch) {
     return NULL;
 }
 
-void spk_slab_free(struct spk_slab_chain* const sch, const void* const addr) {
+void ako_slab_free(struct ako_slab_chain* const sch, const void* const addr) {
     assert(sch != NULL);
     assert(addr != NULL);
-    assert(__spk_slab_is_valid(sch));
+    assert(__ako_slab_is_valid(sch));
 
     int err = 0;
-    struct spk_slab_header* const slab = (void*)((uintptr_t)addr & sch->alignment_mask);
+    struct ako_slab_header* const slab = (void*)((uintptr_t)addr & sch->alignment_mask);
 
     register const int slot = ((char*)addr - (char*)slab -
-        offsetof(struct spk_slab_header, data)) / sch->itemsize;
+        offsetof(struct ako_slab_header, data)) / sch->itemsize;
 
-    if (unlikely(slab->slots == SPK_SLOTS_ALL_ZERO)) {
+    if (unlikely(slab->slots == AKO_SLOTS_ALL_ZERO)) {
         /* target slab is full, change state to partial */
-        slab->slots = SPK_SLOTS_FIRST << slot;
+        slab->slots = AKO_SLOTS_FIRST << slot;
 
         if (likely(slab != sch->full)) {
             if (likely(slab->prev && (slab->prev->next = slab->next) != NULL))
@@ -311,7 +311,7 @@ void spk_slab_free(struct spk_slab_chain* const sch, const void* const addr) {
 
         sch->partial = slab;
     }
-    else if (unlikely(SPK_ONE_USED_SLOT(slab->slots, sch->empty_slotmask))) {
+    else if (unlikely(AKO_ONE_USED_SLOT(slab->slots, sch->empty_slotmask))) {
         /* target slab is partial and has only one filled slot */
         if (unlikely(slab->refcount == 1 || (slab->refcount == 0 &&
             slab->page->refcount == 1))) {
@@ -331,7 +331,7 @@ void spk_slab_free(struct spk_slab_chain* const sch, const void* const addr) {
 
             union {
                 const char* c;
-                const struct spk_slab_header* const s;
+                const struct ako_slab_header* const s;
             } s;
 
             for (s.c = page; s.c != page_end; s.c += sch->slabsize) {
@@ -346,7 +346,7 @@ void spk_slab_free(struct spk_slab_chain* const sch, const void* const addr) {
             if (unlikely(found_head && (sch->empty = sch->empty->next) != NULL))
                 sch->empty->prev = NULL;
 
-            if (sch->slabsize <= spk_slab_pagesize) {
+            if (sch->slabsize <= ako_slab_pagesize) {
                 err = munmap(page, sch->pages_per_alloc);
                 if (unlikely(err == -1))
                     //perror("munmap");
@@ -381,23 +381,23 @@ void spk_slab_free(struct spk_slab_chain* const sch, const void* const addr) {
     }
     else {
         /* target slab is partial, no need to change state */
-        slab->slots |= SPK_SLOTS_FIRST << slot;
+        slab->slots |= AKO_SLOTS_FIRST << slot;
     }
 }
 
-void spk_slab_traverse(const struct spk_slab_chain* const sch, void (*fn)(const void*)) {
+void ako_slab_traverse(const struct ako_slab_chain* const sch, void (*fn)(const void*)) {
     assert(fn != NULL);
     assert(sch != NULL);
-    assert(__spk_slab_is_valid(sch));
+    assert(__ako_slab_is_valid(sch));
 
-    const struct spk_slab_header* slab;
+    const struct ako_slab_header* slab;
     const char* item, * end;
-    const size_t data_offset = offsetof(struct spk_slab_header, data);
+    const size_t data_offset = offsetof(struct ako_slab_header, data);
 
     for (slab = sch->partial; slab; slab = slab->next) {
         item = (const char*)slab + data_offset;
         end = item + sch->itemcount * sch->itemsize;
-        uint64_t mask = SPK_SLOTS_FIRST;
+        uint64_t mask = AKO_SLOTS_FIRST;
 
         do {
             if (!(slab->slots & mask))
@@ -416,24 +416,24 @@ void spk_slab_traverse(const struct spk_slab_chain* const sch, void (*fn)(const 
     }
 }
 
-void spk_slab_destroy(const struct spk_slab_chain* const sch) {
+void ako_slab_destroy(const struct ako_slab_chain* const sch) {
     assert(sch != NULL);
-    assert(__spk_slab_is_valid(sch));
+    assert(__ako_slab_is_valid(sch));
 
-    struct spk_slab_header* const heads[] = { 
+    struct ako_slab_header* const heads[] = { 
         sch->partial, 
         sch->empty, 
         sch->full 
     };
-    struct spk_slab_header* pages_head = NULL;
-    struct spk_slab_header* pages_tail = NULL;
+    struct ako_slab_header* pages_head = NULL;
+    struct ako_slab_header* pages_tail = NULL;
 
     for (size_t i = 0; i < 3; ++i) {
-        struct spk_slab_header* slab = heads[i];
+        struct ako_slab_header* slab = heads[i];
 
         while (slab != NULL) {
             if (slab->refcount != 0) {
-                struct spk_slab_header* const page = slab;
+                struct ako_slab_header* const page = slab;
                 slab = slab->next;
 
                 if (unlikely(pages_head == NULL))
@@ -451,9 +451,9 @@ void spk_slab_destroy(const struct spk_slab_chain* const sch) {
 
     if (likely(pages_head != NULL)) {
         pages_tail->next = NULL;
-        struct spk_slab_header* page = pages_head;
+        struct ako_slab_header* page = pages_head;
 
-        if (sch->slabsize <= spk_slab_pagesize) {
+        if (sch->slabsize <= ako_slab_pagesize) {
             do {
                 void* const target = page;
                 page = page->next;

@@ -5,17 +5,17 @@
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
-#include <spk_bytebuffer.h>
+#include <ako_bytebuffer.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 
 // Default number of bytes to allocate in the backing buffer if no size is provided
-static const uint64_t spk_byte_buffer_default_size = 4096;
+static const uint64_t ako_byte_buffer_default_size = 4096;
 
 // Wrap around an existing buf - will not copy buf
-spk_byte_buffer* spk_bytebuf_new_wrap(uint8_t* buf, size_t len) {
-    spk_byte_buffer* bbuf = (spk_byte_buffer*)malloc(sizeof(spk_byte_buffer));
+ako_byte_buffer* ako_bytebuf_new_wrap(uint8_t* buf, size_t len) {
+    ako_byte_buffer* bbuf = (ako_byte_buffer*)malloc(sizeof(ako_byte_buffer));
     if (!bbuf)
         return NULL;
 
@@ -28,8 +28,8 @@ spk_byte_buffer* spk_bytebuf_new_wrap(uint8_t* buf, size_t len) {
 }
 
 // Copy len bytes from buf into the newly created byte buffer
-spk_byte_buffer* spk_bytebuf_new_copy(const uint8_t* buf, size_t len) {
-    spk_byte_buffer* bbuf = (spk_byte_buffer*)malloc(sizeof(spk_byte_buffer));
+ako_byte_buffer* ako_bytebuf_new_copy(const uint8_t* buf, size_t len) {
+    ako_byte_buffer* bbuf = (ako_byte_buffer*)malloc(sizeof(ako_byte_buffer));
     if (!bbuf)
         return NULL;
 
@@ -47,8 +47,8 @@ spk_byte_buffer* spk_bytebuf_new_copy(const uint8_t* buf, size_t len) {
     return bbuf;
 }
 
-spk_byte_buffer* spk_bytebuf_new(size_t len) {
-    spk_byte_buffer* bbuf = (spk_byte_buffer*)malloc(sizeof(spk_byte_buffer));
+ako_byte_buffer* ako_bytebuf_new(size_t len) {
+    ako_byte_buffer* bbuf = (ako_byte_buffer*)malloc(sizeof(ako_byte_buffer));
     if (!bbuf)
         return NULL;
 
@@ -66,22 +66,22 @@ spk_byte_buffer* spk_bytebuf_new(size_t len) {
     return bbuf;
 }
 
-spk_byte_buffer* spk_bytebuf_new_default() {
-    spk_byte_buffer* bbuf = (spk_byte_buffer*)malloc(sizeof(spk_byte_buffer));
+ako_byte_buffer* ako_bytebuf_new_default() {
+    ako_byte_buffer* bbuf = (ako_byte_buffer*)malloc(sizeof(ako_byte_buffer));
     if (!bbuf)
         return NULL;
 
     bbuf->pos = 0;
     bbuf->wrapped = false;
     bbuf->len = 0;
-    bbuf->size = spk_byte_buffer_default_size;
-    bbuf->buf = (uint8_t*)malloc(spk_byte_buffer_default_size);
+    bbuf->size = ako_byte_buffer_default_size;
+    bbuf->buf = (uint8_t*)malloc(ako_byte_buffer_default_size);
     if (!bbuf->buf) {
         free(bbuf);
         return NULL;
     }
 
-    memset(bbuf->buf, 0, spk_byte_buffer_default_size);
+    memset(bbuf->buf, 0, ako_byte_buffer_default_size);
     return bbuf;
 }
 
@@ -90,9 +90,9 @@ spk_byte_buffer* spk_bytebuf_new_default() {
  * Resizing will only work on buffers managed by byte_buffer (ie. not wrapped buffers)
  * This will also reset the read/write position.
  *
- * @return spk_byte_buffer* if the resize was a success
+ * @return ako_byte_buffer* if the resize was a success
  */
-spk_byte_buffer* spk_bytebuf_resize(spk_byte_buffer* bbuf, size_t new_len) {
+ako_byte_buffer* ako_bytebuf_resize(ako_byte_buffer* bbuf, size_t new_len) {
     // Can't resize an internal buffer that may be used elsewhere
     if (bbuf->wrapped)
         return NULL;
@@ -124,9 +124,9 @@ spk_byte_buffer* spk_bytebuf_resize(spk_byte_buffer* bbuf, size_t new_len) {
  *
  * WARNING: this function will force to cover valid buffer data.
  *
- * @return spk_byte_buffer* if the resize was a success
+ * @return ako_byte_buffer* if the resize was a success
  */
-spk_byte_buffer* spk_bytebuf_resize_force(spk_byte_buffer* bbuf, size_t new_len) {
+ako_byte_buffer* ako_bytebuf_resize_force(ako_byte_buffer* bbuf, size_t new_len) {
     // Can't resize an internal buffer that may be used elsewhere
     if (bbuf->wrapped)
         return NULL;
@@ -149,7 +149,7 @@ spk_byte_buffer* spk_bytebuf_resize_force(spk_byte_buffer* bbuf, size_t new_len)
     return bbuf;
 }
 
-inline void spk_bytebuf_free(spk_byte_buffer* bbuf) {
+inline void ako_bytebuf_free(ako_byte_buffer* bbuf) {
     if (!bbuf->wrapped)
         free(bbuf->buf);
 
@@ -160,46 +160,46 @@ inline void spk_bytebuf_free(spk_byte_buffer* bbuf) {
 //////////////////////////////////////////////////////
 /****************************************************/
 
-inline void spk_bytebuf_reset(spk_byte_buffer* bbuf) {
+inline void ako_bytebuf_reset(ako_byte_buffer* bbuf) {
     bbuf->pos = 0;
 }
 
-inline void spk_bytebuf_skip(spk_byte_buffer* bbuf, size_t len) {
+inline void ako_bytebuf_skip(ako_byte_buffer* bbuf, size_t len) {
     size_t pos = bbuf->pos + len;
     bbuf->pos = pos > bbuf->len ? bbuf->len : pos;
 }
 
-inline size_t spk_bytebuf_length(spk_byte_buffer* bbuf) {
+inline size_t ako_bytebuf_length(ako_byte_buffer* bbuf) {
     return bbuf->len;
 }
 
-inline size_t spk_bytebuf_size(spk_byte_buffer* bbuf) {
+inline size_t ako_bytebuf_size(ako_byte_buffer* bbuf) {
     return bbuf->size;
 }
 
-inline size_t spk_bytebuf_pos(spk_byte_buffer* bbuf) {
+inline size_t ako_bytebuf_pos(ako_byte_buffer* bbuf) {
     return bbuf->pos;
 }
 
-inline bool spk_bytebuf_is_empty(spk_byte_buffer* bbuf) {
+inline bool ako_bytebuf_is_empty(ako_byte_buffer* bbuf) {
     if (bbuf->wrapped)
         return false;
     return bbuf->len == 0;
 }
 
-inline bool spk_bytebuf_is_full(spk_byte_buffer* bbuf) {
+inline bool ako_bytebuf_is_full(ako_byte_buffer* bbuf) {
     if (bbuf->wrapped)
         return true;
     return bbuf->len == bbuf->size;
 }
 
 // Number of bytes from the current read position till the end of the buffer
-inline size_t spk_bytebuf_valid(spk_byte_buffer* bbuf) {
+inline size_t ako_bytebuf_valid(ako_byte_buffer* bbuf) {
     return bbuf->size - bbuf->len;
 }
 
 // Blank out the buffer and reset the position
-inline bool spk_bytebuf_clear(spk_byte_buffer* bbuf) {
+inline bool ako_bytebuf_clear(ako_byte_buffer* bbuf) {
     if (bbuf->wrapped)
         return false;
     memset(bbuf->buf, 0, bbuf->size);
@@ -209,15 +209,15 @@ inline bool spk_bytebuf_clear(spk_byte_buffer* bbuf) {
 }
 
 // Return a new instance of a bytebuffer with the exact same contents and the same state
-inline spk_byte_buffer* spk_bytebuf_clone(spk_byte_buffer* bbuf) {
-    spk_byte_buffer* ret = spk_bytebuf_new_copy(bbuf->buf, bbuf->len);
+inline ako_byte_buffer* ako_bytebuf_clone(ako_byte_buffer* bbuf) {
+    ako_byte_buffer* ret = ako_bytebuf_new_copy(bbuf->buf, bbuf->len);
     if (ret)
         ret->pos = bbuf->pos;
     return ret;
 }
 
 // Compare if the contents are equivalent
-inline bool spk_bytebuf_equals(spk_byte_buffer* bbuf1, spk_byte_buffer* bbuf2) {
+inline bool ako_bytebuf_equals(ako_byte_buffer* bbuf1, ako_byte_buffer* bbuf2) {
     if (bbuf1->len != bbuf2->len)
         return false;
 
@@ -229,7 +229,7 @@ inline bool spk_bytebuf_equals(spk_byte_buffer* bbuf1, spk_byte_buffer* bbuf2) {
     return true;
 }
 
-void spk_bytebuf_replace(spk_byte_buffer* bbuf, uint8_t key, uint8_t rep, uint32_t start,
+void ako_bytebuf_replace(ako_byte_buffer* bbuf, uint8_t key, uint8_t rep, uint32_t start,
     bool first_occurance_only) {
     for (uint64_t i = start; i < bbuf->len; i++) {
         if (bbuf->buf[i] == key) {
@@ -241,7 +241,7 @@ void spk_bytebuf_replace(spk_byte_buffer* bbuf, uint8_t key, uint8_t rep, uint32
     }
 }
 
-inline void spk_bytebuf_print_ascii(spk_byte_buffer* bbuf, char* dst) {
+inline void ako_bytebuf_print_ascii(ako_byte_buffer* bbuf, char* dst) {
     uint64_t i = 0;
     for (i = 0; i < bbuf->len; i++) {
         dst[i] = bbuf->buf[i];
@@ -249,7 +249,7 @@ inline void spk_bytebuf_print_ascii(spk_byte_buffer* bbuf, char* dst) {
     dst[i] = 0;
 }
 
-inline void spk_bytebuf_print_hex(spk_byte_buffer* bbuf, char* dst) {
+inline void ako_bytebuf_print_hex(ako_byte_buffer* bbuf, char* dst) {
     uint64_t i = 0, j = 0;
     for (i = 0, j = 0; i < bbuf->len; i++) {
         uint8_t temp1 = (bbuf->buf[i] & 0xf0) >> 4;
@@ -262,7 +262,7 @@ inline void spk_bytebuf_print_hex(spk_byte_buffer* bbuf, char* dst) {
 
 // Relative peek. Reads and returns the next byte in the buffer from the current
 // position but does not increment the read position
-inline uint8_t spk_bytebuf_peek(spk_byte_buffer* bbuf) {
+inline uint8_t ako_bytebuf_peek(ako_byte_buffer* bbuf) {
     //return *(uint8_t*)(bb->buf+bb->pos);
     //size_t pos = bbuf->pos == 0 ? 0 : bbuf->pos - 1;
     return bbuf->buf[bbuf->pos];
@@ -270,30 +270,30 @@ inline uint8_t spk_bytebuf_peek(spk_byte_buffer* bbuf) {
 
 // Relative get method. Reads the byte at the buffers current position then 
 // increments the position
-inline uint8_t spk_bytebuf_get(spk_byte_buffer* bbuf) {
+inline uint8_t ako_bytebuf_get(ako_byte_buffer* bbuf) {
     return bbuf->pos == bbuf->len ? 0 : bbuf->buf[bbuf->pos++];
 }
 
 // Absolute get method. Read byte at index
-inline uint8_t spk_bytebuf_get_at(spk_byte_buffer* bbuf, uint64_t index) {
+inline uint8_t ako_bytebuf_get_at(ako_byte_buffer* bbuf, uint64_t index) {
     return bbuf->buf[index];
 }
 
-inline void spk_bytebuf_get_bytes_in(spk_byte_buffer* bbuf, uint8_t* dest, size_t len) {
+inline void ako_bytebuf_get_bytes_in(ako_byte_buffer* bbuf, uint8_t* dest, size_t len) {
     for (size_t i = 0; i < len; i++) {
-        dest[i] = spk_bytebuf_get(bbuf);
+        dest[i] = ako_bytebuf_get(bbuf);
     }
 }
 
-inline void spk_bytebuf_get_bytes_at_in(spk_byte_buffer* bbuf, uint64_t index,
+inline void ako_bytebuf_get_bytes_at_in(ako_byte_buffer* bbuf, uint64_t index,
     uint8_t* dest, size_t len) {
     for (size_t i = 0; i < len; i++) {
-        dest[i] = spk_bytebuf_get_at(bbuf, index + i);
+        dest[i] = ako_bytebuf_get_at(bbuf, index + i);
     }
 }
 
 // Return a new byte array of size len with the contents from the current position
-uint8_t* spk_bytebuf_get_bytes(spk_byte_buffer* bbuf, size_t len) {
+uint8_t* ako_bytebuf_get_bytes(ako_byte_buffer* bbuf, size_t len) {
     uint8_t* ret = (uint8_t*)malloc(len);
     if (!ret)
         return NULL;
@@ -304,7 +304,7 @@ uint8_t* spk_bytebuf_get_bytes(spk_byte_buffer* bbuf, size_t len) {
 }
 
 // Return a new byte array of size len with the contents from the index position
-uint8_t* spk_bytebuf_get_bytes_at(spk_byte_buffer* bbuf, size_t len, uint64_t index) {
+uint8_t* ako_bytebuf_get_bytes_at(ako_byte_buffer* bbuf, size_t len, uint64_t index) {
     uint8_t* ret = (uint8_t*)malloc(len);
     if (!ret)
         return NULL;
@@ -312,7 +312,7 @@ uint8_t* spk_bytebuf_get_bytes_at(spk_byte_buffer* bbuf, size_t len, uint64_t in
     return ret;
 }
 
-double spk_bytebuf_get_double(spk_byte_buffer* bbuf) {
+double ako_bytebuf_get_double(ako_byte_buffer* bbuf) {
     if (bbuf->pos + sizeof(double) > bbuf->len)
         return 0;
     double ret = *(double*)(bbuf->buf + bbuf->pos);
@@ -320,11 +320,11 @@ double spk_bytebuf_get_double(spk_byte_buffer* bbuf) {
     return ret;
 }
 
-inline double spk_bytebuf_get_double_at(spk_byte_buffer* bbuf, uint64_t index) {
+inline double ako_bytebuf_get_double_at(ako_byte_buffer* bbuf, uint64_t index) {
     return *(double*)(bbuf->buf + index);
 }
 
-float spk_bytebuf_get_float(spk_byte_buffer* bbuf) {
+float ako_bytebuf_get_float(ako_byte_buffer* bbuf) {
     if (bbuf->pos + sizeof(float) > bbuf->len)
         return 0;
     float ret = *(float*)(bbuf->buf + bbuf->pos);
@@ -332,11 +332,11 @@ float spk_bytebuf_get_float(spk_byte_buffer* bbuf) {
     return ret;
 }
 
-inline float spk_bytebuf_get_float_at(spk_byte_buffer* bbuf, uint64_t index) {
+inline float ako_bytebuf_get_float_at(ako_byte_buffer* bbuf, uint64_t index) {
     return *(float*)(bbuf->buf + index);
 }
 
-uint32_t spk_bytebuf_get_int(spk_byte_buffer* bbuf) {
+uint32_t ako_bytebuf_get_int(ako_byte_buffer* bbuf) {
     if (bbuf->pos + sizeof(uint32_t) > bbuf->len)
         return 0;
     uint32_t ret = *(uint32_t*)(bbuf->buf + bbuf->pos);
@@ -344,11 +344,11 @@ uint32_t spk_bytebuf_get_int(spk_byte_buffer* bbuf) {
     return ret;
 }
 
-inline uint32_t spk_bytebuf_get_int_at(spk_byte_buffer* bbuf, uint64_t index) {
+inline uint32_t ako_bytebuf_get_int_at(ako_byte_buffer* bbuf, uint64_t index) {
     return *(uint32_t*)(bbuf->buf + index);
 }
 
-uint64_t spk_bytebuf_get_long(spk_byte_buffer* bbuf) {
+uint64_t ako_bytebuf_get_long(ako_byte_buffer* bbuf) {
     if (bbuf->pos + sizeof(uint64_t) > bbuf->len)
         return 0;
     uint64_t ret = *(uint64_t*)(bbuf->buf + bbuf->pos);
@@ -356,11 +356,11 @@ uint64_t spk_bytebuf_get_long(spk_byte_buffer* bbuf) {
     return ret;
 }
 
-inline uint64_t spk_bytebuf_get_long_at(spk_byte_buffer* bbuf, uint64_t index) {
+inline uint64_t ako_bytebuf_get_long_at(ako_byte_buffer* bbuf, uint64_t index) {
     return *(uint64_t*)(bbuf->buf + index);
 }
 
-uint16_t spk_bytebuf_get_short(spk_byte_buffer* bbuf) {
+uint16_t ako_bytebuf_get_short(ako_byte_buffer* bbuf) {
     if (bbuf->pos + sizeof(uint16_t) > bbuf->len)
         return 0;
     uint16_t ret = *(uint16_t*)(bbuf->buf + bbuf->pos);
@@ -368,96 +368,96 @@ uint16_t spk_bytebuf_get_short(spk_byte_buffer* bbuf) {
     return ret;
 }
 
-inline uint16_t spk_bytebuf_get_short_at(spk_byte_buffer* bbuf, uint64_t index) {
+inline uint16_t ako_bytebuf_get_short_at(ako_byte_buffer* bbuf, uint64_t index) {
     return *(uint16_t*)(bbuf->buf + index);
 }
 
 // Relative write of the entire contents of another ByteBuffer (src)
-void spk_bytebuf_put_bytebuf(spk_byte_buffer* dest, spk_byte_buffer* src) {
+void ako_bytebuf_put_bytebuf(ako_byte_buffer* dest, ako_byte_buffer* src) {
     size_t i = 0;
     while (i < src->len && i < dest->size) {
-        spk_bytebuf_put(dest, src->buf[i]);
+        ako_bytebuf_put(dest, src->buf[i]);
         i++;
     }
 }
 
-void spk_bytebuf_put(spk_byte_buffer* bbuf, uint8_t value) {
+void ako_bytebuf_put(ako_byte_buffer* bbuf, uint8_t value) {
     if (bbuf->len >= bbuf->size)
         return;
     bbuf->buf[bbuf->len++] = value;
 }
 
-void spk_bytebuf_put_at(spk_byte_buffer* bbuf, uint8_t value, uint64_t index) {
+void ako_bytebuf_put_at(ako_byte_buffer* bbuf, uint8_t value, uint64_t index) {
     if (index >= bbuf->len)
         return;
 
     bbuf->buf[index] = value;
 }
 
-void spk_bytebuf_put_bytes(spk_byte_buffer* bbuf, uint8_t* arr, size_t len) {
+void ako_bytebuf_put_bytes(ako_byte_buffer* bbuf, uint8_t* arr, size_t len) {
     for (size_t i = 0; i < len; i++) {
-        spk_bytebuf_put(bbuf, arr[i]);
+        ako_bytebuf_put(bbuf, arr[i]);
     }
 }
 
-void spk_bytebuf_put_bytes_at(spk_byte_buffer* bbuf, uint8_t* arr, size_t len, 
+void ako_bytebuf_put_bytes_at(ako_byte_buffer* bbuf, uint8_t* arr, size_t len, 
     uint64_t index) {
     for (size_t i = 0; i < len; i++) {
-        spk_bytebuf_put_at(bbuf, arr[i], index + i);
+        ako_bytebuf_put_at(bbuf, arr[i], index + i);
     }
 }
 
-void spk_bytebuf_put_double(spk_byte_buffer* bbuf, double value) {
+void ako_bytebuf_put_double(ako_byte_buffer* bbuf, double value) {
     if (bbuf->len + sizeof(double) >= bbuf->size)
         return;
     *(double*)(bbuf->buf + bbuf->len) = value;
     bbuf->len += sizeof(double);
 }
 
-inline void spk_bytebuf_put_double_at(spk_byte_buffer* bbuf, double value, uint64_t index) {
+inline void ako_bytebuf_put_double_at(ako_byte_buffer* bbuf, double value, uint64_t index) {
     *(double*)(bbuf->buf + index) = value;
 }
 
-void spk_bytebuf_put_float(spk_byte_buffer* bbuf, float value) {
+void ako_bytebuf_put_float(ako_byte_buffer* bbuf, float value) {
     if (bbuf->len + sizeof(float) >= bbuf->size)
         return;
     *(float*)(bbuf->buf + bbuf->len) = value;
     bbuf->len += sizeof(float);
 }
 
-inline void spk_bytebuf_put_float_at(spk_byte_buffer* bbuf, float value, uint64_t index) {
+inline void ako_bytebuf_put_float_at(ako_byte_buffer* bbuf, float value, uint64_t index) {
     *(float*)(bbuf->buf + index) = value;
 }
 
-void spk_bytebuf_put_int(spk_byte_buffer* bbuf, uint32_t value) {
+void ako_bytebuf_put_int(ako_byte_buffer* bbuf, uint32_t value) {
     if (bbuf->len + sizeof(uint32_t) >= bbuf->size)
         return;
     *(uint32_t*)(bbuf->buf + bbuf->len) = value;
     bbuf->len += sizeof(uint32_t);
 }
 
-inline void spk_bytebuf_put_int_at(spk_byte_buffer* bbuf, uint32_t value, uint64_t index) {
+inline void ako_bytebuf_put_int_at(ako_byte_buffer* bbuf, uint32_t value, uint64_t index) {
     *(uint32_t*)(bbuf->buf + index) = value;
 }
 
-void spk_bytebuf_put_long(spk_byte_buffer* bbuf, uint64_t value) {
+void ako_bytebuf_put_long(ako_byte_buffer* bbuf, uint64_t value) {
     if (bbuf->len + sizeof(uint64_t) >= bbuf->size)
         return;
     *(uint64_t*)(bbuf->buf + bbuf->len) = value;
     bbuf->len += sizeof(uint64_t);
 }
 
-inline void spk_bytebuf_put_long_at(spk_byte_buffer* bbuf, uint64_t value, uint64_t index) {
+inline void ako_bytebuf_put_long_at(ako_byte_buffer* bbuf, uint64_t value, uint64_t index) {
     *(uint64_t*)(bbuf->buf + index) = value;
 }
 
-void spk_bytebuf_put_short(spk_byte_buffer* bbuf, uint16_t value) {
+void ako_bytebuf_put_short(ako_byte_buffer* bbuf, uint16_t value) {
     if (bbuf->len + sizeof(uint16_t) >= bbuf->size)
         return;
     *(uint16_t*)(bbuf->buf + bbuf->len) = value;
     bbuf->len += sizeof(uint16_t);
 }
 
-inline void spk_bytebuf_put_short_at(spk_byte_buffer* bbuf, uint16_t value, uint64_t index) {
+inline void ako_bytebuf_put_short_at(ako_byte_buffer* bbuf, uint16_t value, uint64_t index) {
     *(uint16_t*)(bbuf->buf + index) = value;
 }
