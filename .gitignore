@@ -57,8 +57,9 @@ msvc/x64/
 build/
 bin/
 x64/
-test/CMakeCache.txt
-test/CMakeFiles/
+CMakeCache.txt
+Makefile
+CMakeFiles/
 test/lib/
 test/bin/
 *.cmake
