@@ -1,11 +1,11 @@
 /*
- * spk_setproctitle.c -- Source for renaming process title.
+ * ako_setproctitle.c -- Source for renaming process title.
  *
  * Copyright (C) 2019 CQU STARLab. All rights reserved.
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
-#include <spk_setproctitle.h>
+#include <ako_setproctitle.h>
 
 #if defined(SETPROCTITLE_USES_ENV)
 
@@ -14,7 +14,7 @@
 
 extern char** environ;
 
-int spk_setproctitle(char** argv, const char* title) {
+int ako_setproctitle(char** argv, const char* title) {
     char* last = NULL, *p = NULL;
     size_t size, title_size;
     int i;
