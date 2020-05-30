@@ -106,7 +106,7 @@ endif()
 add_subdirectory(../src/arch/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/arch_objs)
 add_subdirectory(../src/common/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/common_objs)
 add_subdirectory(../src/daemon/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/daemon_objs)
-add_subdirectory(../src/core/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/core_objs)
+#add_subdirectory(../src/core/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/core_objs)
 
 
 
@@ -114,7 +114,7 @@ set(TEST_LIBS
     arch_objs
     common_objs
     daemon_objs
-    core_objs
+#    core_objs
     pthread
     crypto
     ssl
