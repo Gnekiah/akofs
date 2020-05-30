@@ -4,274 +4,34 @@
     <Filter Include="include">
       <UniqueIdentifier>{d510271a-1fc6-4b02-a222-0cc753a34f30}</UniqueIdentifier>
     </Filter>
-    <Filter Include="log">
-      <UniqueIdentifier>{6c5ffd07-c495-49ee-92b1-a53fb02dd609}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config">
-      <UniqueIdentifier>{587f8be8-b648-4025-b7a8-683492bdeabb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="erasure-code">
-      <UniqueIdentifier>{49dbc34a-9263-4e4e-8820-1342c689cb95}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="eventd">
-      <UniqueIdentifier>{697c4cba-db1f-493f-ae9a-d2b2c25e633c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="arch">
       <UniqueIdentifier>{9ddbcc89-080f-4326-a2c1-582b6e246a28}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="config\inih">
-      <UniqueIdentifier>{fbdc0330-e564-48e6-ae94-974b7794aa00}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="log\zlog">
-      <UniqueIdentifier>{da478912-6ebf-4efd-8ab6-17c9cfee0b89}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="compto">
-      <UniqueIdentifier>{f798a116-9d85-4d1d-b4bc-77b755f3b753}</UniqueIdentifier>
     </Filter>
     <Filter Include="common">
       <UniqueIdentifier>{353b1906-3739-48f8-8804-0b5a8d1c04a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="spk-rms">
-      <UniqueIdentifier>{0a42f00c-23af-45d3-a9f3-f08fe93f8d18}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="kvstore">
-      <UniqueIdentifier>{bac28301-eb6a-4a21-a59f-cde0d8f37389}</UniqueIdentifier>
-    </Filter>
     <Filter Include="daemon">
       <UniqueIdentifier>{044e0e2e-221e-4569-9fed-b53ae855c08a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="msgon">
-      <UniqueIdentifier>{b1d16ec1-ad3e-4e72-88a0-010950e0d850}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="auth">
-      <UniqueIdentifier>{74c350ab-06d0-444a-a737-1a2efae8f54d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="journal">
-      <UniqueIdentifier>{0708c70a-d8b2-4f4e-8f32-33ab8f30f28c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="kvstore\kvdb">
-      <UniqueIdentifier>{d015c5c9-3d3a-45a4-bfd9-d326be661ded}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="kvstore\lz4">
-      <UniqueIdentifier>{20759bcd-bb2b-4de8-bbc6-1629d68dc3de}</UniqueIdentifier>
     </Filter>
     <Filter Include="include\message">
       <UniqueIdentifier>{88b35273-f754-48d6-b7c7-4ff3998aa878}</UniqueIdentifier>
     </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{7b3472d5-7d28-4878-a69d-2acdc82a7ce5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\inih">
+      <UniqueIdentifier>{c4290de4-c34e-40e3-9581-c622fb466dbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\zlog">
+      <UniqueIdentifier>{dc342d26-848f-4d48-ba4a-bdfb8f0bf63c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\include\spk_setproctitle.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_compat.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_macros.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\config\inih\ini.h">
-      <Filter>config\inih</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\buf.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\category.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\category_table.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\conf.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\event.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\fmacros.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\format.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\level.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\level_list.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\mdc.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\record.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\record_table.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\rotater.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\rule.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\spec.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\thread.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\version.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\zc_arraylist.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\zc_defs.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\zc_hashtable.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\zc_profile.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\zc_util.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\zc_xplatform.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\log\zlog\zlog.h">
-      <Filter>log\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_logger.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_core.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_compto.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\include\CircularBuffer.hpp">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\config\inih\INIReader.hpp">
-      <Filter>config\inih</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\include\ByteBuffer.hpp">
       <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\ErasureCodeInterface.hpp">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_bytebuffer.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_slab.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_builtin.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_timer.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_kvstore.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_daemon.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_eventd.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_msgon.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_auth.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_journal.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_ec.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_consprot.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_config.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_getopt.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_errno.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\config\Config.hpp">
-      <Filter>config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\kvdb\kvassert.h">
-      <Filter>kvstore\kvdb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\kvdb\kvblock.h">
-      <Filter>kvstore\kvdb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\kvdb\kvbloom.h">
-      <Filter>kvstore\kvdb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\kvdb\kvdb.h">
-      <Filter>kvstore\kvdb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\kvdb\kvdbo.h">
-      <Filter>kvstore\kvdb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\kvdb\kvendian.h">
-      <Filter>kvstore\kvdb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\kvdb\kvmurmurhash.h">
-      <Filter>kvstore\kvdb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\kvdb\kvpaddingutils.h">
-      <Filter>kvstore\kvdb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\kvdb\kvprime.h">
-      <Filter>kvstore\kvdb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\kvdb\kvserialization.h">
-      <Filter>kvstore\kvdb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\kvdb\kvtable.h">
-      <Filter>kvstore\kvdb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\kvdb\kvtypes.h">
-      <Filter>kvstore\kvdb</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\lz4\lz4.h">
-      <Filter>kvstore\lz4</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\lz4\lz4frame.h">
-      <Filter>kvstore\lz4</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\lz4\lz4frame_static.h">
-      <Filter>kvstore\lz4</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\lz4\lz4hc.h">
-      <Filter>kvstore\lz4</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\kvstore\lz4\xxhash.h">
-      <Filter>kvstore\lz4</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_gnu_getopt.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_gnu_unistd.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\eventd\eventd_core.h">
-      <Filter>eventd</Filter>
     </ClInclude>
     <ClInclude Include="..\src\include\message\Message.hpp">
       <Filter>include\message</Filter>
@@ -291,9 +51,6 @@
     <ClInclude Include="..\src\include\message\ReqJoinMessage.hpp">
       <Filter>include\message</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\include\message\RespJoinMessage.hpp">
-      <Filter>include\message</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\include\message\ReqSyncMessage.hpp">
       <Filter>include\message</Filter>
     </ClInclude>
@@ -304,9 +61,6 @@
       <Filter>include\message</Filter>
     </ClInclude>
     <ClInclude Include="..\src\include\message\ReqSubscribeSyncMessage.hpp">
-      <Filter>include\message</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\message\RetSyncMessage.hpp">
       <Filter>include\message</Filter>
     </ClInclude>
     <ClInclude Include="..\src\include\message\ReqUnsubscribeSyncMessage.hpp">
@@ -360,200 +114,281 @@
     <ClInclude Include="..\src\include\message\RespConsisCheckMessage.hpp">
       <Filter>include\message</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\include\message\CmdShutdownMessage.hpp">
-      <Filter>include\message</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\include\message\RespCmdShutdownMessage.hpp">
-      <Filter>include\message</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\message\CmdRebootMessage.hpp">
       <Filter>include\message</Filter>
     </ClInclude>
     <ClInclude Include="..\src\include\message\RespCmdRebootMessage.hpp">
       <Filter>include\message</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\include\message\ReqLocalProbe.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\message\RespLocalProbe.hpp">
+      <Filter>include\message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_builtin.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_bytebuffer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_compat.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_compto.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_config.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_core.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_daemon.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_errno.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_eventd.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_getopt.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_gnu_getopt.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_gnu_unistd.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_logger.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_macros.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_setproctitle.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_slab.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\inih\ini.h">
+      <Filter>common\inih</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\inih\INIReader.hpp">
+      <Filter>common\inih</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\buf.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\category.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\category_table.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\conf.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\event.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\fmacros.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\format.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\level.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\level_list.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\mdc.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\record.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\record_table.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\rotater.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\rule.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\spec.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\thread.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\version.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\zc_arraylist.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\zc_defs.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\zc_hashtable.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\zc_profile.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\zc_util.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\zc_xplatform.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\zlog\zlog.h">
+      <Filter>common\zlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ErasureCode.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\Config.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\daemon\ako_eventd_core.h">
+      <Filter>daemon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\arch\spk_setproctitle.c">
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\arch\ako_gnu_getopt.c">
       <Filter>arch</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\config\inih\ini.c">
-      <Filter>config\inih</Filter>
+    <ClCompile Include="..\src\arch\ako_setproctitle.c">
+      <Filter>arch</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\config\inih\INIReader.cpp">
-      <Filter>config\inih</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\buf.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\category.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\category_table.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\conf.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\event.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\format.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\level.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\level_list.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\mdc.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\record.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\record_table.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\rotater.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\rule.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\spec.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\thread.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\zc_arraylist.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\zc_hashtable.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\zc_profile.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\zc_util.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\zlog\zlog.c">
-      <Filter>log\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\log\spk_logger.c">
-      <Filter>log</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\compto\spk_compress.c">
-      <Filter>compto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\compto\spk_crc32.c">
-      <Filter>compto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\compto\spk_hash.c">
-      <Filter>compto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\compto\spk_base64.c">
-      <Filter>compto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\compto\spk_des.c">
-      <Filter>compto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\compto\spk_rsa.c">
-      <Filter>compto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\compto\spk_aes.c">
-      <Filter>compto</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\config\Config.cpp">
-      <Filter>config</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\main.cpp" />
-    <ClCompile Include="..\src\common\spk_bytebuffer.c">
+    <ClCompile Include="..\src\common\ako_bytebuffer.c">
       <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\common\spk_slab.c">
+    <ClCompile Include="..\src\common\ako_getopt.c">
       <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\eventd\spk_timer.c">
-      <Filter>eventd</Filter>
+    <ClCompile Include="..\src\common\ako_slab.c">
+      <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\eventd\spk_eventd.c">
-      <Filter>eventd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\auth\spk_auth.c">
-      <Filter>auth</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\config\spk_config.cpp">
-      <Filter>config</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\daemon\spk_daemon.cpp">
+    <ClCompile Include="..\src\daemon\ako_daemon.cpp">
       <Filter>daemon</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\spk-rms\spk_rms.cpp">
-      <Filter>spk-rms</Filter>
+    <ClCompile Include="..\src\common\inih\ini.c">
+      <Filter>common\inih</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\common\spk_getopt.c">
+    <ClCompile Include="..\src\common\inih\INIReader.cpp">
+      <Filter>common\inih</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\buf.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\category.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\category_table.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\conf.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\event.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\format.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\level.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\level_list.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\mdc.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\record.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\record_table.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\rotater.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\rule.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\spec.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\thread.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\zc_arraylist.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\zc_hashtable.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\zc_profile.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\zc_util.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\zlog\zlog.c">
+      <Filter>common\zlog</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\ako_aes.c">
       <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\erasurecode\spk_ec.cpp">
-      <Filter>erasure-code</Filter>
+    <ClCompile Include="..\src\common\ako_base64.c">
+      <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\journal\spk_journal.cpp">
-      <Filter>journal</Filter>
+    <ClCompile Include="..\src\common\ako_compress.c">
+      <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\kvstore\spk_kvstore.cpp">
-      <Filter>kvstore</Filter>
+    <ClCompile Include="..\src\common\ako_config.cpp">
+      <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\msgon\spk_msgon.cpp">
-      <Filter>msgon</Filter>
+    <ClCompile Include="..\src\common\ako_crc32.c">
+      <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\kvstore\kvdb\kvassert.c">
-      <Filter>kvstore\kvdb</Filter>
+    <ClCompile Include="..\src\common\ako_des.c">
+      <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\kvstore\kvdb\kvblock.c">
-      <Filter>kvstore\kvdb</Filter>
+    <ClCompile Include="..\src\common\ako_hash.c">
+      <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\kvstore\kvdb\kvdb.c">
-      <Filter>kvstore\kvdb</Filter>
+    <ClCompile Include="..\src\common\ako_logger.c">
+      <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\kvstore\kvdb\kvdbo.cpp">
-      <Filter>kvstore\kvdb</Filter>
+    <ClCompile Include="..\src\common\ako_rsa.c">
+      <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\kvstore\kvdb\kvprime.c">
-      <Filter>kvstore\kvdb</Filter>
+    <ClCompile Include="..\src\common\Config.cpp">
+      <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\kvstore\kvdb\kvserialization.cpp">
-      <Filter>kvstore\kvdb</Filter>
+    <ClCompile Include="..\src\daemon\ako_eventd.c">
+      <Filter>daemon</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\kvstore\kvdb\kvtable.c">
-      <Filter>kvstore\kvdb</Filter>
+    <ClCompile Include="..\src\daemon\ako_socket_client.c">
+      <Filter>daemon</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\kvstore\lz4\lz4.c">
-      <Filter>kvstore\lz4</Filter>
+    <ClCompile Include="..\src\daemon\ako_socket_server.c">
+      <Filter>daemon</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\kvstore\lz4\lz4frame.c">
-      <Filter>kvstore\lz4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\kvstore\lz4\lz4hc.c">
-      <Filter>kvstore\lz4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\kvstore\lz4\xxhash.c">
-      <Filter>kvstore\lz4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\arch\spk_gnu_getopt.c">
-      <Filter>arch</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\eventd\socket_server_das.c">
-      <Filter>eventd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\eventd\socket_server_css.c">
-      <Filter>eventd</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\eventd\socket_client.c">
-      <Filter>eventd</Filter>
+    <ClCompile Include="..\src\daemon\ako_timer.c">
+      <Filter>daemon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -561,23 +396,8 @@
     <Text Include="..\src\arch\CMakeLists.txt">
       <Filter>arch</Filter>
     </Text>
-    <Text Include="..\src\config\CMakeLists.txt">
-      <Filter>config</Filter>
-    </Text>
-    <Text Include="..\src\log\CMakeLists.txt">
-      <Filter>log</Filter>
-    </Text>
-    <Text Include="..\src\compto\CMakeLists.txt">
-      <Filter>compto</Filter>
-    </Text>
-    <Text Include="..\src\kvstore\kvdb\CMakeLists.txt">
-      <Filter>kvstore\kvdb</Filter>
-    </Text>
-    <Text Include="..\src\kvstore\lz4\CMakeLists.txt">
-      <Filter>kvstore\lz4</Filter>
-    </Text>
-    <Text Include="..\src\kvstore\CMakeLists.txt">
-      <Filter>kvstore</Filter>
+    <Text Include="..\src\common\CMakeLists.txt">
+      <Filter>common</Filter>
     </Text>
   </ItemGroup>
 </Project>

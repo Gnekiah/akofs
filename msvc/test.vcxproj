@@ -85,62 +85,77 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\config\inih\ini.h" />
-    <ClInclude Include="..\src\config\inih\INIReader.hpp" />
-    <ClInclude Include="..\src\include\ByteBuffer.hpp" />
-    <ClInclude Include="..\src\include\CircularBuffer.hpp" />
-    <ClInclude Include="..\src\config\Config.hpp" />
-    <ClInclude Include="..\src\include\spk_builtin.h" />
-    <ClInclude Include="..\src\include\spk_bytebuffer.h" />
-    <ClInclude Include="..\src\include\spk_compat.h" />
-    <ClInclude Include="..\src\include\spk_compto.h" />
-    <ClInclude Include="..\src\include\spk_getopt.h" />
-    <ClInclude Include="..\src\include\spk_logger.h" />
-    <ClInclude Include="..\src\include\spk_setproctitle.h" />
-    <ClInclude Include="..\src\include\spk_slab.h" />
-    <ClInclude Include="..\test\test_arch\test_spk_builtin.hpp" />
-    <ClInclude Include="..\test\test_arch\test_spk_compat.hpp" />
-    <ClInclude Include="..\test\test_arch\test_spk_setproctitle.hpp" />
-    <ClInclude Include="..\test\test_common\test_ByteBuffer.hpp" />
-    <ClInclude Include="..\test\test_common\test_CircularBuffer.hpp" />
-    <ClInclude Include="..\test\test_common\test_spk_bytebuffer.hpp" />
-    <ClInclude Include="..\test\test_common\test_spk_getopt.hpp" />
-    <ClInclude Include="..\test\test_common\test_spk_slab.hpp" />
-    <ClInclude Include="..\test\test_compto\test_spk_aes.hpp" />
-    <ClInclude Include="..\test\test_compto\test_spk_base64.hpp" />
-    <ClInclude Include="..\test\test_compto\test_spk_compress.hpp" />
-    <ClInclude Include="..\test\test_compto\test_spk_crc32.hpp" />
-    <ClInclude Include="..\test\test_compto\test_spk_des.hpp" />
-    <ClInclude Include="..\test\test_compto\test_spk_hash.hpp" />
-    <ClInclude Include="..\test\test_compto\test_spk_rsa.hpp" />
-    <ClInclude Include="..\test\test_config\test_Config.hpp" />
-    <ClInclude Include="..\test\test_config\test_spk_config.hpp" />
-    <ClInclude Include="..\test\test_eventd\test_libuv_socket.hpp" />
-    <ClInclude Include="..\test\test_log\test_spk_logger.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\src\arch\spk_setproctitle.c" />
-    <ClCompile Include="..\src\common\spk_bytebuffer.c" />
-    <ClCompile Include="..\src\common\spk_getopt.c" />
-    <ClCompile Include="..\src\common\spk_slab.c" />
-    <ClCompile Include="..\src\compto\spk_aes.c" />
-    <ClCompile Include="..\src\compto\spk_base64.c" />
-    <ClCompile Include="..\src\compto\spk_compress.c" />
-    <ClCompile Include="..\src\compto\spk_crc32.c" />
-    <ClCompile Include="..\src\compto\spk_des.c" />
-    <ClCompile Include="..\src\compto\spk_hash.c" />
-    <ClCompile Include="..\src\compto\spk_rsa.c" />
-    <ClCompile Include="..\src\config\Config.cpp" />
-    <ClCompile Include="..\src\config\inih\ini.c" />
-    <ClCompile Include="..\src\config\inih\INIReader.cpp" />
-    <ClCompile Include="..\src\config\spk_config.cpp" />
-    <ClCompile Include="..\src\log\spk_logger.c" />
+    <ClCompile Include="..\src\arch\ako_gnu_getopt.c" />
+    <ClCompile Include="..\src\arch\ako_setproctitle.c" />
+    <ClCompile Include="..\src\common\ako_aes.c" />
+    <ClCompile Include="..\src\common\ako_base64.c" />
+    <ClCompile Include="..\src\common\ako_bytebuffer.c" />
+    <ClCompile Include="..\src\common\ako_compress.c" />
+    <ClCompile Include="..\src\common\ako_config.cpp" />
+    <ClCompile Include="..\src\common\ako_crc32.c" />
+    <ClCompile Include="..\src\common\ako_des.c" />
+    <ClCompile Include="..\src\common\ako_getopt.c" />
+    <ClCompile Include="..\src\common\ako_hash.c" />
+    <ClCompile Include="..\src\common\ako_logger.c" />
+    <ClCompile Include="..\src\common\ako_rsa.c" />
+    <ClCompile Include="..\src\common\ako_slab.c" />
+    <ClCompile Include="..\src\common\Config.cpp" />
+    <ClCompile Include="..\src\core\ako_init.cpp" />
+    <ClCompile Include="..\src\daemon\ako_daemon.cpp" />
+    <ClCompile Include="..\src\daemon\ako_eventd.c" />
+    <ClCompile Include="..\src\daemon\ako_socket_client.c" />
+    <ClCompile Include="..\src\daemon\ako_socket_server.c" />
+    <ClCompile Include="..\src\daemon\ako_timer.c" />
     <ClCompile Include="..\test\main.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\src\common\CMakeLists.txt" />
     <Text Include="..\test\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\daemon\ako_eventd_core.h" />
+    <ClInclude Include="..\src\include\ako_builtin.h" />
+    <ClInclude Include="..\src\include\ako_bytebuffer.h" />
+    <ClInclude Include="..\src\include\ako_compat.h" />
+    <ClInclude Include="..\src\include\ako_compto.h" />
+    <ClInclude Include="..\src\include\ako_config.h" />
+    <ClInclude Include="..\src\include\ako_core.h" />
+    <ClInclude Include="..\src\include\ako_daemon.h" />
+    <ClInclude Include="..\src\include\ako_errno.h" />
+    <ClInclude Include="..\src\include\ako_eventd.h" />
+    <ClInclude Include="..\src\include\ako_getopt.h" />
+    <ClInclude Include="..\src\include\ako_gnu_getopt.h" />
+    <ClInclude Include="..\src\include\ako_gnu_unistd.h" />
+    <ClInclude Include="..\src\include\ako_logger.h" />
+    <ClInclude Include="..\src\include\ako_macros.h" />
+    <ClInclude Include="..\src\include\ako_setproctitle.h" />
+    <ClInclude Include="..\src\include\ako_slab.h" />
+    <ClInclude Include="..\src\include\ako_timer.h" />
+    <ClInclude Include="..\src\include\ByteBuffer.hpp" />
+    <ClInclude Include="..\src\include\CircularBuffer.hpp" />
+    <ClInclude Include="..\src\include\Config.hpp" />
+    <ClInclude Include="..\src\include\ErasureCode.hpp" />
+    <ClInclude Include="..\test\arch\test_ako_builtin.hpp" />
+    <ClInclude Include="..\test\arch\test_ako_compat.hpp" />
+    <ClInclude Include="..\test\arch\test_ako_setproctitle.hpp" />
+    <ClInclude Include="..\test\common\test_ByteBuffer.hpp" />
+    <ClInclude Include="..\test\common\test_CircularBuffer.hpp" />
+    <ClInclude Include="..\test\common\test_Config.hpp" />
+    <ClInclude Include="..\test\common\test_ako_aes.hpp" />
+    <ClInclude Include="..\test\common\test_ako_base64.hpp" />
+    <ClInclude Include="..\test\common\test_ako_bytebuffer.hpp" />
+    <ClInclude Include="..\test\common\test_ako_compress.hpp" />
+    <ClInclude Include="..\test\common\test_ako_config.hpp" />
+    <ClInclude Include="..\test\common\test_ako_crc32.hpp" />
+    <ClInclude Include="..\test\common\test_ako_des.hpp" />
+    <ClInclude Include="..\test\common\test_ako_getopt.hpp" />
+    <ClInclude Include="..\test\common\test_ako_hash.hpp" />
+    <ClInclude Include="..\test\common\test_ako_logger.hpp" />
+    <ClInclude Include="..\test\common\test_ako_rsa.hpp" />
+    <ClInclude Include="..\test\common\test_ako_slab.hpp" />
+    <ClInclude Include="..\test\daemon\test_libuv_socket.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

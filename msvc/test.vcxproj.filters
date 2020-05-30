@@ -1,199 +1,235 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="spk_src">
-      <UniqueIdentifier>{79885a31-e8c6-4d50-98fd-c6f0975d78c7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="spk_src\include">
-      <UniqueIdentifier>{94ecc67c-66c3-44be-9f5b-649e57f07b20}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="test_arch">
-      <UniqueIdentifier>{f0f3aa23-d007-4aca-8ad5-eb8ec908394f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="spk_src\arch">
-      <UniqueIdentifier>{521c79aa-cd3f-49b8-b2cb-bc1d983f0aba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="spk_src\config">
-      <UniqueIdentifier>{04b49c48-a044-469d-944f-593f89579de4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="spk_src\config\inih">
-      <UniqueIdentifier>{fea96aa4-7821-4fa8-bb83-4b99e9f9fe95}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="test_config">
-      <UniqueIdentifier>{fa1819b5-4950-47ed-a830-d42adb32882a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="spk_src\log">
-      <UniqueIdentifier>{4c34bd2d-7a7a-4aee-bb7e-d0cc76c12854}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="test_log">
-      <UniqueIdentifier>{84d58939-440c-4ea1-9553-4f1ddbe5f250}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="spk_src\compto">
-      <UniqueIdentifier>{2e02588e-82be-461b-80c1-da5057edd146}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="test_compto">
-      <UniqueIdentifier>{6844f314-2669-4101-a4ce-f2698564f13e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="test_common">
+    <Filter Include="common">
       <UniqueIdentifier>{ec36d766-7763-4c10-8215-9794a21be9af}</UniqueIdentifier>
     </Filter>
-    <Filter Include="spk_src\common">
+    <Filter Include="arch">
+      <UniqueIdentifier>{f0f3aa23-d007-4aca-8ad5-eb8ec908394f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="daemon">
+      <UniqueIdentifier>{21374c02-60b8-44ec-bd97-ac0c262f5cf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{7d811e39-da0a-4d9d-814b-7ae92dfd8c22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cli">
+      <UniqueIdentifier>{d9d3bb84-db4f-4b4c-9484-80ee1c87799c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="__src">
+      <UniqueIdentifier>{79885a31-e8c6-4d50-98fd-c6f0975d78c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="__src\include">
+      <UniqueIdentifier>{94ecc67c-66c3-44be-9f5b-649e57f07b20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="__src\arch">
+      <UniqueIdentifier>{521c79aa-cd3f-49b8-b2cb-bc1d983f0aba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="__src\common">
       <UniqueIdentifier>{668d2d1e-d60a-4938-b53e-c742a3845ca7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="test_eventd">
-      <UniqueIdentifier>{3ffa6185-50e2-40cb-8cdb-c347a39a65ff}</UniqueIdentifier>
+    <Filter Include="__src\daemon">
+      <UniqueIdentifier>{0cff1167-d159-456a-9d3d-02597ecf964d}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\src\include\spk_setproctitle.h">
-      <Filter>spk_src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_arch\test_spk_setproctitle.hpp">
-      <Filter>test_arch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_compat.h">
-      <Filter>spk_src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_arch\test_spk_compat.hpp">
-      <Filter>test_arch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\config\inih\ini.h">
-      <Filter>spk_src\config\inih</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_config\test_Config.hpp">
-      <Filter>test_config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_logger.h">
-      <Filter>spk_src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_log\test_spk_logger.hpp">
-      <Filter>test_log</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_compto.h">
-      <Filter>spk_src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_compto\test_spk_compress.hpp">
-      <Filter>test_compto</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_compto\test_spk_crc32.hpp">
-      <Filter>test_compto</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_compto\test_spk_hash.hpp">
-      <Filter>test_compto</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_compto\test_spk_base64.hpp">
-      <Filter>test_compto</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_compto\test_spk_des.hpp">
-      <Filter>test_compto</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_compto\test_spk_rsa.hpp">
-      <Filter>test_compto</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_compto\test_spk_aes.hpp">
-      <Filter>test_compto</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\CircularBuffer.hpp">
-      <Filter>spk_src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_common\test_CircularBuffer.hpp">
-      <Filter>test_common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\config\inih\INIReader.hpp">
-      <Filter>spk_src\config\inih</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_bytebuffer.h">
-      <Filter>spk_src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_common\test_spk_bytebuffer.hpp">
-      <Filter>test_common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\ByteBuffer.hpp">
-      <Filter>spk_src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_common\test_ByteBuffer.hpp">
-      <Filter>test_common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_common\test_spk_slab.hpp">
-      <Filter>test_common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_arch\test_spk_builtin.hpp">
-      <Filter>test_arch</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_builtin.h">
-      <Filter>spk_src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_slab.h">
-      <Filter>spk_src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_eventd\test_libuv_socket.hpp">
-      <Filter>test_eventd</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_config\test_spk_config.hpp">
-      <Filter>test_config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\include\spk_getopt.h">
-      <Filter>spk_src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\test\test_common\test_spk_getopt.hpp">
-      <Filter>test_common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\config\Config.hpp">
-      <Filter>spk_src\config</Filter>
-    </ClInclude>
+    <Filter Include="__src\core">
+      <UniqueIdentifier>{c578e9bf-e5e1-4d59-a1c3-e10a0110ebae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\test\main.cpp" />
-    <ClCompile Include="..\src\arch\spk_setproctitle.c">
-      <Filter>spk_src\arch</Filter>
+    <ClCompile Include="..\src\arch\ako_gnu_getopt.c">
+      <Filter>__src\arch</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\config\inih\ini.c">
-      <Filter>spk_src\config\inih</Filter>
+    <ClCompile Include="..\src\arch\ako_setproctitle.c">
+      <Filter>__src\arch</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\config\inih\INIReader.cpp">
-      <Filter>spk_src\config\inih</Filter>
+    <ClCompile Include="..\src\common\ako_aes.c">
+      <Filter>__src\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\log\spk_logger.c">
-      <Filter>spk_src\log</Filter>
+    <ClCompile Include="..\src\common\ako_base64.c">
+      <Filter>__src\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compto\spk_crc32.c">
-      <Filter>spk_src\compto</Filter>
+    <ClCompile Include="..\src\common\ako_bytebuffer.c">
+      <Filter>__src\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compto\spk_compress.c">
-      <Filter>spk_src\compto</Filter>
+    <ClCompile Include="..\src\common\ako_compress.c">
+      <Filter>__src\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compto\spk_hash.c">
-      <Filter>spk_src\compto</Filter>
+    <ClCompile Include="..\src\common\ako_config.cpp">
+      <Filter>__src\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compto\spk_base64.c">
-      <Filter>spk_src\compto</Filter>
+    <ClCompile Include="..\src\common\ako_crc32.c">
+      <Filter>__src\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compto\spk_des.c">
-      <Filter>spk_src\compto</Filter>
+    <ClCompile Include="..\src\common\ako_des.c">
+      <Filter>__src\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compto\spk_rsa.c">
-      <Filter>spk_src\compto</Filter>
+    <ClCompile Include="..\src\common\ako_getopt.c">
+      <Filter>__src\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\compto\spk_aes.c">
-      <Filter>spk_src\compto</Filter>
+    <ClCompile Include="..\src\common\ako_hash.c">
+      <Filter>__src\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\config\Config.cpp">
-      <Filter>spk_src\config</Filter>
+    <ClCompile Include="..\src\common\ako_logger.c">
+      <Filter>__src\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\common\spk_bytebuffer.c">
-      <Filter>spk_src\common</Filter>
+    <ClCompile Include="..\src\common\ako_rsa.c">
+      <Filter>__src\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\common\spk_slab.c">
-      <Filter>spk_src\common</Filter>
+    <ClCompile Include="..\src\common\ako_slab.c">
+      <Filter>__src\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\config\spk_config.cpp">
-      <Filter>spk_src\config</Filter>
+    <ClCompile Include="..\src\common\Config.cpp">
+      <Filter>__src\common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\common\spk_getopt.c">
-      <Filter>spk_src\common</Filter>
+    <ClCompile Include="..\src\daemon\ako_daemon.cpp">
+      <Filter>__src\daemon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\daemon\ako_eventd.c">
+      <Filter>__src\daemon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\daemon\ako_socket_client.c">
+      <Filter>__src\daemon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\daemon\ako_socket_server.c">
+      <Filter>__src\daemon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\daemon\ako_timer.c">
+      <Filter>__src\daemon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\ako_init.cpp">
+      <Filter>__src\core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\test\CMakeLists.txt" />
+    <Text Include="..\src\common\CMakeLists.txt">
+      <Filter>__src\common</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\include\ako_builtin.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_bytebuffer.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_compat.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_compto.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_config.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_core.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_daemon.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_errno.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_eventd.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_getopt.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_gnu_getopt.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_gnu_unistd.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_logger.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_macros.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_setproctitle.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_slab.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ako_timer.h">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ByteBuffer.hpp">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\CircularBuffer.hpp">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\Config.hpp">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\ErasureCode.hpp">
+      <Filter>__src\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\daemon\ako_eventd_core.h">
+      <Filter>__src\daemon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\common\test_ByteBuffer.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\common\test_CircularBuffer.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\common\test_Config.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\daemon\test_libuv_socket.hpp">
+      <Filter>daemon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\common\test_ako_aes.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\arch\test_ako_builtin.hpp">
+      <Filter>arch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\arch\test_ako_compat.hpp">
+      <Filter>arch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\arch\test_ako_setproctitle.hpp">
+      <Filter>arch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\common\test_ako_base64.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\common\test_ako_bytebuffer.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\common\test_ako_compress.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\common\test_ako_config.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\common\test_ako_crc32.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\common\test_ako_des.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\common\test_ako_getopt.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\common\test_ako_hash.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\common\test_ako_logger.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\common\test_ako_rsa.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\test\common\test_ako_slab.hpp">
+      <Filter>common</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
