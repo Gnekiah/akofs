@@ -8,8 +8,8 @@
 #ifndef SPARKLE_MESSAGE_MESSAGE_HPP_
 #define SPARKLE_MESSAGE_MESSAGE_HPP_
 
-#include <spk_errno.h>
-#include <spk_logger.h>
+#include <ako_errno.h>
+#include <ako_logger.h>
 
 class Message {
 
@@ -77,8 +77,8 @@ public:
         _spiu_._spiu_buff_ = buff;
         _spiu_._spiu_size_ = size;
         if (size < 48 /*sizeof(struct _spiu_)*/ ) {
-            spklog_warn(LOGGING_POSITION, "dump sparkle message failed.");
-            return -SPKE_MESSAGE_DUMP_DATA_INSUFFICIENT;
+            akolog_warn(LOGGING_POSITION, "dump sparkle message failed.");
+            return -AKOE_MESSAGE_DUMP_DATA_INSUFFICIENT;
         }
         
         /* spiu header dumping */
@@ -112,7 +112,7 @@ public:
 
         /* message header dumping */
         if (size <= buff - _spiu_._spiu_buff_) {
-            return -SPKE_MESSAGE_DUMP_DATA_INSUFFICIENT;
+            return -AKOE_MESSAGE_DUMP_DATA_INSUFFICIENT;
         }
         message_header_buff = buff;
         message_header_size = _spiu_._msg_header_length_;
@@ -120,7 +120,7 @@ public:
 
         /* extra header dumping */
         if (size <= buff - _spiu_._spiu_buff_) {
-            return -SPKE_MESSAGE_DUMP_DATA_INSUFFICIENT;
+            return -AKOE_MESSAGE_DUMP_DATA_INSUFFICIENT;
         }
         if (_spiu_._EHS_length_ > 0) {
             extra_header_buff = buff;
@@ -130,10 +130,10 @@ public:
         
         /* message data dumping */
         if (size <= buff - _spiu_._spiu_buff_) {
-            return -SPKE_MESSAGE_DUMP_DATA_INSUFFICIENT;
+            return -AKOE_MESSAGE_DUMP_DATA_INSUFFICIENT;
         }
         if (buff - _spiu_._spiu_buff_ != _spiu_._data_offset_) {
-            return -SPKE_MESSAGE_DUMP_PACKAGE_ERROR;
+            return -AKOE_MESSAGE_DUMP_PACKAGE_ERROR;
         }
         message_data_buff = buff;
         message_data_size = _spiu_._data_length_;
@@ -147,7 +147,7 @@ public:
             + message_data_size;
         _spiu_._spiu_buff_ = new uint8_t[_spiu_._spiu_size_]();
         if (_spiu_._spiu_buff_ = nullptr) {
-            return -SPKE_NOMEM;
+            return -AKOE_NOMEM;
         }
 
         /* TODO: Init _SPIU_ Header and Do Pack */

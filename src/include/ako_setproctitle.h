@@ -5,24 +5,24 @@
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
-#ifndef SPARKLE_SPK_SET_PROCTITLE_H_
-#define SPARKLE_SPK_SET_PROCTITLE_H_
+#ifndef AKOFS_SPK_SET_PROCTITLE_H_
+#define AKOFS_SPK_SET_PROCTITLE_H_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #if defined(HAVE_SETPROCTITLE)
-#define spk_setproctitle(argv, title) setproctitle("%s", title)
+#define ako_setproctitle(argv, title) setproctitle("%s", title)
 
 #else
 #if !defined(SETPROCTITLE_USES_ENV)
 #if defined(__linux__)
 #define SETPROCTITLE_USES_ENV  1
-int spk_setproctitle(char** argv, const char* title);
+int ako_setproctitle(char** argv, const char* title);
 
 #else
-#define spk_setproctitle(argv, title) 0
+#define ako_setproctitle(argv, title) 0
 
 #endif
 #endif
@@ -32,4 +32,4 @@ int spk_setproctitle(char** argv, const char* title);
 }
 #endif
 
-#endif // SPARKLE_SPK_SET_PROCTITLE_H_
+#endif // AKOFS_SPK_SET_PROCTITLE_H_

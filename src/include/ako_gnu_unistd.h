@@ -5,8 +5,8 @@
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
-#ifndef SPARKLE_SPK_GNU_UNISTD_H_
-#define SPARKLE_SPK_GNU_UNISTD_H_
+#ifndef AKOFS_AKO_GNU_UNISTD_H_
+#define AKOFS_AKO_GNU_UNISTD_H_
 
 #ifndef _UNISTD_H
 #define _UNISTD_H    1
@@ -20,7 +20,7 @@
 
 #include <stdlib.h>
 #include <io.h>
-#include <spk_gnu_getopt.h> /* getopt...() */
+#include <ako_gnu_getopt.h> /* getopt...() */
 #include <process.h>        /* for getpid() and the exec..() family */
 #include <direct.h>         /* for _getcwd() and _chdir() */
 
@@ -76,4 +76,4 @@ typedef unsigned __int64  uint64_t;
 #include <unistd.h>
 #endif /* defined(_MSC_VER) && defined(_WIN64) */
 
-#endif /* SPARKLE_SPK_GNU_UNISTD_H_ */
+#endif /* AKOFS_AKO_GNU_UNISTD_H_ */

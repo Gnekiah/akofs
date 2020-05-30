@@ -5,8 +5,8 @@
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
-#ifndef SPARKLE_SPK_COMPAT_H_
-#define SPARKLE_SPK_COMPAT_H_
+#ifndef AKOFS_AKO_COMPAT_H_
+#define AKOFS_AKO_COMPAT_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -14,47 +14,47 @@ extern "C" {
 
 /* 
  * package a struct/union/class usage demo
- *  typedef SPK_PACKED(struct spk_pack_t {
+ *  typedef AKO_PACKED(struct ako_pack_t {
  *      uint64_t pos;
  *      size_t size;
  *      uint8_t* buf;
- *  }) spk_pack;
+ *  }) ako_pack;
  */
 #if defined(__GNUC__)
-#define SPK_PACKED( __Declaration__ ) \
+#define AKO_PACKED( __Declaration__ ) \
 __Declaration__ __attribute__((__packed__))
 #elif defined(_MSC_VER)
-#define SPK_PACKED( __Declaration__ ) \
+#define AKO_PACKED( __Declaration__ ) \
 __pragma( pack(push, 1) ) __Declaration__ __pragma( pack(pop) )
 #else
-#define SPK_PACKED( __Declaration__ ) \
+#define AKO_PACKED( __Declaration__ ) \
 __Declaration__
 #endif
 
 /*
  * aligning a struct/union/class usage demo
- *  typedef SPK_ALIGNED(struct spk_aligned_t {
+ *  typedef AKO_ALIGNED(struct ako_aligned_t {
  *      char sex;
  *      int len;
  *      char name;
- *  }, 1) spk_aligned;
+ *  }, 1) ako_aligned;
  *
- *  struct spk_aligned_t {
- *      struct spk_aligned_t* prev, * next;
+ *  struct ako_aligned_t {
+ *      struct ako_aligned_t* prev, * next;
  *      uint64_t slots;
  *      uintptr_t refcount;
- *      struct spk_aligned_t* page;
- *      SPK_ALIGNED(uint8_t data[], sizeof(void*));
+ *      struct ako_aligned_t* page;
+ *      AKO_ALIGNED(uint8_t data[], sizeof(void*));
  *  };
  */
 #if defined(__GNUC__)
-#define SPK_ALIGNED( __Declaration__ , __Aligned__ ) \
+#define AKO_ALIGNED( __Declaration__ , __Aligned__ ) \
 __Declaration__ __attribute__((aligned(__Aligned__)))
 #elif defined(_MSC_VER)
-#define SPK_ALIGNED( __Declaration__ , __Aligned__ ) \
+#define AKO_ALIGNED( __Declaration__ , __Aligned__ ) \
 __declspec(align(__Aligned__)) __Declaration__
 #else
-#define SPK_ALIGNED( __Declaration__ , __Aligned__ ) \
+#define AKO_ALIGNED( __Declaration__ , __Aligned__ ) \
 __Declaration__
 #endif
 
@@ -67,9 +67,9 @@ __Declaration__
  * considered as an error).
  */
 #if defined(__GNUC__)
-#define SPK_UNUSED __attribute__((unused))
+#define AKO_UNUSED __attribute__((unused))
 #else
-#define SPK_UNUSED
+#define AKO_UNUSED
 #endif
 
 /*
@@ -117,27 +117,27 @@ __Declaration__
 #endif
 
 #if defined(HAVE_PTHREAD_SETNAME_NP)
-#define spk_pthread_setname pthread_setname_np
+#define ako_pthread_setname pthread_setname_np
 #elif defined(HAVE_PTHREAD_SET_NAME_NP)
-#define spk_pthread_setname(thread, name) do { \
+#define ako_pthread_setname(thread, name) do { \
     pthread_set_name_np(thread, name); \
     0; \
 } while(0);
 #else
-#define spk_pthread_setname(thread, name) do { \
+#define ako_pthread_setname(thread, name) do { \
     0; \
 } while(0);
 #endif
 
 #if defined(HAVE_PTHREAD_GETNAME_NP)
-#define spk_pthread_getname pthread_getname_np
+#define ako_pthread_getname pthread_getname_np
 #elif defined(HAVE_PTHREAD_GET_NAME_NP)
-#define spk_pthread_getname(thread, name, len) do { \
+#define ako_pthread_getname(thread, name, len) do { \
     pthread_get_name_np(thread, name, len); \
     0; \
 } while(0)
 #else
-#define spk_pthread_getname(thread, name, len) do { \
+#define ako_pthread_getname(thread, name, len) do { \
     if (name != NULL) \
         *name = '\0'; \
     0; \
@@ -158,4 +158,4 @@ __Declaration__
 }
 #endif
 
-#endif // SPARKLE_SPK_COMPAT_H_
+#endif // AKOFS_AKO_COMPAT_H_

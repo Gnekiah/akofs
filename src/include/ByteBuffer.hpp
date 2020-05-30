@@ -5,8 +5,8 @@
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
-#ifndef SPARKLE_BYTE_BUFFER_H_
-#define SPARKLE_BYTE_BUFFER_H_
+#ifndef AKOFS_BYTE_BUFFER_H_
+#define AKOFS_BYTE_BUFFER_H_
 
 #include <cstdlib>
 #include <cstdint>
@@ -25,13 +25,13 @@ namespace std {
 }
 #endif
 
-namespace spk {
+namespace ako {
 
     class ByteBuffer {
     public:
         // ByteBuffer constructor, Reserves specified size in internal vector
         // @param size Size (in bytes) of space to preallocate internally. 
-        // Default is set in `spk_byte_buffer_default_size`
+        // Default is set in `ako_byte_buffer_default_size`
         ByteBuffer();
 
         // ByteBuffer constructor, Reserves specified size in internal vector
@@ -162,8 +162,8 @@ namespace spk {
 
     ByteBuffer::ByteBuffer() {
         // Default number of uint8_ts to allocate in the backing buffer if no size is provided
-        static const uint64_t spk_byte_buffer_default_size = 4096;
-        buffer_.reserve(spk_byte_buffer_default_size);
+        static const uint64_t ako_byte_buffer_default_size = 4096;
+        buffer_.reserve(ako_byte_buffer_default_size);
         Clear();
     }
 
@@ -428,4 +428,4 @@ namespace spk {
 
 }
 
-#endif // SPARKLE_BYTE_BUFFER_H_
+#endif // AKOFS_BYTE_BUFFER_H_

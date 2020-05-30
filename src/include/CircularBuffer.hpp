@@ -10,14 +10,14 @@
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
-#ifndef SPARKLE_CIRCULAR_BUFFER_HPP_
-#define SPARKLE_CIRCULAR_BUFFER_HPP_
+#ifndef AKOFS_CIRCULAR_BUFFER_HPP_
+#define AKOFS_CIRCULAR_BUFFER_HPP_
 
 #include <stdint.h>
 #include <stddef.h>
-#include <spk_compat.h>
+#include <ako_compat.h>
 
-namespace spk {
+namespace ako {
     template<bool __FITS8, bool __FITS16> struct __CIRC_BUFF_INDEX {
         using Type = uint32_t;
     };
@@ -25,7 +25,7 @@ namespace spk {
     template<> struct __CIRC_BUFF_INDEX<true, true> { using Type = uint8_t; };
 
     template<typename T, size_t S, typename IT = typename
-        spk::__CIRC_BUFF_INDEX<(S <= UINT8_MAX), (S <= UINT16_MAX)>::Type>
+        ako::__CIRC_BUFF_INDEX<(S <= UINT8_MAX), (S <= UINT16_MAX)>::Type>
         class CircularBuffer {
         public:
             // The buffer capacity: read only as it cannot ever change.

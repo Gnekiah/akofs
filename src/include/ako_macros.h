@@ -5,8 +5,8 @@
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
-#ifndef SPARKLE_SPK_MACROS_H_
-#define SPARKLE_SPK_MACROS_H_
+#ifndef AKOFS_SPK_MACROS_H_
+#define AKOFS_SPK_MACROS_H_
 
 #ifdef __cplusplus
 extern "C" {
@@ -18,4 +18,4 @@ extern "C" {
 }
 #endif
 
-#endif  // SPARKLE_SPK_MACROS_H_
+#endif  // AKOFS_SPK_MACROS_H_
