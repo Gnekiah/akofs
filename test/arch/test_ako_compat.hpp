@@ -1,8 +1,8 @@
-#ifndef SPARKLE_TEST_SPK_COMPAT_HPP_
-#define SPARKLE_TEST_SPK_COMPAT_HPP_
+#ifndef AKOFS_TEST_AKO_COMPAT_HPP_
+#define AKOFS_TEST_AKO_COMPAT_HPP_
 
 #include <string>
-#include <spk_compat.h>
+#include <ako_compat.h>
 
 #if defined(__linux__)
 #include <unistd.h>
@@ -20,27 +20,27 @@ void* thrd(void*) {
     return NULL;
 }
 
-TEST(test_spk_compat, case_1) {
+TEST(test_ako_compat, case_1) {
     ASSERT_TRUE(likely(1 < 2));
     ASSERT_FALSE(likely(1 > 2));
     ASSERT_TRUE(unlikely(1 < 2));
     ASSERT_FALSE(unlikely(1 > 2));
 
-    std::string title1 = "spkthrd-1";
-    std::string title2 = "spkthrd-2";
+    std::string title1 = "akothrd-1";
+    std::string title2 = "akothrd-2";
     pthread_t pa, pb;
     char ret_title[64];
     int pl_th1 = pthread_create(&pa, NULL, thrd, NULL);
     int pl_th2 = pthread_create(&pb, NULL, thrd, NULL);
-    spk_pthread_setname(pa, title1.c_str());
-    spk_pthread_setname(pb, title2.c_str());
-    spk_pthread_getname(pa, ret_title, 63);
+    ako_pthread_setname(pa, title1.c_str());
+    ako_pthread_setname(pb, title2.c_str());
+    ako_pthread_getname(pa, ret_title, 63);
 #ifdef __linux__
     ASSERT_STREQ(ret_title, title1.c_str());
 #else
     ASSERT_STREQ(title1.c_str(), title1.c_str());
 #endif
-    spk_pthread_getname(pb, ret_title, 63);
+    ako_pthread_getname(pb, ret_title, 63);
 #ifdef __linux__
     ASSERT_STREQ(ret_title, title2.c_str());
 #else
@@ -50,4 +50,4 @@ TEST(test_spk_compat, case_1) {
     pthread_join(pb, NULL);
 }
 
-#endif // SPARKLE_TEST_SPK_COMPAT_HPP_
+#endif // AKOFS_TEST_AKO_COMPAT_HPP_

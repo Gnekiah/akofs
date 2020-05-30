@@ -1,10 +1,10 @@
-#ifndef SPARKLE_TEST_CIRCULAR_BUFFER_HPP_
-#define SPARKLE_TEST_CIRCULAR_BUFFER_HPP_
+#ifndef AKOFS_TEST_CIRCULAR_BUFFER_HPP_
+#define AKOFS_TEST_CIRCULAR_BUFFER_HPP_
 
 #include <gtest/gtest.h>
 #include <CircularBuffer.hpp>
 #include <sstream>
-#include <spk_compat.h>
+#include <ako_compat.h>
 
 #define PRINT_BUFFER(buffer, ss) do { \
     ss.str(""); \
@@ -24,7 +24,7 @@ typedef struct Item1Field {
     uint64_t v2;
 } Item1Field;
 
-typedef SPK_PACKED(struct Item2Field {
+typedef AKO_PACKED(struct Item2Field {
     uint8_t v1;
     uint64_t v2;
 }) Item2Field;
@@ -33,15 +33,15 @@ typedef SPK_PACKED(struct Item2Field {
 
 TEST(test_CircularBuffer, case_memory_region_heap_and_stack_test_1) {
     int stack_from = 0;
-    spk::CircularBuffer<Item1Field, 10> item1Buffer;
-    spk::CircularBuffer<Item1Field, 10> * item2Buffer = new spk::CircularBuffer<Item1Field, 10>();
+    ako::CircularBuffer<Item1Field, 10> item1Buffer;
+    ako::CircularBuffer<Item1Field, 10> * item2Buffer = new ako::CircularBuffer<Item1Field, 10>();
     int stack_to = 0;
 
     // while on the working device the msvc's stack address is lower than heap
     // EXPECT_LT((uint64_t)&stack_to, (uint64_t)item2Buffer);
     EXPECT_GT(STACK_REGION_MAY_OFFSET, llabs((int64_t)&item1Buffer - (int64_t)&stack_to));
     EXPECT_LT(STACK_REGION_MAY_OFFSET, llabs((int64_t)item2Buffer - (int64_t)&stack_to));
-    EXPECT_EQ(sizeof(spk::CircularBuffer<Item1Field, 10>*), sizeof(item2Buffer));
+    EXPECT_EQ(sizeof(ako::CircularBuffer<Item1Field, 10>*), sizeof(item2Buffer));
 
     uint64_t mem_region_upper = sizeof(Item1Field) * 11 + sizeof(char*) * 2 + 8 + 8 + 8;
     uint64_t mem_region_lower = sizeof(Item1Field) * 10 + sizeof(char*) * 2 + 2;
@@ -55,15 +55,15 @@ TEST(test_CircularBuffer, case_memory_region_heap_and_stack_test_1) {
 }
 
 TEST(test_CircularBuffer, case_static_constexpr_static_cast_test_1) {
-    spk::CircularBuffer<char, 10> char1Buffer;
-    spk::CircularBuffer<char, 10> * char2Buffer = new spk::CircularBuffer<char, 10>();
-    spk::CircularBuffer<Item1Field, 10> item1Buffer;
-    spk::CircularBuffer<Item1Field, 10> * item2Buffer = new spk::CircularBuffer<Item1Field, 10>();
+    ako::CircularBuffer<char, 10> char1Buffer;
+    ako::CircularBuffer<char, 10> * char2Buffer = new ako::CircularBuffer<char, 10>();
+    ako::CircularBuffer<Item1Field, 10> item1Buffer;
+    ako::CircularBuffer<Item1Field, 10> * item2Buffer = new ako::CircularBuffer<Item1Field, 10>();
 
-    spk::CircularBuffer<char, 100> char3Buffer;
-    spk::CircularBuffer<char, 101> * char4Buffer = new spk::CircularBuffer<char, 101>();
-    spk::CircularBuffer<Item1Field, 102> item3Buffer;
-    spk::CircularBuffer<Item1Field, 103> * item4Buffer = new spk::CircularBuffer<Item1Field, 103>();
+    ako::CircularBuffer<char, 100> char3Buffer;
+    ako::CircularBuffer<char, 101> * char4Buffer = new ako::CircularBuffer<char, 101>();
+    ako::CircularBuffer<Item1Field, 102> item3Buffer;
+    ako::CircularBuffer<Item1Field, 103> * item4Buffer = new ako::CircularBuffer<Item1Field, 103>();
 
 #if _MSC_VER >= 1910 || __GNUC__ >= 7
     /* static constexpr capacity check */
@@ -125,7 +125,7 @@ TEST(test_CircularBuffer, case_memory_region_typeof_struct_packed_test_1) {
 TEST(test_CircularBuffer, case_test_1) {
     int ret;
     char curr;
-    spk::CircularBuffer<char, 10> buffer;
+    ako::CircularBuffer<char, 10> buffer;
     std::stringstream ss;
 
     buffer.PushBack('A');
@@ -265,7 +265,7 @@ TEST(test_CircularBuffer, case_test_1) {
 
 TEST(test_CircularBuffer, case_crush_test_1) {
     // The following operations will crash the firmware and cause a reset
-    spk::CircularBuffer<char, 10> buffer;
+    ako::CircularBuffer<char, 10> buffer;
     std::stringstream ss;
     EXPECT_EQ(buffer.type, buffer.PopFront());
     EXPECT_EQ(0, buffer.size());
@@ -276,7 +276,7 @@ TEST(test_CircularBuffer, case_crush_test_1) {
 }
 
 TEST(test_CircularBuffer, case_reload_test_1) {
-    spk::CircularBuffer<char, 10> buffer;
+    ako::CircularBuffer<char, 10> buffer;
     buffer << 'x' << 'y' << 'z';
 
     std::stringstream ss;
@@ -295,11 +295,11 @@ TEST(test_CircularBuffer, case_reload_test_1) {
 }
 
 TEST(test_CircularBuffer, case_crush_test_2) {
-    spk::CircularBuffer<char, 10> buffer;
+    ako::CircularBuffer<char, 10> buffer;
     char x = 0;
     buffer >> x;
     std::stringstream ss;
     EXPECT_EQ(0, x);
 }
 
-#endif // SPARKLE_TEST_CIRCULAR_BUFFER_HPP_
+#endif // AKOFS_TEST_CIRCULAR_BUFFER_HPP_

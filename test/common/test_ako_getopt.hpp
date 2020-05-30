@@ -1,11 +1,11 @@
-#ifndef SPARKLE_TEST_SPK_GET_OPT_HPP_
-#define SPARKLE_TEST_SPK_GET_OPT_HPP_
+#ifndef AKOFS_TEST_AKO_GET_OPT_HPP_
+#define AKOFS_TEST_AKO_GET_OPT_HPP_
 
 #include <gtest/gtest.h>
 #include <exception>
-#include <spk_getopt.h>
+#include <ako_getopt.h>
 
-TEST(test_spk_getopt, get_option_as_GNU_getopt_case_1) {
+TEST(test_ako_getopt, get_option_as_GNU_getopt_case_1) {
     bool amend = false;
     bool brief = false;
     const char* color = "white";
@@ -13,7 +13,7 @@ TEST(test_spk_getopt, get_option_as_GNU_getopt_case_1) {
 
     char* arg;
     int option;
-    struct spk_optparse options;
+    struct ako_optparse options;
 
     const int argc = 10;
     const char* argv[] = {
@@ -29,8 +29,8 @@ TEST(test_spk_getopt, get_option_as_GNU_getopt_case_1) {
     }
     short_argv_ptr[10] = NULL;
     
-    spk_optparse_init(&options, short_argv_ptr);
-    while ((option = spk_optparse(&options, "abc:d::")) != -1) {
+    ako_optparse_init(&options, short_argv_ptr);
+    while ((option = ako_optparse(&options, "abc:d::")) != -1) {
         switch (option) {
         case 'a':
             amend = true;
@@ -56,15 +56,15 @@ TEST(test_spk_getopt, get_option_as_GNU_getopt_case_1) {
     EXPECT_EQ(22, delay);
 
     /* Print remaining arguments. */
-    arg = spk_optparse_arg(&options);
+    arg = ako_optparse_arg(&options);
     EXPECT_STREQ("subcommand", arg);
-    arg = spk_optparse_arg(&options);
+    arg = ako_optparse_arg(&options);
     EXPECT_STREQ("example.txt", arg); 
-    arg = spk_optparse_arg(&options);
+    arg = ako_optparse_arg(&options);
     EXPECT_EQ(NULL, arg);
 }
 
-TEST(test_spk_getopt, get_option_as_GNU_getopt_long_case_1) {
+TEST(test_ako_getopt, get_option_as_GNU_getopt_long_case_1) {
     bool amend = false;
     bool brief = false;
     const char* color = "white";
@@ -73,7 +73,7 @@ TEST(test_spk_getopt, get_option_as_GNU_getopt_long_case_1) {
     char* arg;
     int option, longindex;
     int cnt_flag = 0;
-    struct spk_optparse options;
+    struct ako_optparse options;
 
     const int argc = 8;
     const char* argv[] = {
@@ -100,9 +100,9 @@ TEST(test_spk_getopt, get_option_as_GNU_getopt_long_case_1) {
     long_argv_ptr[8] = NULL;
 
     /* test for short argv parse */
-    spk_optparse_init(&options, short_argv_ptr);
+    ako_optparse_init(&options, short_argv_ptr);
 
-    while ((option = spk_optparse(&options, "abc:d::")) != -1) {
+    while ((option = ako_optparse(&options, "abc:d::")) != -1) {
         if (option == '?')
             EXPECT_TRUE(0);
         cnt_flag++;
@@ -111,22 +111,22 @@ TEST(test_spk_getopt, get_option_as_GNU_getopt_long_case_1) {
     EXPECT_EQ(2, options.optind);
 
     cnt_flag = 0;
-    while ((arg = spk_optparse_arg(&options)))
+    while ((arg = ako_optparse_arg(&options)))
         cnt_flag++;
     EXPECT_EQ(6, cnt_flag);
 
     /* test for long argv parse */
-    spk_optparse_init(&options, long_argv_ptr);
+    ako_optparse_init(&options, long_argv_ptr);
 
-    struct spk_optparse_long longopts[] = {
-        {"amend", 'a', SPK_OPTPARSE_NONE},
-        {"brief", 'b', SPK_OPTPARSE_NONE},
-        {"color", 'c', SPK_OPTPARSE_REQUIRED},
-        {"delay", 'd', SPK_OPTPARSE_OPTIONAL},
-        {NULL, 0, SPK_OPTPARSE_NONE}
+    struct ako_optparse_long longopts[] = {
+        {"amend", 'a', AKO_OPTPARSE_NONE},
+        {"brief", 'b', AKO_OPTPARSE_NONE},
+        {"color", 'c', AKO_OPTPARSE_REQUIRED},
+        {"delay", 'd', AKO_OPTPARSE_OPTIONAL},
+        {NULL, 0, AKO_OPTPARSE_NONE}
     };
 
-    while ((option = spk_optparse_long(&options, longopts, &longindex)) != -1) {
+    while ((option = ako_optparse_long(&options, longopts, &longindex)) != -1) {
         switch (option) {
         case 'a':
             amend = true;
@@ -153,15 +153,15 @@ TEST(test_spk_getopt, get_option_as_GNU_getopt_long_case_1) {
     EXPECT_EQ(22, delay);
 
     /* Print remaining arguments. */
-    arg = spk_optparse_arg(&options);
+    arg = ako_optparse_arg(&options);
     EXPECT_STREQ("subcommand", arg);
-    arg = spk_optparse_arg(&options);
+    arg = ako_optparse_arg(&options);
     EXPECT_STREQ("example.txt", arg);
-    arg = spk_optparse_arg(&options);
+    arg = ako_optparse_arg(&options);
     EXPECT_EQ(NULL, arg);
 }
 
-TEST(test_spk_getopt, get_option_as_GNU_getopt_long_case_2) {
+TEST(test_ako_getopt, get_option_as_GNU_getopt_long_case_2) {
     const char* amend = NULL;
     const char* brief = NULL;
     const char* color = NULL;
@@ -169,7 +169,7 @@ TEST(test_spk_getopt, get_option_as_GNU_getopt_long_case_2) {
 
     char* arg;
     int option, longindex;
-    struct spk_optparse options;
+    struct ako_optparse options;
 
     const int argc = 8;
     const char* argv[] = {
@@ -187,17 +187,17 @@ TEST(test_spk_getopt, get_option_as_GNU_getopt_long_case_2) {
     long_argv_ptr[8] = NULL;
 
     /* test for long argv parse */
-    spk_optparse_init(&options, long_argv_ptr);
+    ako_optparse_init(&options, long_argv_ptr);
 
-    struct spk_optparse_long longopts[] = {
-        {"amend", 'a', SPK_OPTPARSE_REQUIRED},
-        {"brief", 'b', SPK_OPTPARSE_OPTIONAL},
-        {"color", 'c', SPK_OPTPARSE_REQUIRED},
-        {"delay", 'd', SPK_OPTPARSE_OPTIONAL},
-        {NULL, 0, SPK_OPTPARSE_NONE}
+    struct ako_optparse_long longopts[] = {
+        {"amend", 'a', AKO_OPTPARSE_REQUIRED},
+        {"brief", 'b', AKO_OPTPARSE_OPTIONAL},
+        {"color", 'c', AKO_OPTPARSE_REQUIRED},
+        {"delay", 'd', AKO_OPTPARSE_OPTIONAL},
+        {NULL, 0, AKO_OPTPARSE_NONE}
     };
 
-    while ((option = spk_optparse_long(&options, longopts, &longindex)) != -1) {
+    while ((option = ako_optparse_long(&options, longopts, &longindex)) != -1) {
         switch (option) {
         case 'a':
             amend = options.optarg;
@@ -224,11 +224,11 @@ TEST(test_spk_getopt, get_option_as_GNU_getopt_long_case_2) {
     EXPECT_EQ(1, delay);
 
     /* Print remaining arguments. */
-    arg = spk_optparse_arg(&options);
+    arg = ako_optparse_arg(&options);
     EXPECT_STREQ("subcommand", arg);
-    arg = spk_optparse_arg(&options);
+    arg = ako_optparse_arg(&options);
     EXPECT_STREQ("example.txt", arg);
-    arg = spk_optparse_arg(&options);
+    arg = ako_optparse_arg(&options);
     EXPECT_EQ(NULL, arg);
 }
 
@@ -236,4 +236,4 @@ TEST(test_spk_getopt, get_option_as_GNU_getopt_long_case_2) {
  * TODO: write more test unit
  */
 
-#endif // SPARKLE_TEST_SPK_GET_OPT_HPP_
+#endif // AKOFS_TEST_AKO_GET_OPT_HPP_

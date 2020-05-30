@@ -1,5 +1,5 @@
-#ifndef SPARKLE_TEST_LIBUV_SOCKET_HPP_
-#define SPARKLE_TEST_LIBUV_SOCKET_HPP_
+#ifndef AKOFS_TEST_LIBUV_SOCKET_HPP_
+#define AKOFS_TEST_LIBUV_SOCKET_HPP_
 
 #include<gtest/gtest.h>
 #include<cstdlib>
@@ -437,4 +437,4 @@ TEST(test_libuv_socket, case_socket_tcp_server_test_1) {
     EXPECT_EQ(1, test_libuv_socket_function_flag_check[11]);
 }
 
-#endif // SPARKLE_TEST_LIBUV_SOCKET_HPP_
+#endif // AKOFS_TEST_LIBUV_SOCKET_HPP_

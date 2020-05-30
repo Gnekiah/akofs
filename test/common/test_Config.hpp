@@ -1,15 +1,15 @@
-#ifndef SPARKLE_TEST_CONFIG_HPP_
-#define SPARKLE_TEST_CONFIG_HPP_
+#ifndef AKOFS_TEST_CONFIG_HPP_
+#define AKOFS_TEST_CONFIG_HPP_
 
 #include <gtest/gtest.h>
 #include <exception>
-#include "../../src/config/Config.hpp"
+#include <Config.hpp>
 
 std::string ini_path = "../test/test_config/ini_tests/";
 
 TEST(test_Config, case_1) {
     try {
-        spk::Config* config = new spk::Config("");
+        ako::Config* config = new ako::Config("");
     }
     catch (const std::runtime_error& e) {
         std::string exc_msg = ": Permission denied or not exist.\n";
@@ -22,7 +22,7 @@ TEST(test_Config, case_1) {
 
 TEST(test_Config, case_2) {
     try {
-        spk::Config *config = new spk::Config(ini_path + "bad_comment.ini");
+        ako::Config *config = new ako::Config(ini_path + "bad_comment.ini");
     }
     catch (const std::runtime_error& e) {
         std::string exc_msg = ini_path + "bad_comment.ini" + ": INI Syntax error.\n";
@@ -35,7 +35,7 @@ TEST(test_Config, case_2) {
 
 TEST(test_Config, case_3) {
     try {
-        spk::Config* config = new spk::Config(ini_path + "bad_multi.ini");
+        ako::Config* config = new ako::Config(ini_path + "bad_multi.ini");
     }
     catch (const std::runtime_error& e) {
         std::string exc_msg = ini_path + "bad_multi.ini" + ": INI Syntax error.\n";
@@ -48,7 +48,7 @@ TEST(test_Config, case_3) {
 
 TEST(test_Config, case_4) {
     try {
-        spk::Config* config = new spk::Config(ini_path + "bad_section.ini");
+        ako::Config* config = new ako::Config(ini_path + "bad_section.ini");
     }
     catch (const std::runtime_error& e) {
         std::string exc_msg = ini_path + "bad_section.ini" + ": INI Syntax error.\n";
@@ -61,7 +61,7 @@ TEST(test_Config, case_4) {
 
 TEST(test_Config, case_5) {
     try {
-        spk::Config* config = new spk::Config(ini_path + "bom.ini");
+        ako::Config* config = new ako::Config(ini_path + "bom.ini");
     }
     catch (const std::runtime_error& e) {
         std::string exc_msg = "Error! Unknown the symbols:\nbom_section=bom_name = \
@@ -75,7 +75,7 @@ bom_value\nbom_section=key\xE2\x80\x9C = value\xE2\x80\x9C\n";
 
 TEST(test_Config, case_6) {
     try {
-        spk::Config* config = new spk::Config(ini_path + "duplicate_sections.ini");
+        ako::Config* config = new ako::Config(ini_path + "duplicate_sections.ini");
     }
     catch (const std::runtime_error& e) {
         std::string exc_msg = "Error! Unknown the symbols:\nsection1=single1 = \
@@ -89,7 +89,7 @@ abc\ndef\nsection1=single2 = xyz\nqrs\n";
 
 TEST(test_Config, case_7) {
     try {
-        spk::Config* config = new spk::Config(ini_path + "multi_line.ini");
+        ako::Config* config = new ako::Config(ini_path + "multi_line.ini");
     }
     catch (const std::runtime_error& e) {
         std::string exc_msg = "Error! Unknown the symbols:\nsection1=multi = \
@@ -105,7 +105,7 @@ bob smith\nsection3=single = ghi\n";
 
 TEST(test_Config, case_8) {
     try {
-        spk::Config* config = new spk::Config(ini_path + "no_value.ini");
+        ako::Config* config = new ako::Config(ini_path + "no_value.ini");
     }
     catch (const std::runtime_error& e) {
         std::string exc_msg = ini_path + "no_value.ini" + ": INI Syntax error.\n";
@@ -118,7 +118,7 @@ TEST(test_Config, case_8) {
 
 TEST(test_Config, case_9) {
     try {
-        spk::Config* config = new spk::Config(ini_path + "user_error.ini");
+        ako::Config* config = new ako::Config(ini_path + "user_error.ini");
     }
     catch (const std::runtime_error& e) {
         std::string exc_msg = "Error! Unknown the symbols:\nsection=a = \
@@ -151,7 +151,7 @@ whitespace before ';'";
     config_map[std::string("colon_tests=funny3")] = "two = equals";
     config_map[std::string("colon_tests=funny4")] = "two : colons";
 
-    spk::Config* config = nullptr;
+    ako::Config* config = nullptr;
     try {
         config = __ConfigInit(ini_path + "normal.ini", &config_map);
         if (config == nullptr)
@@ -160,41 +160,41 @@ whitespace before ';'";
     catch (...) {
         ASSERT_TRUE(false);
     }
-    EXPECT_STREQ("This is a test", config->Get("section1", "one", SPK_CONFIG_TYPE_STRING).c_str());
-    EXPECT_EQ((long)1234, config->Get("section1", "two", SPK_CONFIG_TYPE_INT));
-    EXPECT_EQ(4, config->Get(" section 2 ", "happy", SPK_CONFIG_TYPE_INT));
-    EXPECT_STREQ("", config->Get(" section 2 ", "sad", SPK_CONFIG_TYPE_STRING).c_str());
-    EXPECT_STREQ("1;2;3", config->Get("comment_test", "test1", SPK_CONFIG_TYPE_STRING).c_str());
+    EXPECT_STREQ("This is a test", config->Get("section1", "one", AKO_CONFIG_TYPE_STRING).c_str());
+    EXPECT_EQ((long)1234, config->Get("section1", "two", AKO_CONFIG_TYPE_INT));
+    EXPECT_EQ(4, config->Get(" section 2 ", "happy", AKO_CONFIG_TYPE_INT));
+    EXPECT_STREQ("", config->Get(" section 2 ", "sad", AKO_CONFIG_TYPE_STRING).c_str());
+    EXPECT_STREQ("1;2;3", config->Get("comment_test", "test1", AKO_CONFIG_TYPE_STRING).c_str());
     EXPECT_STREQ("2;3;4;this won't be a comment, needs whitespace before ';'",
-        config->Get("comment_test", "test2", SPK_CONFIG_TYPE_STRING).c_str());
-    EXPECT_EQ(345, config->Get("comment_test", "test;3", SPK_CONFIG_TYPE_INT));
-    EXPECT_STREQ("4#5#6", config->Get("comment_test", "test4", SPK_CONFIG_TYPE_STRING).c_str());
-    EXPECT_STREQ("", config->Get("comment_test", "test7", SPK_CONFIG_TYPE_STRING).c_str());
+        config->Get("comment_test", "test2", AKO_CONFIG_TYPE_STRING).c_str());
+    EXPECT_EQ(345, config->Get("comment_test", "test;3", AKO_CONFIG_TYPE_INT));
+    EXPECT_STREQ("4#5#6", config->Get("comment_test", "test4", AKO_CONFIG_TYPE_STRING).c_str());
+    EXPECT_STREQ("", config->Get("comment_test", "test7", AKO_CONFIG_TYPE_STRING).c_str());
     EXPECT_STREQ("; not a comment, needs whitespace before ';'", 
-        config->Get("comment_test", "test8", SPK_CONFIG_TYPE_STRING).c_str());
+        config->Get("comment_test", "test8", AKO_CONFIG_TYPE_STRING).c_str());
     EXPECT_STREQ("text/html", config->Get("colon_tests", "content-type", 
-        SPK_CONFIG_TYPE_STRING).c_str());
-    EXPECT_STREQ("bar", config->Get("colon_tests", "foo", SPK_CONFIG_TYPE_STRING).c_str());
-    EXPECT_EQ(42, config->Get("colon_tests", "adams", SPK_CONFIG_TYPE_INT));
+        AKO_CONFIG_TYPE_STRING).c_str());
+    EXPECT_STREQ("bar", config->Get("colon_tests", "foo", AKO_CONFIG_TYPE_STRING).c_str());
+    EXPECT_EQ(42, config->Get("colon_tests", "adams", AKO_CONFIG_TYPE_INT));
     EXPECT_STREQ("with = equals", config->Get("colon_tests", "funny1", 
-        SPK_CONFIG_TYPE_STRING).c_str());
+        AKO_CONFIG_TYPE_STRING).c_str());
     EXPECT_STREQ("with : colons", config->Get("colon_tests", "funny2", 
-        SPK_CONFIG_TYPE_STRING).c_str());
+        AKO_CONFIG_TYPE_STRING).c_str());
     EXPECT_STREQ("two = equals", config->Get("colon_tests", "funny3", 
-        SPK_CONFIG_TYPE_STRING).c_str());
+        AKO_CONFIG_TYPE_STRING).c_str());
     EXPECT_STREQ("two : colons", config->Get("colon_tests", "funny4", 
-        SPK_CONFIG_TYPE_STRING).c_str());
+        AKO_CONFIG_TYPE_STRING).c_str());
 
     config->Set("section1", "one", true);
-    EXPECT_TRUE(config->Get("section1", "one", SPK_CONFIG_TYPE_BOOL));
+    EXPECT_TRUE(config->Get("section1", "one", AKO_CONFIG_TYPE_BOOL));
     config->Set("section1", "one", false);
-    EXPECT_FALSE(config->Get("section1", "one", SPK_CONFIG_TYPE_BOOL));
+    EXPECT_FALSE(config->Get("section1", "one", AKO_CONFIG_TYPE_BOOL));
     config->Set("section1", "one", 1);
-    EXPECT_EQ(1, config->Get("section1", "one", SPK_CONFIG_TYPE_INT));
+    EXPECT_EQ(1, config->Get("section1", "one", AKO_CONFIG_TYPE_INT));
     config->Set("section1", "one", 1.1);
-    EXPECT_EQ(1.1, config->Get("section1", "one", SPK_CONFIG_TYPE_DOUBLE));
+    EXPECT_EQ(1.1, config->Get("section1", "one", AKO_CONFIG_TYPE_DOUBLE));
     config->Set("section1", "one", "12345");
-    EXPECT_STREQ("12345", config->Get("section1", "one", SPK_CONFIG_TYPE_STRING).c_str());
+    EXPECT_STREQ("12345", config->Get("section1", "one", AKO_CONFIG_TYPE_STRING).c_str());
 }
 
-#endif // SPARKLE_TEST_CONFIG_HPP_
+#endif // AKOFS_TEST_CONFIG_HPP_

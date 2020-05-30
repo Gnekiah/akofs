@@ -1,5 +1,5 @@
-#ifndef SPARKLE_TEST_BYTE_BUFFER_HPP_
-#define SPARKLE_TEST_BYTE_BUFFER_HPP_
+#ifndef AKOFS_TEST_BYTE_BUFFER_HPP_
+#define AKOFS_TEST_BYTE_BUFFER_HPP_
 
 #include <gtest/gtest.h>
 #include <ByteBuffer.hpp>
@@ -8,13 +8,13 @@ TEST(test_ByteBuffer, case_create_implementation_test_1) {
     const char* strbuf = "And live the day as if your days are numbered.";
     const int strbuf_size = strlen(strbuf);
 
-    auto bb1 = std::make_unique<spk::ByteBuffer>();
-    auto bb2 = std::make_unique<spk::ByteBuffer>(30);
-    auto bb3 = std::make_unique<spk::ByteBuffer>((uint8_t*)strbuf, strbuf_size);
-    auto bb4 = std::make_unique<spk::ByteBuffer>(*bb3.get());
+    auto bb1 = std::make_unique<ako::ByteBuffer>();
+    auto bb2 = std::make_unique<ako::ByteBuffer>(30);
+    auto bb3 = std::make_unique<ako::ByteBuffer>((uint8_t*)strbuf, strbuf_size);
+    auto bb4 = std::make_unique<ako::ByteBuffer>(*bb3.get());
     auto bb5 = bb4->Clone();
-    spk::ByteBuffer bb6 = *bb5.get();
-    spk::ByteBuffer bb7 = bb6;
+    ako::ByteBuffer bb6 = *bb5.get();
+    ako::ByteBuffer bb7 = bb6;
 
     EXPECT_EQ(30, bb2->capacity());
     EXPECT_EQ(0, bb2->BytesRemaining());
@@ -58,7 +58,7 @@ TEST(test_ByteBuffer, case_create_implementation_and_get_bytes_test_1) {
     const int strbuf_size = strlen(strbuf);
     char buff[128];
 
-    spk::ByteBuffer bb1((uint8_t*)strbuf, strbuf_size);
+    ako::ByteBuffer bb1((uint8_t*)strbuf, strbuf_size);
     EXPECT_EQ(4, bb1.Find('l', 0));
     EXPECT_EQ(1, bb1.Find('n', 0));
     EXPECT_EQ(37, bb1.Find('n', 4));
@@ -107,7 +107,7 @@ TEST(test_ByteBuffer, case_create_implementation_and_get_bytes_test_1) {
 
 TEST(test_ByteBuffer, case_byte_buffer_put_bytes_test_1) {
     char buff[128];
-    spk::ByteBuffer bb1(64);
+    ako::ByteBuffer bb1(64);
 
     bb1.Put('S');
     bb1.Put('P');
@@ -132,14 +132,14 @@ TEST(test_ByteBuffer, case_byte_buffer_put_bytes_test_1) {
     bb1.GetBytes((uint8_t*)buff, 128, false);
     EXPECT_STREQ("Sparkle Framework", buff);
 
-    spk::ByteBuffer bb2(64);
+    ako::ByteBuffer bb2(64);
     bb2.PutByteBuffer(bb1);
     EXPECT_TRUE(bb1 == bb2);
 }
 
 TEST(test_ByteBuffer, case_byte_buffer_stream_functional_test_1) {
     char buff[128];
-    spk::ByteBuffer bb1(64);
+    ako::ByteBuffer bb1(64);
 
     bb1 << "Sparkle Test";
     memset(buff, 0, 128);
@@ -160,7 +160,7 @@ TEST(test_ByteBuffer, case_byte_buffer_stream_functional_test_1) {
 
 TEST(test_ByteBuffer, case_byte_buffer_stream_functional_test_2) {
     char buff[128];
-    spk::ByteBuffer bb1(64);
+    ako::ByteBuffer bb1(64);
     struct s_t {
         char i;
         long j;
@@ -188,7 +188,7 @@ TEST(test_ByteBuffer, case_byte_buffer_stream_functional_test_2) {
 
 TEST(test_ByteBuffer, case_byte_buffer_packed_and_unpacked_functional_test_1) {
     char buff[128];
-    spk::ByteBuffer bb1(64);
+    ako::ByteBuffer bb1(64);
 
     uint64_t q = 0, w = 0, e = 0, r = 0, t = 0;
     bb1.Packed((uint64_t)23425, (uint64_t)34531, (uint64_t)8745, (uint64_t)80678, (uint64_t)12034);
@@ -201,4 +201,4 @@ TEST(test_ByteBuffer, case_byte_buffer_packed_and_unpacked_functional_test_1) {
     EXPECT_EQ(12034, t);
 }
 
-#endif // SPARKLE_TEST_BYTE_BUFFER_HPP_
+#endif // AKOFS_TEST_BYTE_BUFFER_HPP_

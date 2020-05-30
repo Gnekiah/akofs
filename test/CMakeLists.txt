@@ -9,7 +9,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-project(sparkle_test VERSION 1.0.0 LANGUAGES CXX C)
+project(akofs_test VERSION 1.0.0 LANGUAGES CXX C)
 
 # add_definitions(-DSPK_DEBUG_OFF)
 
@@ -104,17 +104,17 @@ endif()
 
 
 add_subdirectory(../src/arch/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/arch_objs)
-add_subdirectory(../src/config/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/config_objs)
-add_subdirectory(../src/log/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/log_objs)
-add_subdirectory(../src/compto/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/compto_objs)
 add_subdirectory(../src/common/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/common_objs)
+add_subdirectory(../src/daemon/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/daemon_objs)
+add_subdirectory(../src/core/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/core_objs)
+
+
 
 set(TEST_LIBS
     arch_objs
-    config_objs
-    log_objs
-    compto_objs
     common_objs
+    daemon_objs
+    core_objs
     pthread
     crypto
     ssl
@@ -126,5 +126,5 @@ set(TEST_LIBS
 set(TEST_SRCS 
     main.cpp)
 
-add_executable(sparkle_test ${TEST_SRCS})
-target_link_libraries(sparkle_test ${TEST_LIBS})
+add_executable(akofs_test ${TEST_SRCS})
+target_link_libraries(akofs_test ${TEST_LIBS})

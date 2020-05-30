@@ -1,24 +1,24 @@
-#ifndef SPARKLE_TEST_SPK_HASH_HPP_
-#define SPARKLE_TEST_SPK_HASH_HPP_
+#ifndef AKOFS_TEST_AKO_HASH_HPP_
+#define AKOFS_TEST_AKO_HASH_HPP_
 
 #include <gtest/gtest.h>
-#include <spk_compto.h>
+#include <ako_compto.h>
 #include <string>
 
-TEST(test_spk_hash, case_md4_1) {
+TEST(test_ako_hash, case_md4_1) {
     const char* buf = "this is a buffer";
     uint32_t size = 16;
     uint8_t md[64];
-    uint8_t* ret = spk_md4((const uint8_t*)buf, size, md);
+    uint8_t* ret = ako_md4((const uint8_t*)buf, size, md);
     ASSERT_EQ(md, ret);
 }
 
 
-TEST(test_spk_hash, case_md4_hex_check_1) {
+TEST(test_ako_hash, case_md4_hex_check_1) {
     const char* buf = "this is a buffer";
     uint32_t size = 16;
     uint8_t md[64] = { 0 };
-    uint8_t* ret = spk_md4((const uint8_t*)buf, size, md);
+    uint8_t* ret = ako_md4((const uint8_t*)buf, size, md);
     std::string encode = std::string((const char*)md);
 
     std::string encode_hex;
@@ -31,19 +31,19 @@ TEST(test_spk_hash, case_md4_hex_check_1) {
     EXPECT_STREQ("771574135e78bafe958c69ad3edfdcea", encode_hex.c_str());
 }
 
-TEST(test_spk_hash, case_md5_1) {
+TEST(test_ako_hash, case_md5_1) {
     const char* buf = "this is a buffer";
     uint32_t size = 16;
     uint8_t md[64];
-    uint8_t* ret = spk_md5((const uint8_t*)buf, size, md);
+    uint8_t* ret = ako_md5((const uint8_t*)buf, size, md);
     ASSERT_EQ(md, ret);
 }
 
-TEST(test_spk_hash, case_md5_hex_check_1) {
+TEST(test_ako_hash, case_md5_hex_check_1) {
     const char* buf = "this is a buffer";
     uint32_t size = 16;
     uint8_t md[64] = { 0 };
-    uint8_t* ret = spk_md5((const uint8_t*)buf, size, md);
+    uint8_t* ret = ako_md5((const uint8_t*)buf, size, md);
     std::string encode = std::string((const char*)md);
 
     std::string encode_hex;
@@ -56,19 +56,19 @@ TEST(test_spk_hash, case_md5_hex_check_1) {
     EXPECT_STREQ("ba225c7364dbd54fdf9a244454029609", encode_hex.c_str());
 }
 
-TEST(test_spk_hash, case_mdc2_1) {
+TEST(test_ako_hash, case_mdc2_1) {
     const char* buf = "this is a buffer";
     uint32_t size = 16;
     uint8_t md[64];
-    uint8_t* ret = spk_mdc2((const uint8_t*)buf, size, md);
+    uint8_t* ret = ako_mdc2((const uint8_t*)buf, size, md);
     ASSERT_EQ(md, ret);
 }
 
-TEST(test_spk_hash, case_mdc2_hex_check_1) {
+TEST(test_ako_hash, case_mdc2_hex_check_1) {
     const char* buf = "this is a buffer";
     uint32_t size = 16;
     uint8_t md[64] = { 0 };
-    uint8_t* ret = spk_mdc2((const uint8_t*)buf, size, md);
+    uint8_t* ret = ako_mdc2((const uint8_t*)buf, size, md);
     std::string encode = std::string((const char*)md);
 
     std::string encode_hex;
@@ -85,11 +85,11 @@ TEST(test_spk_hash, case_mdc2_hex_check_1) {
 #endif
 }
 
-TEST(test_spk_hash, case_sha1_hex_check_1) {
+TEST(test_ako_hash, case_sha1_hex_check_1) {
     const char* buf = "this is a buffer";
     uint32_t size = 16;
     uint8_t md[64] = { 0 };
-    uint8_t* ret = spk_sha1((const uint8_t*)buf, size, md);
+    uint8_t* ret = ako_sha1((const uint8_t*)buf, size, md);
     ASSERT_EQ(md, ret);
 
     std::string encode_hex;
@@ -102,11 +102,11 @@ TEST(test_spk_hash, case_sha1_hex_check_1) {
     EXPECT_STREQ("f3f1b36131f0fd322520e21b2fbd09a60a54f0c1", encode_hex.c_str());
 }
 
-TEST(test_spk_hash, case_sha224_hex_check_1) {
+TEST(test_ako_hash, case_sha224_hex_check_1) {
     const char* buf = "this is a buffer";
     uint32_t size = 16;
     uint8_t md[64] = { 0 };
-    uint8_t* ret = spk_sha224((const uint8_t*)buf, size, md);
+    uint8_t* ret = ako_sha224((const uint8_t*)buf, size, md);
     ASSERT_EQ(md, ret);
 
     std::string encode_hex;
@@ -120,11 +120,11 @@ TEST(test_spk_hash, case_sha224_hex_check_1) {
         encode_hex.c_str());
 }
 
-TEST(test_spk_hash, case_sha256_hex_check_1) {
+TEST(test_ako_hash, case_sha256_hex_check_1) {
     const char* buf = "this is a buffer";
     uint32_t size = 16;
     uint8_t md[64] = { 0 };
-    uint8_t* ret = spk_sha256((const uint8_t*)buf, size, md);
+    uint8_t* ret = ako_sha256((const uint8_t*)buf, size, md);
     ASSERT_EQ(md, ret);
 
     std::string encode_hex;
@@ -138,11 +138,11 @@ TEST(test_spk_hash, case_sha256_hex_check_1) {
         encode_hex.c_str());
 }
 
-TEST(test_spk_hash, case_sha384_hex_check_1) {
+TEST(test_ako_hash, case_sha384_hex_check_1) {
     const char* buf = "this is a buffer";
     uint32_t size = 16;
     uint8_t md[64] = { 0 };
-    uint8_t* ret = spk_sha384((const uint8_t*)buf, size, md);
+    uint8_t* ret = ako_sha384((const uint8_t*)buf, size, md);
     ASSERT_EQ(md, ret);
 
     std::string encode_hex;
@@ -157,11 +157,11 @@ TEST(test_spk_hash, case_sha384_hex_check_1) {
         encode_hex.c_str());
 }
 
-TEST(test_spk_hash, case_sha512_hex_check_1) {
+TEST(test_ako_hash, case_sha512_hex_check_1) {
     const char* buf = "this is a buffer";
     uint32_t size = 16;
     uint8_t md[64] = { 0 };
-    uint8_t* ret = spk_sha512((const uint8_t*)buf, size, md);
+    uint8_t* ret = ako_sha512((const uint8_t*)buf, size, md);
     ASSERT_EQ(md, ret);
 
     std::string encode_hex;
@@ -176,4 +176,4 @@ b660775bcce077c91fa17c8bbcf477b5afa21ffc34c04945ba5ff72676f2c0fe7",
 encode_hex.c_str());
 }
 
-#endif // SPARKLE_TEST_SPK_HASH_HPP_
+#endif // AKOFS_TEST_AKO_HASH_HPP_

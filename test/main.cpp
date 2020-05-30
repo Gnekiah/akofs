@@ -7,29 +7,31 @@
 
 #include <gtest/gtest.h>
 
-#include "test_arch/test_spk_setproctitle.hpp"
-#include "test_arch/test_spk_compat.hpp"
-#include "test_config/test_Config.hpp"
-#include "test_config/test_spk_config.hpp"
-#include "test_log/test_spk_logger.hpp"
-#include "test_compto/test_spk_crc32.hpp"
-#include "test_compto/test_spk_compress.hpp"
-#include "test_compto/test_spk_hash.hpp"
-#include "test_compto/test_spk_base64.hpp"
-#include "test_compto/test_spk_des.hpp"
-#include "test_compto/test_spk_rsa.hpp"
-#include "test_compto/test_spk_aes.hpp"
-#include "test_common/test_CircularBuffer.hpp"
-#include "test_common/test_spk_bytebuffer.hpp"
-#include "test_common/test_ByteBuffer.hpp"
-#include "test_common/test_spk_slab.hpp"
-#include "test_arch/test_spk_builtin.hpp"
-#include "test_eventd/test_libuv_socket.hpp"
+#include "arch/test_ako_setproctitle.hpp"
+#include "arch/test_ako_compat.hpp"
+#include "arch/test_ako_builtin.hpp"
 
-#include "test_common/test_spk_getopt.hpp"
+#include "common/test_Config.hpp"
+#include "common/test_ako_config.hpp"
+#include "common/test_ako_logger.hpp"
+#include "common/test_ako_crc32.hpp"
+#include "common/test_ako_compress.hpp"
+#include "common/test_ako_hash.hpp"
+#include "common/test_ako_base64.hpp"
+#include "common/test_ako_des.hpp"
+#include "common/test_ako_rsa.hpp"
+#include "common/test_ako_aes.hpp"
+#include "common/test_CircularBuffer.hpp"
+#include "common/test_ako_bytebuffer.hpp"
+#include "common/test_ByteBuffer.hpp"
+#include "common/test_ako_slab.hpp"
+#include "common/test_ako_getopt.hpp"
+
+#include "daemon/test_libuv_socket.hpp"
+
 
 int main(int argc, char** argv) {
-#ifdef TEST_SPK_SET_PROCTITLE_DEF_ARGV
+#ifdef TEST_AKO_SET_PROCTITLE_DEF_ARGV
     test_arch_test_argc = argc;
     test_arch_test_argv = argv;
 #endif
