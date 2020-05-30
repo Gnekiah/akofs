@@ -6,6 +6,7 @@
  */
 
 #include <ako_errno.h>
+#include <assert.h>
 
 #include "ako_eventd_core.h"
 
@@ -43,7 +44,7 @@ void css_socket_read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
 
         uv_shutdown_t* shutdown_req = (uv_shutdown_t*)malloc(sizeof(uv_shutdown_t));
         ret = uv_shutdown(shutdown_req, stream, css_socket_shutdown_cb);
-        EXPECT_EQ(0, ret);
+        assert(!ret);
         return;
     }
 
@@ -92,9 +93,9 @@ static void css_connect_server_cb(uv_stream_t* server, int status) {
         css_socket_alloc_cb, css_socket_read_cb);
 }
 
-int ako_server_css_init(const struct eventd_config_t* config) {
+int ako_server_init(const struct eventd_config_t* config) {
     int err = 0;
-    int BACKLOG = config->css_conf.backlog;
+    int BACKLOG = config->backlog;
     struct sockaddr_in addr;
 
     if (!loop) {
@@ -108,7 +109,7 @@ int ako_server_css_init(const struct eventd_config_t* config) {
         goto out;
     }
 
-    err = uv_ip4_addr(config->css_conf.addr, config->css_conf.port, &addr);
+    err = uv_ip4_addr(config->addr, config->port, &addr);
     if (err) {
         err = -AKOE_EVENTD_ADDR_ERROR;
         goto err_addr;
@@ -137,7 +138,7 @@ out:
     return err;
 }
 
-void ako_server_css_exit() {
+void ako_server_exit() {
     uv_close((uv_handle_t*)& css_socket_server, NULL);
 
 }

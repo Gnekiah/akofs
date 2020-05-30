@@ -6,6 +6,7 @@
  */
 
 #include <ako_eventd.h>
+#include "ako_eventd_core.h"
 
  /*
   * set a timer to perform specified segment

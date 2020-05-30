@@ -10,6 +10,8 @@
 #include <ako_logger.h>
 #include "ako_eventd_core.h"
 
+uv_loop_t* loop = NULL;
+
 static void __ako_libuv_close_walk_cb(uv_handle_t* handle, void* arg) {
     if (!uv_is_closing(handle))
         uv_close(handle, NULL);
@@ -29,23 +31,15 @@ int ako_eventd_init(const struct eventd_config_t* config) {
         loop = uv_default_loop();
     }
 
-    err = ako_server_css_init(config);
+    err = ako_server_init(config);
     if (err) {
         goto err_css;
     }
-    err = ako_server_das_init(config);
-    if (err) {
-        goto err_das;
-    }
-
-
 
     goto out;
 
-err_das:
-    ako_server_css_exit();
-
 err_css:
+    ako_server_exit();
     __ako_libuv_close_loop(loop);
     uv_is_closing((uv_handle_t*)loop);
     uv_loop_close(loop);
@@ -55,8 +49,7 @@ out:
 }
 
 void ako_eventd_exit() {
-    ako_server_das_exit();
-    ako_server_css_exit();
+    ako_server_exit();
 
     __ako_libuv_close_loop(loop);
     uv_is_closing((uv_handle_t*)loop);

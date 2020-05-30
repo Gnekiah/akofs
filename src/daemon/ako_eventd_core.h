@@ -15,19 +15,12 @@ extern "C" {
 #include <uv.h>
 #include <ako_eventd.h>
 
-uv_loop_t* loop = NULL;
+extern uv_loop_t* loop;
 
 typedef void (eventd_data_handle_fn)(struct eventd_io_context_t*, void* data, uint64_t size);
 
-
-struct ako_rms_ops {
-    uint64_t rms_id;
-};
-
-extern int ako_server_css_init(const struct eventd_config_t*);
-extern void ako_server_css_exit();
-extern int ako_server_das_init(const struct eventd_config_t*);
-extern void ako_server_das_exit();
+extern int ako_server_init(const struct eventd_config_t*);
+extern void ako_server_exit();
 
 #ifdef __cplusplus
 }

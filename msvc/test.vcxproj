@@ -100,6 +100,8 @@
     <ClCompile Include="..\src\common\ako_rsa.c" />
     <ClCompile Include="..\src\common\ako_slab.c" />
     <ClCompile Include="..\src\common\Config.cpp" />
+    <ClCompile Include="..\src\common\inih\ini.c" />
+    <ClCompile Include="..\src\common\inih\INIReader.cpp" />
     <ClCompile Include="..\src\core\ako_init.cpp" />
     <ClCompile Include="..\src\daemon\ako_daemon.cpp" />
     <ClCompile Include="..\src\daemon\ako_eventd.c" />
@@ -115,6 +117,8 @@
     <Text Include="..\test\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\common\inih\ini.h" />
+    <ClInclude Include="..\src\common\inih\INIReader.hpp" />
     <ClInclude Include="..\src\daemon\ako_eventd_core.h" />
     <ClInclude Include="..\src\include\ako_builtin.h" />
     <ClInclude Include="..\src\include\ako_bytebuffer.h" />

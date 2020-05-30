@@ -24,7 +24,7 @@ struct ako_io_context {
 /*
  * eventd callback defination
  */
-typedef void (ako_callback_fn)(struct ako_io_context*);
+typedef void (*ako_callback_fn)(struct ako_io_context*);
 
 /*
  * callback defination ops
@@ -74,38 +74,8 @@ struct ako_callback_ops {
 
 
 
-//#ifdef __cplusplus
-//extern "C" {
-//#endif
-/*
- * cron tack callback interface defination for task thread
- */
-//typedef void (ako_crontack_fn)(void);
-//
-/*
- * set a timer to perform specified segment
- * fn: task interface, enter for task thread
- * expire_ms: expire time to run the task, in millisecond
- */
-//extern int ako_timer_init(ako_crontack_fn fn, uint64_t expire_ms);
-//
-/*
- * set a timer to perform specified repeat segment
- * fn: task interface, enter for task thread
- * expire_ms: expire time to run the task, in millisecond
- * repeat: repeat times to run. set `repeat=0` to execute unlimited times
- */
-//extern int ako_timer_repeat_init(ako_crontack_fn fn, uint64_t expire_ms, uint64_t repeat);
-//#ifdef __cplusplus
-//}
-//#endif
-
-extern int ako_rms_init(struct ako_rms_ops* rms);
-extern void ako_rms_exit(void);
-extern int ako_css_init(struct ako_css_ops* css);
-extern void ako_css_exit(void);
-extern int ako_das_init(struct ako_das_ops* das);
-extern void ako_das_exit(void);
+extern int ako_init(struct ako_callback_ops* ops);
+extern void ako_exit(void);
 
 
 #endif // AKOFS_AKO_CORE_H_

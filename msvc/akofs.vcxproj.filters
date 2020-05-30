@@ -22,9 +22,6 @@
     <Filter Include="common\inih">
       <UniqueIdentifier>{c4290de4-c34e-40e3-9581-c622fb466dbb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="common\zlog">
-      <UniqueIdentifier>{dc342d26-848f-4d48-ba4a-bdfb8f0bf63c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\include\CircularBuffer.hpp">
@@ -180,78 +177,6 @@
     <ClInclude Include="..\src\common\inih\INIReader.hpp">
       <Filter>common\inih</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\common\zlog\buf.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\category.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\category_table.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\conf.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\event.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\fmacros.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\format.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\level.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\level_list.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\mdc.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\record.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\record_table.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\rotater.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\rule.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\spec.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\thread.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\version.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\zc_arraylist.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\zc_defs.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\zc_hashtable.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\zc_profile.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\zc_util.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\zc_xplatform.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\common\zlog\zlog.h">
-      <Filter>common\zlog</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\include\ErasureCode.hpp">
       <Filter>include</Filter>
     </ClInclude>
@@ -287,66 +212,6 @@
     </ClCompile>
     <ClCompile Include="..\src\common\inih\INIReader.cpp">
       <Filter>common\inih</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\buf.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\category.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\category_table.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\conf.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\event.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\format.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\level.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\level_list.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\mdc.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\record.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\record_table.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\rotater.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\rule.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\spec.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\thread.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\zc_arraylist.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\zc_hashtable.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\zc_profile.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\zc_util.c">
-      <Filter>common\zlog</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\common\zlog\zlog.c">
-      <Filter>common\zlog</Filter>
     </ClCompile>
     <ClCompile Include="..\src\common\ako_aes.c">
       <Filter>common</Filter>
@@ -389,6 +254,9 @@
     </ClCompile>
     <ClCompile Include="..\src\daemon\ako_timer.c">
       <Filter>daemon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\core\ako_init.cpp">
+      <Filter>core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -72,7 +72,5 @@ int ako_daemon_start() {
 }
 
 void ako_daemon_exit() {
-    ako_css_exit();
-    ako_rms_exit();
-    ako_das_exit();
+
 }

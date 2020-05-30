@@ -5,7 +5,7 @@
 #include <exception>
 #include <Config.hpp>
 
-std::string ini_path = "../test/test_config/ini_tests/";
+std::string ini_path = "../test/common/ini_tests/";
 
 TEST(test_Config, case_1) {
     try {

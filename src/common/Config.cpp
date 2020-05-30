@@ -163,6 +163,5 @@ namespace ako {
         if (!err)
             return val;
         std::cerr << "<" << __FUNCTION__ << "> Error! Unknown the key: " << key << std::endl;
-        assert(false);
     }
 }

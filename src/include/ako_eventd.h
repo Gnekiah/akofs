@@ -15,7 +15,7 @@ extern "C" {
 #include <stdint.h>
 
 /*
- * timer callback defination for task thread
+ * cron tack callback interface defination for task thread
  */
 typedef void (*ako_crontack_fn)(void);
 
@@ -36,16 +36,9 @@ extern int ako_timer_repeat_init(ako_crontack_fn fn, uint64_t expire_ms, uint64_
 
 
 struct eventd_config_t {
-    struct {
-        int backlog;
-        int port;
-        char* addr;
-    } das_conf;
-    struct {
-        int backlog;
-        int port;
-        char* addr;
-    } css_conf;
+    int backlog;
+    int port;
+    char* addr;
 };
 
 struct eventd_socket_client {

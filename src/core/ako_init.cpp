@@ -1,5 +1,5 @@
 /*
- * Sparkle Regional Manager Interface
+ * AkoFS Regional Manager Interface
  *
  * Copyright (C) 2019 CQU STARLab. All rights reserved.
  * Author: 
@@ -26,7 +26,7 @@ int ako_init(struct ako_callback_ops* ops) {
     ako_timer_repeat_init(cron_timer_demo_fn, 3000, 600);
 
     /* 设置RMS节点中用于处理ping消息的入口函数指针 */
-    ops->ping_fn = call_back_demo_fn;
+    //ops->ping_fn = call_back_demo_fn;
 
     return err;
 }

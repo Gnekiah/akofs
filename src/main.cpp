@@ -5,6 +5,13 @@
  * Author: Xxiong <xxiong@cqu.edu.cn>
  */
 
+#ifdef _MSC_VER
+#define _CRT_SECURE_NO_DEPRECATE
+#define _CRT_SECURE_NO_WARNINGS
+ /* for fix `error C2375`: redefinition errors in WinSock2.h */
+#define WIN32_LEAN_AND_MEAN
+#endif
+
 #include <iostream>
 #include <string>
 #include <ako_compat.h>
@@ -18,9 +25,9 @@
 #include <ako_eventd.h>
 #include <ako_core.h>
 
-#define AKO_VERSION_MAJOR       0
-#define AKO_VERSION_MINOR       0
-#define AKO_VERSION_REVISION    1
+#define AKO_VERSION_MAJOR           0
+#define AKO_VERSION_MINOR           0
+#define AKO_VERSION_REVISION        1
 
 /*
  * Config cell defination
@@ -41,11 +48,14 @@ static struct ako_config_item_t ako_config_string_default[] = {
     /* Config Section */
     {"Config", "config-path", ""},
     /* Logger Section */
-    {"Logger", "config-path", "sparkle-logger.conf"},
+    {"Logger", "config-path", "akofs-logger.conf"},
     /* DAS Section */
     {"Network", "backlog", "2048"},
-    {"Network", "local", "0.0.0.0:20530"},
-    {"Network", "pilot", "127.0.0.1:20530"},
+    {"Network", "local-addr", "0.0.0.0"},
+    {"Network", "local-port", "20530"},
+    {"Network", "pilot-addr", "127.0.0.1"},
+    {"Network", "pilot-port", "20530"},
+
 
 
 
@@ -60,10 +70,14 @@ static struct ako_config_item_t ako_config_string_default[] = {
  */
 static struct ako_optparse_long ako_long_opts_def[] = {
     /* Options for replacing configuration specificated or defaulted */
-    {"server-port",             'p', AKO_OPTPARSE_REQUIRED},
-    {"configuration-path",      'c', AKO_OPTPARSE_REQUIRED},
+    {"local-addr",              'l', AKO_OPTPARSE_REQUIRED},
+    {"local-port",              'p', AKO_OPTPARSE_REQUIRED},
+    {"pilot-addr",              'L', AKO_OPTPARSE_REQUIRED},
+    {"pilot-port",              'P', AKO_OPTPARSE_REQUIRED},
+    {"backlog",                 'b', AKO_OPTPARSE_REQUIRED},
+    {"config-path",             'c', AKO_OPTPARSE_REQUIRED},
     /* Run target and return right now */
-    {"check-configuration",     'C', AKO_OPTPARSE_REQUIRED},
+    {"check-config",            'C', AKO_OPTPARSE_REQUIRED},
     {"help",                    'h', AKO_OPTPARSE_NONE},
     {"usage",                   'h', AKO_OPTPARSE_NONE},
     {"version",                 'v', AKO_OPTPARSE_NONE},
@@ -83,7 +97,7 @@ static struct ako_opts_default_t {
  */
 static void ako_version() {
     std::cerr
-        << "sparkle version " 
+        << "akofs version " 
         << AKO_VERSION_MAJOR << "." 
         << AKO_VERSION_MINOR << "."
         << AKO_VERSION_REVISION << std::endl
@@ -96,7 +110,7 @@ static void ako_version() {
  */
 static void ako_usage() {
     std::cerr 
-        << "usage: sparkle [--version][--help][--usage]" << std::endl
+        << "usage: akofs [--version][--help][--usage]" << std::endl
         << "               [--check-configuration=<path>]" << std::endl
         << "               [--configuration-path=<path>][--server-port=<port>]" << std::endl
         << "Options:" << std::endl
@@ -119,11 +133,11 @@ static void ako_usage() {
  */
 static void ako_usage_brief() {
     std::cerr
-        << "usage: sparkle [--version][--help][--usage]" << std::endl
+        << "usage: akofs [--version][--help][--usage]" << std::endl
         << "               [--check-configuration=<path>]" << std::endl
         << "               [--configuration-path=<path>][--server-port=<port>]" << std::endl
         << std::endl
-        << "`sparkle --usage` for more detail information." << std::endl;
+        << "`akofs --usage` for more detail information." << std::endl;
 }
 
 /*
@@ -138,9 +152,9 @@ static std::map<std::string, std::string>* ako_config_map_init() {
         return nullptr;
 
     struct ako_config_item_t* item = ako_config_string_default;
-    while (item) {
+    while (*(int*)item) {
         config_map->insert(std::pair<std::string, std::string>
-            (std::string(item->section) + "=" + item->name, item->value));
+            (std::string(item->section) + "+" + item->name, item->value));
         item++;
     }
 
@@ -179,7 +193,7 @@ static int ako_parse_opts(const int argc, const char **argv) {
             break;
         case 'C':
             // TODO: Add configuration check, load configuration file and do syntax check
-            //       Include sparkle.conf and logger.conf
+            //       Include akofs.conf and logger.conf
             exit(0);
         case 'h':
             ako_usage();
@@ -232,9 +246,9 @@ static int ako_enable_opts() {
 
 int main(int argc, const char **argv) 
 {
-    const char* ako_proc_name = "sparkle";
-    const char* ako_main_thread_name = "sparkle-main";
-    const char* ako_config_path = "sparkle.conf";
+    const char* ako_proc_name = "akofs";
+    const char* ako_main_thread_name = "akofs-main";
+    const char* ako_config_path = "akofs.conf";
 
     int err = 0;
     std::map<std::string, std::string>* default_config_map = nullptr;
@@ -283,7 +297,7 @@ int main(int argc, const char **argv)
     }
 
     /* init logger */
-    err = ako_logger_init(ako_config_get_string("Logger", "config_path").c_str());
+    err = ako_logger_init(ako_config_get_string("Logger", "config-path").c_str());
     if (err) {
         /* after logger inited, use logging `akolog_xxx` instead of `std::cerr` */
         std::cerr << STDCERR_POSITION_IN_SRC_BEFORE_LOGGER
@@ -305,16 +319,11 @@ int main(int argc, const char **argv)
         akolog_fatal(LOGGING_POSITION, "failed to alloc eventd config unit");
         goto err_eventd;
     }
-    /* dump eventd/css/server config */
-    strcpy(eventd_config->css_conf.addr, 
-        ako_config_get_string("CSS", "addr").c_str());
-    eventd_config->css_conf.backlog = ako_config_get_int("CSS", "backlog");
-    eventd_config->css_conf.port = ako_config_get_int("CSS", "port");
-    /* dump eventd/das/server config */
-    strcpy(eventd_config->das_conf.addr,
-        ako_config_get_string("DAS", "addr").c_str());
-    eventd_config->das_conf.backlog = ako_config_get_int("DAS", "backlog");
-    eventd_config->das_conf.port = ako_config_get_int("DAS", "port");
+    /* dump eventd/server config */
+    strcpy(eventd_config->addr, 
+        ako_config_get_string("Network", "local-addr").c_str());
+    eventd_config->backlog = ako_config_get_int("Network", "backlog");
+    eventd_config->port = ako_config_get_int("Network", "local-port");
     /* do eventd init */
     err = ako_eventd_init(eventd_config);
     if (err) {
@@ -334,10 +343,10 @@ int main(int argc, const char **argv)
         goto err_ako_init;
     }
 
-    /* init sparkle daemon service */
+    /* init akofs daemon service */
     err = ako_daemon_init();
     if (err) {
-        akolog_fatal(LOGGING_POSITION, "failed to init sparkle daemon service");
+        akolog_fatal(LOGGING_POSITION, "failed to init akofs daemon service");
         goto err_daemon;
     }
     err = ako_daemon_start();

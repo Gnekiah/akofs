@@ -34,6 +34,9 @@
     <Filter Include="__src\core">
       <UniqueIdentifier>{c578e9bf-e5e1-4d59-a1c3-e10a0110ebae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="__src\common\inih">
+      <UniqueIdentifier>{3a72fc8b-80c3-4ac3-86e6-d9c183d8bfd4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\test\main.cpp" />
@@ -99,6 +102,12 @@
     </ClCompile>
     <ClCompile Include="..\src\core\ako_init.cpp">
       <Filter>__src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\inih\ini.c">
+      <Filter>__src\common\inih</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\inih\INIReader.cpp">
+      <Filter>__src\common\inih</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +239,12 @@
     </ClInclude>
     <ClInclude Include="..\test\common\test_ako_slab.hpp">
       <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\inih\ini.h">
+      <Filter>__src\common\inih</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\inih\INIReader.hpp">
+      <Filter>__src\common\inih</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

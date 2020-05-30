@@ -13,7 +13,7 @@
 #define msleep(t) Sleep(t)
 #endif 
 
-std::string conf_path = "../test/test_log/conf_tests/";
+std::string conf_path = "../test/common/conf_tests/";
 
 TEST(test_ako_logger, case_1) {
     int ret = 0;

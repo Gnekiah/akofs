@@ -28,7 +28,7 @@ whitespace before ';'";
 
     ako_config_exit();
 
-    std::string ini_path = "../test/test_config/ini_tests/";
+    std::string ini_path = "../test/common/ini_tests/";
     int ret = ako_config_init(ini_path + "normal.ini", &config_map);
     EXPECT_EQ(0, ret);
 
