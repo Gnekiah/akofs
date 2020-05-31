@@ -18,7 +18,7 @@ static void __ako_libuv_close_walk_cb(uv_handle_t* handle, void* arg) {
 }
 
 static void __ako_libuv_close_loop(uv_loop_t* loop) {
-    akolog_debug(LOGGING_POSITION, "uv_loop closed");
+    akolog_debug("uv_loop closed");
     uv_walk(loop, __ako_libuv_close_walk_cb, NULL);
     uv_run(loop, UV_RUN_DEFAULT);
 }
@@ -27,7 +27,7 @@ int ako_eventd_init(const struct eventd_config_t* config) {
     int err = 0;
 
     if (loop == NULL) {
-        akolog_debug(LOGGING_POSITION, "uv_loop init from uv_default");
+        akolog_debug("uv_loop init from uv_default");
         loop = uv_default_loop();
     }
 

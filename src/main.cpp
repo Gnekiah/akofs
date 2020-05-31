@@ -304,12 +304,12 @@ int main(int argc, const char **argv)
             << "ako_logger_init failed." << std::endl;
         goto err_logger;
     }
-    akolog_info(LOGGING_POSITION, "Logger init.");
+    akolog_info("Logger init.");
     
     /* init slab allocator */
     slab_chain = new struct ako_slab_chain;
     if (!slab_chain) {
-        akolog_fatal(LOGGING_POSITION, "failed to alloc slab allocator");
+        akolog_fatal("failed to alloc slab allocator");
         goto err_slab;
     }
     ako_slab_init(slab_chain, slab_chain_size);
@@ -317,7 +317,7 @@ int main(int argc, const char **argv)
     /* init event driver and socket server */
     eventd_config = new struct eventd_config_t;
     if (!eventd_config) {
-        akolog_fatal(LOGGING_POSITION, "failed to alloc eventd config unit");
+        akolog_fatal("failed to alloc eventd config unit");
         goto err_eventd;
     }
     /* dump eventd/server config */
@@ -328,26 +328,26 @@ int main(int argc, const char **argv)
     /* do eventd init */
     err = ako_eventd_init(eventd_config);
     if (err) {
-        akolog_fatal(LOGGING_POSITION, "failed to init event driver and socket server");
+        akolog_fatal("failed to init event driver and socket server");
         goto err_eventd;
     }
 
     /* init regional management service */
     ops = new struct ako_callback_ops;
     if (!ops) {
-        akolog_fatal(LOGGING_POSITION, "failed to alloc `ako_rms_ops`");
+        akolog_fatal("failed to alloc `ako_rms_ops`");
         goto err_ako_init;
     }
     err = ako_init(ops);
     if (err) {
-        akolog_fatal(LOGGING_POSITION, "failed to init regional management service");
+        akolog_fatal("failed to init regional management service");
         goto err_ako_init;
     }
 
     /* init akofs daemon service */
     err = ako_daemon_init();
     if (err) {
-        akolog_fatal(LOGGING_POSITION, "failed to init akofs daemon service");
+        akolog_fatal("failed to init akofs daemon service");
         goto err_daemon;
     }
     err = ako_daemon_start();

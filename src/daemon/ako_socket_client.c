@@ -98,8 +98,7 @@ struct eventd_io_context* ako_socket_client_new(struct
 
     context = (struct eventd_io_context_t*)malloc(sizeof(struct eventd_io_context));
     if (!context) {
-        akolog_error(LOGGING_POSITION, 
-            "malloc `struct eventd_io_context_t` error, out of memory");
+        akolog_error("malloc `struct eventd_io_context_t` error, out of memory");
         goto err_context;
     }
 
@@ -107,23 +106,20 @@ struct eventd_io_context* ako_socket_client_new(struct
     socket_client = (uv_tcp_t*)malloc(sizeof(uv_tcp_t));
     connect = (uv_connect_t*)malloc(sizeof(uv_connect_t));
     if (!connect || !socket_client) {
-        akolog_error(LOGGING_POSITION,
-            "malloc `uv_tcp_t/uv_connect_t` error, out of memory");
+        akolog_error("malloc `uv_tcp_t/uv_connect_t` error, out of memory");
         goto err_alloc;
     }
 
     ret = uv_ip4_addr(conf->addr, conf->port, &addr);
     if (ret) {
-        akolog_error(LOGGING_POSITION,
-            "malloc `uv_tcp_t/uv_connect_t` error, out of memory");
+        akolog_error("malloc `uv_tcp_t/uv_connect_t` error, out of memory");
         goto err_addr_parse;
     }
 
     /* WARNING: call uv_close() on work end */
     ret = uv_tcp_init(loop, socket_client);
     if (ret) {
-        akolog_error(LOGGING_POSITION,
-            "tcp init error, error code = ", ret);
+        akolog_error("tcp init error, error code = ", ret);
         goto err_addr_parse;
     }
 
@@ -131,8 +127,7 @@ struct eventd_io_context* ako_socket_client_new(struct
         (const struct sockaddr*) & addr, connect_client_cb);
 
     if (!ret) {
-        akolog_debug(LOGGING_POSITION,
-            "new socket client allocated");
+        akolog_debug("new socket client allocated");
         return context;
     }
 

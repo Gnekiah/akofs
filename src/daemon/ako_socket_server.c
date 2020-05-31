@@ -7,10 +7,12 @@
 
 #include <ako_errno.h>
 #include <assert.h>
-
+#include <ako_logger.h>
 #include "ako_eventd_core.h"
 
 uv_tcp_t css_socket_server;
+
+ako_callback_fn data_callback_fn = NULL;
 
 /* free socket client */
 void css_socket_close_cb(uv_handle_t* client) {
@@ -54,6 +56,14 @@ void css_socket_read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
         return;
     }
 
+    /* read from remote and run callback to hold data */
+    if (data_callback_fn) {
+        data_callback_fn(stream, nread, buf->len, buf->base);
+        return;
+    }
+
+    return;
+
     uv_write_t* req = (uv_write_t*)malloc(sizeof(uv_write_t));
     const char* resp = "Return 1";
     uv_buf_t new_buf = uv_buf_init((char*)resp, sizeof(resp) + 1);
@@ -70,11 +80,15 @@ static void css_connect_server_cb(uv_stream_t* server, int status) {
         return;
     }
 
+    akolog_info("connect from remote client");
+
     /* WARNING: call uv_close() on work end */
     ret = uv_tcp_init(server->loop, tcp_client_handle);
     if (ret) {
         return;
     }
+
+    akolog_info("start to accept data");
 
     ret = uv_accept(server, (uv_stream_t*)tcp_client_handle);
     if (ret < 0) {
@@ -108,12 +122,14 @@ int ako_server_init(const struct eventd_config_t* config) {
         err = -AKOE_EVENTD_TCP_INIT_ERROR;
         goto out;
     }
+    akolog_info("tcp init");
 
     err = uv_ip4_addr(config->addr, config->port, &addr);
     if (err) {
         err = -AKOE_EVENTD_ADDR_ERROR;
         goto err_addr;
     }
+    akolog_info("socket connect to %s:%d", config->addr, config->port);
 
     err = uv_tcp_bind(&css_socket_server, (const struct sockaddr*) & addr, AF_UNSPEC);
     if (err) {
@@ -141,4 +157,8 @@ out:
 void ako_server_exit() {
     uv_close((uv_handle_t*)& css_socket_server, NULL);
 
+}
+
+int ako_event_callback_init(ako_callback_fn fn) {
+    data_callback_fn = fn;
 }

@@ -18,17 +18,20 @@
 struct ako_io_context {
     Message* message;
     std::mutex lock;
+    char* buff_base;
+    uint64_t buff_size;
     void* conn_context;     /* point to eventd_io_context */
 };
 
 /*
  * eventd callback defination
  */
-typedef void (*ako_callback_fn)(struct ako_io_context*);
+//typedef void (*ako_callback_fn)(struct ako_io_context*);
 
 /*
  * callback defination ops
  */
+/*
 struct ako_callback_ops {
     ako_callback_fn ping_fn;
     ako_callback_fn pong_fn;
@@ -71,8 +74,10 @@ struct ako_callback_ops {
     ako_callback_fn cmd_reboot_fn;
     ako_callback_fn resp_cmd_reboot_fn;
 };
-
-
+*/
+struct ako_callback_ops {
+    int i;
+};
 
 extern int ako_init(struct ako_callback_ops* ops);
 extern void ako_exit(void);

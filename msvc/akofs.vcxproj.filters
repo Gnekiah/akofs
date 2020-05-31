@@ -252,11 +252,11 @@
     <ClCompile Include="..\src\daemon\ako_socket_server.c">
       <Filter>daemon</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\daemon\ako_timer.c">
-      <Filter>daemon</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\core\ako_init.cpp">
       <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\daemon\ako_timer.cpp">
+      <Filter>daemon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -266,6 +266,9 @@
     </Text>
     <Text Include="..\src\common\CMakeLists.txt">
       <Filter>common</Filter>
+    </Text>
+    <Text Include="..\src\daemon\CMakeLists.txt">
+      <Filter>daemon</Filter>
     </Text>
   </ItemGroup>
 </Project>

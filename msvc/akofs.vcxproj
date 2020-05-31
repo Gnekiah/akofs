@@ -101,7 +101,7 @@
     <ClCompile Include="..\src\daemon\ako_eventd.c" />
     <ClCompile Include="..\src\daemon\ako_socket_client.c" />
     <ClCompile Include="..\src\daemon\ako_socket_server.c" />
-    <ClCompile Include="..\src\daemon\ako_timer.c" />
+    <ClCompile Include="..\src\daemon\ako_timer.cpp" />
     <ClCompile Include="..\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +164,7 @@
     <Text Include="..\src\arch\CMakeLists.txt" />
     <Text Include="..\src\CMakeLists.txt" />
     <Text Include="..\src\common\CMakeLists.txt" />
+    <Text Include="..\src\daemon\CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
