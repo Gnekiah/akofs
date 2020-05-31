@@ -10,6 +10,7 @@
 
 #include <ako_errno.h>
 #include <ako_logger.h>
+#include <string.h>
 
 class Message {
 
@@ -82,32 +83,32 @@ public:
         }
         
         /* spiu header dumping */
-        _spiu_._message_code_ = (uint16_t)buff;
+        _spiu_._message_code_ = *(uint16_t*)buff;
         buff += sizeof(_spiu_._message_code_);
-        _spiu_._prot_ver_ = (uint8_t)buff;
+        _spiu_._prot_ver_ = *(uint8_t*)buff;
         buff += sizeof(_spiu_._prot_ver_);
-        _spiu_._flag_ = (uint8_t)buff;
+        _spiu_._flag_ = *(uint8_t*)buff;
         buff += sizeof(_spiu_._flag_);
-        _spiu_._msg_header_length_ = (uint16_t)buff;
+        _spiu_._msg_header_length_ = *(uint16_t*)buff;
         buff += sizeof(_spiu_._msg_header_length_);
-        _spiu_._data_offset_ = (uint16_t)buff;
+        _spiu_._data_offset_ = *(uint16_t*)buff;
         buff += sizeof(_spiu_._data_offset_);
 
-        _spiu_._data_length_ = (uint32_t)buff;
+        _spiu_._data_length_ = *(uint32_t*)buff;
         buff += sizeof(_spiu_._data_length_);
-        _spiu_._EHS_length_ = (uint16_t)buff;
+        _spiu_._EHS_length_ = *(uint16_t*)buff;
         buff += sizeof(_spiu_._EHS_length_);
-        _spiu_._reversed1_ = (uint16_t)buff;
+        _spiu_._reversed1_ = *(uint16_t*)buff;
         buff += sizeof(_spiu_._reversed1_);
 
-        _spiu_._conn_session_id_ = (uint64_t)buff;
+        _spiu_._conn_session_id_ = *(uint64_t*)buff;
         buff += sizeof(_spiu_._conn_session_id_);
-        _spiu_._message_sequence_ = (uint64_t)buff;
+        _spiu_._message_sequence_ = *(uint64_t*)buff;
         buff += sizeof(_spiu_._message_sequence_);
 
-        _spiu_._node_id_from_ = (uint64_t)buff;
+        _spiu_._node_id_from_ = *(uint64_t*)buff;
         buff += sizeof(_spiu_._node_id_from_);
-        _spiu_._node_id_to_ = (uint64_t)buff;
+        _spiu_._node_id_to_ = *(uint64_t*)buff;
         buff += sizeof(_spiu_._node_id_to_);
 
         /* message header dumping */

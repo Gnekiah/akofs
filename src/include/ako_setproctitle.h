@@ -19,7 +19,7 @@ extern "C" {
 #if !defined(SETPROCTITLE_USES_ENV)
 #if defined(__linux__)
 #define SETPROCTITLE_USES_ENV  1
-int ako_setproctitle(char** argv, const char* title);
+int ako_setproctitle(const char** argv, const char* title);
 
 #else
 #define ako_setproctitle(argv, title) 0

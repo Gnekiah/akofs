@@ -9,7 +9,7 @@ int test_arch_test_argc;
 char** test_arch_test_argv;
 
 const int test_ako_setporoctitle_case_1(char** argv, const char* title) {
-    int err = ako_setproctitle(argv, title);
+    int err = ako_setproctitle(const_cast<const char**>(argv), title);
     return err;
 }
 

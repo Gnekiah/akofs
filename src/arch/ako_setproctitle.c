@@ -14,7 +14,7 @@
 
 extern char** environ;
 
-int ako_setproctitle(char** argv, const char* title) {
+int ako_setproctitle(const char** argv, const char* title) {
     char* last = NULL, *p = NULL;
     size_t size, title_size;
     int i;

@@ -68,4 +68,5 @@ test_multithread-logs.txt
 !win64/dll/
 !win64/include/
 !win64/lib/
-akofs_test
+test/akofs_test
+src/akofs
