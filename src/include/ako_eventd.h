@@ -38,13 +38,13 @@ extern int ako_timer_repeat_init(ako_crontack_fn fn, uint64_t expire_ms, uint64_
 struct eventd_config_t {
     int backlog;
     int port;
-    char* addr;
+    char addr[16];
 };
 
 struct eventd_socket_client {
     int backlog;
     int port;
-    char* addr;
+    char addr[16];
 };
 
 struct eventd_io_context {

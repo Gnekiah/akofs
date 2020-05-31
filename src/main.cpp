@@ -46,15 +46,15 @@ struct ako_config_item_t {
  */
 static struct ako_config_item_t ako_config_string_default[] = {
     /* Config Section */
-    {"Config", "config-path", ""},
+    {"config", "config-path", ""},
     /* Logger Section */
-    {"Logger", "config-path", "akofs-logger.conf"},
+    {"logger", "config-path", "akofs-logger.conf"},
     /* DAS Section */
-    {"Network", "backlog", "2048"},
-    {"Network", "local-addr", "0.0.0.0"},
-    {"Network", "local-port", "20530"},
-    {"Network", "pilot-addr", "127.0.0.1"},
-    {"Network", "pilot-port", "20530"},
+    {"network", "backlog", "2048"},
+    {"network", "local-addr", "0.0.0.0"},
+    {"network", "local-port", "20530"},
+    {"network", "pilot-addr", "127.0.0.1"},
+    {"network", "pilot-port", "20530"},
 
 
 
@@ -154,7 +154,7 @@ static std::map<std::string, std::string>* ako_config_map_init() {
     struct ako_config_item_t* item = ako_config_string_default;
     while (*(int*)item) {
         config_map->insert(std::pair<std::string, std::string>
-            (std::string(item->section) + "+" + item->name, item->value));
+            (std::string(item->section) + "=" + item->name, item->value));
         item++;
     }
 
@@ -304,7 +304,8 @@ int main(int argc, const char **argv)
             << "ako_logger_init failed." << std::endl;
         goto err_logger;
     }
-
+    akolog_info(LOGGING_POSITION, "Logger init.");
+    
     /* init slab allocator */
     slab_chain = new struct ako_slab_chain;
     if (!slab_chain) {

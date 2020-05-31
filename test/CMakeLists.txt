@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(akofs_test VERSION 1.0.0 LANGUAGES CXX C)
 
-# add_definitions(-DSPK_DEBUG_OFF)
+# add_definitions(-DAKO_DEBUG_OFF)
 
 if(WIN32)
     add_definitions(-D_CRT_SECURE_NO_DEPRECATE)

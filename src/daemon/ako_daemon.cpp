@@ -6,9 +6,28 @@
  */
 
 #include <ako_daemon.h>
+#include <ako_eventd.h>
+#include "ako_eventd_core.h"
+
+static void __close_walk_cb(uv_handle_t* handle, void* arg) {
+    if (!uv_is_closing(handle))
+        uv_close(handle, NULL);
+
+}
+static void __close_loop(uv_loop_t* loop) {
+    uv_walk(loop, __close_walk_cb, NULL);
+    uv_run(loop, UV_RUN_DEFAULT);
+}
 
 static int el_psy_congroo() {
     int ret = 0;
+
+    ret = uv_run(loop, UV_RUN_DEFAULT);
+
+    /* close loop */
+    __close_loop(loop);
+    ret = uv_is_closing((uv_handle_t*)loop);
+    ret = uv_loop_close(loop);
 
     return ret;
 }
