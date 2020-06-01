@@ -209,7 +209,6 @@ int ako_socket_send(struct eventd_io_context* ioc) {
         client_conf.backlog = 0;
         uv_connect_t* conn = ako_socket_client_new(&client_conf);
         ioc->handle = (void*)(conn->handle);
-        Sleep(1000);
     }
 
     uv_write_t *request = (uv_write_t*)malloc(sizeof(uv_write_t));
@@ -217,7 +216,7 @@ int ako_socket_send(struct eventd_io_context* ioc) {
 
     akolog_info("client start to send");
     ret = uv_write(request, ioc->handle, &buffer, 1, socket_client_write_cb);
-    akolog_info("client sended");
-    ret = uv_read_start(ioc->handle, _alloc_cb, _client_read_cb);
+//    akolog_info("client sended");
+//    ret = uv_read_start(ioc->handle, _alloc_cb, _client_read_cb);
     return ret;
 }
