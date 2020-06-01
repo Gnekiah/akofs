@@ -107,7 +107,7 @@
     <ClCompile Include="..\src\daemon\ako_eventd.c" />
     <ClCompile Include="..\src\daemon\ako_socket_client.c" />
     <ClCompile Include="..\src\daemon\ako_socket_server.c" />
-    <ClCompile Include="..\src\daemon\ako_timer.c" />
+    <ClCompile Include="..\src\daemon\ako_timer.cpp" />
     <ClCompile Include="..\test\main.cpp">
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Release|x64'">MultiThreaded</RuntimeLibrary>
     </ClCompile>

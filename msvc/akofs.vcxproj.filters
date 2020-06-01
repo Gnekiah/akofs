@@ -246,9 +246,6 @@
     <ClCompile Include="..\src\daemon\ako_eventd.c">
       <Filter>daemon</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\daemon\ako_socket_client.c">
-      <Filter>daemon</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\daemon\ako_socket_server.c">
       <Filter>daemon</Filter>
     </ClCompile>
@@ -256,6 +253,9 @@
       <Filter>core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\daemon\ako_timer.cpp">
+      <Filter>daemon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\daemon\ako_socket_client.c">
       <Filter>daemon</Filter>
     </ClCompile>
   </ItemGroup>

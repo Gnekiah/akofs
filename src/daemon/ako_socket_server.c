@@ -32,18 +32,21 @@ void css_socket_alloc_cb(uv_handle_t* handle,
 }
 
 /* write and do clean */
-void css_socket_write_cb(uv_write_t* req, int status) {
-    uv_shutdown_t* shutdown_req = (uv_shutdown_t*)malloc(sizeof(uv_shutdown_t));
-    int ret = uv_shutdown(shutdown_req, req->handle, css_socket_shutdown_cb);
-}
+// void css_socket_write_cb(uv_write_t* req, int status) {
+//     uv_shutdown_t* shutdown_req = (uv_shutdown_t*)malloc(sizeof(uv_shutdown_t));
+//     int ret = uv_shutdown(shutdown_req, req->handle, css_socket_shutdown_cb);
+// }
 
 void css_socket_read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf) {
     int ret = 0;
+
+    akolog_info("socket read callback");
     /* on read stage, the most important is to check `nread` */
     if (nread < 0) {
         if (buf->base)
             free(buf->base);
 
+        akolog_info("socket read nread < 0");
         uv_shutdown_t* shutdown_req = (uv_shutdown_t*)malloc(sizeof(uv_shutdown_t));
         ret = uv_shutdown(shutdown_req, stream, css_socket_shutdown_cb);
         assert(!ret);
@@ -51,6 +54,7 @@ void css_socket_read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
     }
 
     if (nread == 0) {
+        akolog_info("socket read nread = 0");
         if (buf->base)
             free(buf->base);
         return;
@@ -58,16 +62,18 @@ void css_socket_read_cb(uv_stream_t* stream, ssize_t nread, const uv_buf_t* buf)
 
     /* read from remote and run callback to hold data */
     if (data_callback_fn) {
+        akolog_info("do callback");
         data_callback_fn(stream, nread, buf->len, buf->base);
         return;
     }
 
+    akolog_info("callback is null, end");
     return;
 
-    uv_write_t* req = (uv_write_t*)malloc(sizeof(uv_write_t));
-    const char* resp = "Return 1";
-    uv_buf_t new_buf = uv_buf_init((char*)resp, sizeof(resp) + 1);
-    ret = uv_write(req, stream, &new_buf, 1, css_socket_write_cb);
+//     uv_write_t* req = (uv_write_t*)malloc(sizeof(uv_write_t));
+//     const char* resp = "Return 1";
+//     uv_buf_t new_buf = uv_buf_init((char*)resp, sizeof(resp) + 1);
+//     ret = uv_write(req, stream, &new_buf, 1, css_socket_write_cb);
 }
 
 /* socket server callback: init socket client and accept data */
@@ -80,18 +86,20 @@ static void css_connect_server_cb(uv_stream_t* server, int status) {
         return;
     }
 
-    akolog_info("connect from remote client");
+    akolog_info("connecting from remote client");
 
     /* WARNING: call uv_close() on work end */
     ret = uv_tcp_init(server->loop, tcp_client_handle);
     if (ret) {
+        akolog_warn("connected error from remote client");
         return;
     }
 
-    akolog_info("start to accept data");
+    akolog_info("start to accepting data");
 
     ret = uv_accept(server, (uv_stream_t*)tcp_client_handle);
     if (ret < 0) {
+        akolog_warn("accepted error");
         /* if failed, do clean */
         uv_shutdown_t* shutdown_req = (uv_shutdown_t*)malloc(sizeof(uv_shutdown_t));
         if (!shutdown_req) {
@@ -102,6 +110,7 @@ static void css_connect_server_cb(uv_stream_t* server, int status) {
         return;
     }
 
+    akolog_info("accepted is ok, do read");
     /* if uv_accept() is ok, do clean on read_cb */
     ret = uv_read_start((uv_stream_t*)tcp_client_handle,
         css_socket_alloc_cb, css_socket_read_cb);
@@ -111,6 +120,8 @@ int ako_server_init(const struct eventd_config_t* config) {
     int err = 0;
     int BACKLOG = config->backlog;
     struct sockaddr_in addr;
+
+    loop = uv_default_loop();
 
     if (!loop) {
         err = -AKOE_EVENTD_LOOP_NULL;
@@ -137,6 +148,7 @@ int ako_server_init(const struct eventd_config_t* config) {
         goto err_bind;
     }
 
+    akolog_info("socket listening");
     err = uv_listen((uv_stream_t*)& css_socket_server, BACKLOG,
         css_connect_server_cb);
     if (err) {

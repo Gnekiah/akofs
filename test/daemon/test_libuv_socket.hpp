@@ -295,6 +295,8 @@ void test_libuv_socket_timer_socket_client_cb(uv_timer_t* handle) {
     uv_tcp_t* test_libuv_socket_client = (uv_tcp_t*)malloc(sizeof(uv_tcp_t));
     uv_connect_t* connect = (uv_connect_t*)malloc(sizeof(uv_connect_t));
 
+    //akolog_hex_info(test_libuv_socket_client, sizeof(test_libuv_socket_client));
+
     ret = uv_ip4_addr("127.0.0.1", 37551, &addr);
     EXPECT_EQ(0, ret);
     /* WARNING: call uv_close() on work end */

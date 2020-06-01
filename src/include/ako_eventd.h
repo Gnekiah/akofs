@@ -53,17 +53,19 @@ struct eventd_socket_client {
 
 struct eventd_io_context {
     void *handle;
+    char* buff_base;
+    uint64_t buff_size;
+    char addr[16];
+    int  port;
 };
 
 extern int ako_eventd_init(const struct eventd_config_t*);
 extern void ako_eventd_exit();
 extern void ako_eventd_loop();
 
-extern struct eventd_io_context* ako_socket_client_new(struct eventd_socket_client*);
-extern void ako_socket_client_free();
-extern int ako_socket_send(struct eventd_io_context*, void* data, uint64_t size);
-
-
+//extern struct eventd_io_context* ako_socket_client_new(struct eventd_socket_client*);
+//extern void ako_socket_client_free();
+extern int ako_socket_send(struct eventd_io_context* ioc);
 
 #ifdef __cplusplus
 }
