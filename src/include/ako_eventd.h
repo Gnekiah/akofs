@@ -18,25 +18,30 @@ extern "C" {
  * cron tack callback interface defination for task thread
  */
 typedef void (*ako_crontack_fn)(void*);
-
-typedef void (*ako_callback_fn)(void* handle, uint64_t nread, uint64_t buff_size, char* buff_base);
-
+/*
+ * callback interface defination for response
+ */
+typedef void (*ako_callback_fn)(void* handle, uint64_t nread, 
+    uint64_t buff_size, char* buff_base);
 /*
  * set a timer to perform specified segment
  * fn: task interface, enter for task thread
  * expire_ms: expire time to run the task, in millisecond
  */
-extern int ako_timer_init(ako_crontack_fn fn, uint64_t expire_ms, void* handle);
-
+extern int ako_timer_init(ako_crontack_fn fn, uint64_t expire_ms, 
+    void* handle);
 /*
  * set a timer to perform specified repeat segment
  * fn: task interface, enter for task thread
  * expire_ms: expire time to run the task, in millisecond
  * repeat: repeat times to run. set `repeat=0` to execute unlimited times
  */
-extern int ako_timer_repeat_init(ako_crontack_fn fn, uint64_t expire_ms, uint64_t repeat, void* handle);
-
-
+extern int ako_timer_repeat_init(ako_crontack_fn fn, uint64_t expire_ms, 
+    uint64_t repeat, void* handle);
+/*
+ * set a callback for request
+ * fn: request interface
+ */
 extern int ako_event_callback_init(ako_callback_fn fn);
 
 struct eventd_config_t {
