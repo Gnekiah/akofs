@@ -19,3 +19,8 @@ including the majority of HTTPS websites.
 * **libuv-1.0.0** is a multi-platform support library with a focus on 
 asynchronous I/O. It was primarily developed for use by Node.js, but it's 
 also used by Luvit, Julia, pyuv, and others.
+
+* **jerasure-2.0** is a C implementation of Reed-Solomon coding. The version
+2.0 pretty much Jerasure 1.2 without the original Galois Field backend.  
+Version 2.0 links directly to GF-Complete, which is more flexible than the 
+original, and *much* faster, because it leverages SIMD instructions.

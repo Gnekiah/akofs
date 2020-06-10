@@ -8,6 +8,7 @@
 - zlib-1.x.x（libz）
 - openssl-1.x.x（libcrypto / libssl）
 - pthread-2.x.x（libpthread）
+- jerasure-2.0
 - gtest-1.x.x（可选）
 
 ## 单元测试
