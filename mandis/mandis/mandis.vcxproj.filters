@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="mandis-p2p">
+      <UniqueIdentifier>{cdc614b1-1c6c-4338-a270-40336bc5ed5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{3fa24836-69fb-497e-83de-e0179a4ec90b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{c709ca54-78da-48ea-b26e-6f0adc8fe9d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="doc">
+      <UniqueIdentifier>{c126b9a0-379c-49cd-b5e4-82a1bd1f27f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mandis-fs">
+      <UniqueIdentifier>{5453f666-4f44-4b86-ba22-69b3c3ecddd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mandis">
+      <UniqueIdentifier>{ba2c9931-8e54-444f-910d-4ddf819aba0a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\lib\hashlib.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ssllib.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\logger.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\timelib.cpp">
+      <Filter>lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mandis-p2p\kadbucket.cpp">
+      <Filter>mandis-p2p</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mandis-p2p\p2pnet.cpp">
+      <Filter>mandis-p2p</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mandis-fs\foofs.cpp">
+      <Filter>mandis-fs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mandis-fs\file.cpp">
+      <Filter>mandis-fs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mandis-fs\block.cpp">
+      <Filter>mandis-fs</Filter>
+    </ClCompile>
+    <ClCompile Include="config.cpp">
+      <Filter>mandis</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>mandis</Filter>
+    </ClCompile>
+    <ClCompile Include="entry.cpp">
+      <Filter>mandis</Filter>
+    </ClCompile>
+    <ClCompile Include="entry_session.cpp">
+      <Filter>mandis</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mandis-p2p\req_session.cpp">
+      <Filter>mandis-p2p</Filter>
+    </ClCompile>
+    <ClCompile Include="p2pentry.cpp">
+      <Filter>mandis</Filter>
+    </ClCompile>
+    <ClCompile Include="p2pentry_session.cpp">
+      <Filter>mandis</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\hashlib.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ssllib.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\logger.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\timelib.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\magic.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mandis-p2p\kadbucket.h">
+      <Filter>mandis-p2p</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\p2pnet.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\foofs.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mandis-fs\file.h">
+      <Filter>mandis-fs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mandis-fs\block.h">
+      <Filter>mandis-fs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\config.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\entry.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\Makefile">
+      <Filter>lib</Filter>
+    </ClInclude>
+    <ClInclude Include="entry_session.h">
+      <Filter>mandis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mandis-p2p\req_session.h">
+      <Filter>mandis-p2p</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\p2pentry.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="p2pentry_session.h">
+      <Filter>mandis</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Makefile" />
+    <None Include="..\README.md" />
+    <None Include="Makefile">
+      <Filter>mandis</Filter>
+    </None>
+    <None Include="..\mandis-p2p\Makefile">
+      <Filter>mandis-p2p</Filter>
+    </None>
+    <None Include="..\mandis-fs\Makefile">
+      <Filter>mandis-fs</Filter>
+    </None>
+  </ItemGroup>
+</Project>
