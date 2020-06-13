@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\lib\logger.cpp">
+      <Filter>test_lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\hashlib.cpp">
+      <Filter>test_lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\ssllib.cpp">
+      <Filter>test_lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib\timelib.cpp">
+      <Filter>test_lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mandis-p2p\request_handler.cpp">
+      <Filter>test_mandis-p2p\socket-server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mandis-p2p\request_parser.cpp">
+      <Filter>test_mandis-p2p\socket-server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mandis-p2p\server.cpp">
+      <Filter>test_mandis-p2p\socket-server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mandis-p2p\session.cpp">
+      <Filter>test_mandis-p2p\socket-server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mandis-p2p\connector.cpp">
+      <Filter>test_mandis-p2p\socket-client</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="test_lib">
+      <UniqueIdentifier>{c699499e-9751-4c67-b52f-478a7508f93d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test_mandis-p2p">
+      <UniqueIdentifier>{18b93299-09b9-4974-88c0-51247dbea4e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test_mandis-p2p\socket-server">
+      <UniqueIdentifier>{c619714a-ab7a-4dcf-9be1-5642ae2ee31c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test_mandis-p2p\socket-client">
+      <UniqueIdentifier>{42c7b02c-4da3-4d52-abaf-a40a00e3fd0a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="test_hashlib.hpp">
+      <Filter>test_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="test_timelib.hpp">
+      <Filter>test_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="test_logger.hpp">
+      <Filter>test_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="test_ssllib.hpp">
+      <Filter>test_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\timelib.h">
+      <Filter>test_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\hashlib.h">
+      <Filter>test_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\logger.h">
+      <Filter>test_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\magic.h">
+      <Filter>test_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ssllib.h">
+      <Filter>test_lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mandis-p2p\request.hpp">
+      <Filter>test_mandis-p2p\socket-server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mandis-p2p\request_handler.h">
+      <Filter>test_mandis-p2p\socket-server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mandis-p2p\request_parser.h">
+      <Filter>test_mandis-p2p\socket-server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mandis-p2p\server.h">
+      <Filter>test_mandis-p2p\socket-server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mandis-p2p\session.h">
+      <Filter>test_mandis-p2p\socket-server</Filter>
+    </ClInclude>
+    <ClInclude Include="test_socket_server.hpp">
+      <Filter>test_mandis-p2p\socket-server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mandis-p2p\connector.h">
+      <Filter>test_mandis-p2p\socket-client</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+  </ItemGroup>
+</Project>
