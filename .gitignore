@@ -70,3 +70,11 @@ test_multithread-logs.txt
 !win64/lib/
 test/akofs_test
 src/akofs
+
+## 
+mandis/block-path/
+mandis/block-info
+mandis/file-info
+*.o
+mandis/build/
+mandis/bin/
