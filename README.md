@@ -9,6 +9,7 @@
 - openssl-1.x.x（libcrypto / libssl）
 - pthread-2.x.x（libpthread）
 - jerasure-2.0
+- boost-1.53.0
 - gtest-1.x.x（可选）
 
 ## 单元测试
