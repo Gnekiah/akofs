@@ -107,6 +107,7 @@ add_subdirectory(../src/arch/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/arch_objs)
 add_subdirectory(../src/common/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/common_objs)
 add_subdirectory(../src/daemon/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/daemon_objs)
 add_subdirectory(../src/core/ ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/core_objs)
+add_subdirectory(../src/kademlia ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/kademlia_objs)
 
 
 
@@ -115,6 +116,7 @@ set(ENTER_LIBS
     daemon_objs
     common_objs
     arch_objs
+    kademlia_objs
     pthread
     crypto
     ssl
