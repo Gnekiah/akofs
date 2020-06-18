@@ -36,12 +36,12 @@
 #include <boost/asio/ip/v6_only.hpp>
 #include <boost/asio/buffer.hpp>
 
-#include "kademlia/error_impl.hpp"
+#include "error_impl.hpp"
 #include <kademlia/detail/cxx11_macros.hpp>
 
-#include "kademlia/buffer.hpp"
-#include "kademlia/ip_endpoint.hpp"
-#include "kademlia/boost_to_std_error.hpp"
+#include "buffer.hpp"
+#include "ip_endpoint.hpp"
+#include "boost_to_std_error.hpp"
 
 namespace kademlia {
 namespace detail {

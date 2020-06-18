@@ -41,8 +41,8 @@
 
 #include <kademlia/detail/cxx11_macros.hpp>
 
-#include "kademlia/id.hpp"
-#include "kademlia/log.hpp"
+#include "id.hpp"
+#include "log.hpp"
 
 namespace kademlia {
 namespace detail {
