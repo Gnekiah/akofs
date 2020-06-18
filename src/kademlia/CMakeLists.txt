@@ -70,30 +70,9 @@ set(kademlia_sources
     value_store.hpp
     lookup_task.hpp)
 
-# Kademlia shared
-add_library(kademlia SHARED
-    ${kademlia_sources})
+add_library(kademlia_objs STATIC ${kademlia_sources})
 
-set_target_properties(kademlia
-    PROPERTIES
-        MACOSX_RPATH ON
-        COMPILE_DEFINITIONS "KADEMLIA_BUILDING_AS_SHARED;KADEMLIA_AS_SHARED")
+target_link_libraries(kademlia_objs ${Boost_SYSTEM_LIBRARY} ${OPENSSL_CRYPTO_LIBRARY} ${CMAKE_THREAD_LIBS_INIT})
 
-target_link_libraries(kademlia
-    ${Boost_SYSTEM_LIBRARY}
-    ${OPENSSL_CRYPTO_LIBRARY}
-    ${CMAKE_THREAD_LIBS_INIT})
-
-# Kademlia static
-add_library(kademlia_static STATIC
-    ${kademlia_sources})
-
-target_link_libraries(kademlia_static
-    ${Boost_SYSTEM_LIBRARY}
-    ${OPENSSL_CRYPTO_LIBRARY}
-    ${CMAKE_THREAD_LIBS_INIT})
-
-set_target_properties(kademlia_static
-    PROPERTIES
-        POSITION_INDEPENDENT_CODE ON)
+set_target_properties(kademlia_objs PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
