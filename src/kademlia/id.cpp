@@ -23,7 +23,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include "kademlia/id.hpp"
+#include "id.hpp"
 
 #include <cctype>
 #include <iostream>
@@ -37,7 +37,7 @@
 
 #include <openssl/sha.h>
 
-#include "kademlia/error_impl.hpp"
+#include "error_impl.hpp"
 
 namespace kademlia {
 namespace detail {
