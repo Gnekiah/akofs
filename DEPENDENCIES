@@ -24,3 +24,5 @@ also used by Luvit, Julia, pyuv, and others.
 2.0 pretty much Jerasure 1.2 without the original Galois Field backend.  
 Version 2.0 links directly to GF-Complete, which is more flexible than the 
 original, and *much* faster, because it leverages SIMD instructions.
+
+* **boost-1.67.0** is a set of libraries for the C++ programming language that provides support for tasks and structures such as linear algebra, pseudorandom number generation, multithreading, image processing, regular expressions, and unit testing.
